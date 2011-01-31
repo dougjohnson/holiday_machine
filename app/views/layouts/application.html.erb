@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title><%= h(yield(:title) || "Devise") %></title>
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag :all%>
+  <link type="text/css" href="/javascripts/jquery-ui-1.8.9/css/smoothness/jquery-ui-1.8.9.custom.css" rel="Stylesheet" />
+  <%= javascript_include_tag 'jquery-1.4.4.min', 'rails', 'application', 'jquery.formatdate', 'jquery-ui-1.8.9/js/jquery-ui-1.8.9.custom.min' %>
+  <script type="text/javascript" src="/javascripts/jquery-ui-1.8.9/js/jquery-ui-1.8.9.custom.min.js"></script>
+  <link rel='stylesheet' type='text/css' href='/javascripts/fullcalendar-1.4.10/fullcalendar/fullcalendar.css' />
+  <script type='text/javascript' src='/javascripts/fullcalendar-1.4.10/fullcalendar/fullcalendar.min.js'></script>
+  <%= yield(:head) %>
+</head>
+<body>
+<div id="container">
+
+  <div id="flash_notice" style="display: none;"></div>
+  <%= content_tag :h1, yield(:title) if show_title? %>
+
+  <%#- flash.each do |name, msg| -%>
+  <%#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%#- end -%>
+
+  <% if user_signed_in? -%>
+      <%= render_navigation %>
+      <div id="user_login_box" class="login">
+        <%= current_user.email %> |
+        <%= link_to 'My info', edit_user_registration_path %> |
+        <%= link_to 'Sign out', destroy_user_session_path %>
+      </div>
+  <% end -%>
+
+  <!--<%# if admin_signed_in? -%>
+        <div id="admin_login_box" style="float:left">
+          <%#= current_admin.email %> |
+          <%#= link_to 'Admin section', admins_path %> |
+          <%#= link_to 'Sign out', destroy_admin_session_path %>
+        </div>
+      <%# end -%>
+      <div style="clear:both"></div>-->
+
+  <%- if show_title? -%>
+      <h1><%= h yield(:title) %></h1>
+  <%- end -%>
+
+  <%= yield %>
+</div>
+
+</body>
+
+</html>
+
+

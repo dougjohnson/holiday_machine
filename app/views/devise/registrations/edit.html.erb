@@ -1,0 +1,32 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <%= f.input :email %>
+
+    <%= f.input :password %>
+
+    <%= f.input :password_confirmation %>
+
+    <%= f.input :current_password %>
+
+    <%= f.input :days_leave, :input_html=>{:max_length=>2, :size=>5} %>
+
+    <%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %>
+
+    <%= f.label :manager_id, :name=>"Manager" %>
+
+    <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email %>
+
+    <p><%= f.submit "Save" %></p>
+
+<% end %>
+
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %></p>
+
+<%= link_to "Back", :back %>
+

@@ -1,0 +1,12 @@
+.autotest
+.idea/*
+.idea
+log/*
+tmp/*
+*~
+TODO.txt
+coverage/*
+public/system/*
+public/cache/*
+*.sqlite3
+.bundle/*

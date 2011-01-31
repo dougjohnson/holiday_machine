@@ -1,0 +1,284 @@
+body {
+    background-color: #4B7399;
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 14px;
+}
+
+a img {
+    border: none;
+}
+
+a {
+    color: #0000FF;
+}
+
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+
+#container {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #FFF;
+    padding: 20px 40px;
+    /*border: solid 1px black;*/
+    margin-top: 20px;
+    height: 700px;
+}
+
+#signin {
+    position: absolute; /*left: 900px;*/
+    right: 150px;
+    top: 50px;
+    font-family: tahoma arial;
+    font-style: normal;
+}
+
+#signin a {
+    padding-right: 10px;
+}
+
+#flash_notice, #flash_alert {
+    padding: 5px 8px;
+    margin: 10px 0;
+}
+
+#flash_notice {
+    background-color: #CFC;
+    border: solid 1px #6C6;
+}
+
+#flash_alert {
+    background-color: #FCC;
+    border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+    display: inline;
+}
+
+#errorExplanation {
+    width: 400px;
+    border: 2px solid #CF0000;
+    padding: 0px;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #c00;
+    color: #fff;
+}
+
+#errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 8px;
+}
+
+#errorExplanation ul {
+    margin: 2px 24px;
+}
+
+#errorExplanation ul li {
+    font-size: 12px;
+    list-style: disc;
+}
+
+.login {
+    position: absolute;
+    float: right;
+    top: 20px;
+    right: 15%;
+}
+
+.simple_form label {
+    float: left;
+    width: 150px;
+    text-align: right;
+    margin: 2px 10px;
+}
+
+.simple_form div.input {
+    margin-bottom: 10px;
+}
+
+.simple_form div.boolean, .simple_form input[type='submit'] {
+    margin-left: 120px;
+}
+
+.simple_form div.boolean label {
+    float: none;
+    margin: 0;
+}
+
+/*Calendar*/
+#month_view table {
+    border: 1px solid #999;
+    border-collapse: collapse;
+    font-family: Georgia, Times, serif;
+}
+
+#month_view th {
+    border: 1px solid #999;
+    font-size: 70%;
+    text-transform: uppercase;
+}
+
+#month_view td {
+    border: 1px solid #999;
+    height: 10em;
+    width: 10em;
+    padding: 5px;
+    vertical-align: top;
+}
+
+#month_view caption {
+    font-size: 200%;
+    margin-top: -10px;
+}
+
+#month_view .day {
+    text-align: right;
+}
+
+#month_view .notes {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80%;
+    text-align: right;
+    padding-left: 20px;
+}
+
+#month_view .birthday {
+    background-color: #ECE;
+}
+
+#month_view .weekend {
+    background-color: #efe8e8;
+}
+
+/*Testing only*/
+#month_view .event {
+    background-color: #ea1515;
+    height: 100%;
+    width: 100%;
+}
+
+ul {
+    padding-left: 0;
+    margin-left: 0;
+    background-color: #036;
+    color: White;
+    float: left;
+    width: 100%;
+    font-family: arial, helvetica, sans-serif;
+}
+
+ul li {
+    display: inline;
+}
+
+ul li a {
+    padding: 0.2em 1em;
+    background-color: #036;
+    color: White;
+    text-decoration: none;
+    float: left;
+    border-right: 1px solid #fff;
+}
+
+ul li a:hover {
+    background-color: #369;
+    color: #fff;
+}
+
+#vacation_errors {
+    background-color: #ffa100;
+    border: 1px solid #ff0049;
+    width: 300px;
+    /*font-size: medium;*/
+    float: right;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#hol {
+/*background: url("/images/background_gray2.gif") repeat-x scroll 0 0 transparent;*/
+/*border-top: 1px solid #FFFFFF;*/
+    color: #666766;
+}
+
+table#hol {
+    font-size: 12px;
+    width: 642px;
+    margin: 0 0 30px -5px;
+    border-collapse: collapse;
+}
+
+table#hol th {
+    color: #555;
+    text-align: left;
+    width: 116px;
+}
+
+table#hol tr {
+    background: url(/images/table_rule.gif) no-repeat;
+}
+
+table#hol tbody tr:hover {
+    cursor:pointer;
+}
+
+table#hol  tr.top {
+    background-image: none;
+}
+
+table #hol  tr.top th {
+    padding-top: 12px;
+}
+
+table #hol, tr #hol, th #hol, td #hol {
+    border: 0;
+}
+
+fieldset {
+    float: left;
+}
+
+legend {
+    padding: 0.2em 0.5em;
+    color: green;
+    font-size: 100%;
+    text-align: right;
+}
+
+fieldset.create {
+    border: 2px solid green
+}
+
+legend.create {
+    border: 2px solid green;
+    color: green;
+}
+
+fieldset.update {
+    border: 2px solid red
+}
+
+legend.update {
+    border: 2px solid red;
+    color: red;
+}
+
+.row_highlight{
+    color: red;
+    font-weight:bold;
+}
