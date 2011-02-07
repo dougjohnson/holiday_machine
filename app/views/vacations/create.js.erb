@@ -7,9 +7,7 @@
         $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
         $("#flash_notice").show();
         $(":input:not(input[type=submit])").val("");//TODO this should reset to today's date for the correct field
-        <%= p raw(create_holiday_row(@vacation)) %>
-        $('#hol tbody').append("<%=raw(create_holiday_row(@vacation))%>");
-        //TODO make the row have an animation
+        $("#vacations_list").trigger("reloadGrid");
 <% end -%>
 
 

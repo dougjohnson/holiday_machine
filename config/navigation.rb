@@ -26,7 +26,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :home_link, 'Home', root_path
     primary.item :holiday_link, 'View holidays', vacations_path
     primary.item :calendar_link, 'Show Calendar', "/calendar/show"
-    primary.item :management_area_link, "Users Settings", "/users/manage"
+    primary.item :management_area_link, "Administer Holidays", "/administer"
   end
 
 =begin

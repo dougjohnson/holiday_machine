@@ -1,5 +1,5 @@
-#HolidayStatus.create([{:status => 'Pending'}, {:status => 'Authorised'}, {:status => 'Cancelled'}, {:status => 'Taken'}])
-#UserType.create([{:name=>"Standard"}, {:name=>"Manager"}])
+HolidayStatus.create([{:status => 'Pending'}, {:status => 'Authorised'}, {:status => 'Cancelled'}, {:status => 'Taken'}])
+UserType.create([{:name=>"Standard"}, {:name=>"Manager"}])
 
 #2011 holidays
 BankHoliday.create([{:name=>'New Years Day', :date_of_hol=>'2011-01-03'},

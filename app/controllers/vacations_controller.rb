@@ -5,11 +5,9 @@ class VacationsController < ApplicationController
   # GET /vacations
   # GET /vacations.xml
   def index
-    @vacations        = Vacation.all # Need to restrict by the user that created them
+    #Populates the calendar, so restricted by manager
+    @vacations        = Vacation.where ["manager_id = ?", current_user.manager_id]
     @vacation         = Vacation.new
-
-#    TODO this will be whatever date we choose
-    @today            = Date.today
 
     @holiday_statuses = HolidayStatus.all
 
@@ -18,7 +16,7 @@ class VacationsController < ApplicationController
         hs.status != "Pending" and hs.status != "Cancelled"
       }
     end
-
+    
     respond_to do |format|
       format.html
       format.json {
@@ -35,7 +33,8 @@ class VacationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { render :xml => @vacation }
+      format.json do |json|
+      end
     end
   end
 
@@ -65,10 +64,12 @@ class VacationsController < ApplicationController
   # POST /vacations
   # POST /vacations.xml
   def create
-    @vacation = Vacation.new(params[:vacation])
+    @vacation      = Vacation.new(params[:vacation])
     @vacation.user = current_user
+    manager_id = current_user.manager_id
+    @vacation.manager_id = manager_id # Add manager to all holidays
 
-    manager   = User.find_by_manager_id current_user.manager_id
+#    manager = User.find_by_manager_id manager_id
 
     respond_to do |format|
       if @vacation.save
@@ -79,7 +80,7 @@ class VacationsController < ApplicationController
         format.js
       else
         flash[:notice] = "Problem creating the holiday"
-        format.js # { render 'fail_create.js.erb' }
+        format.js
       end
     end
   end
@@ -87,7 +88,7 @@ class VacationsController < ApplicationController
   # PUT /vacations/1
   # PUT /vacations/1.xml
   def update
-    @vacation = Vacation.find(params[:id])
+    @vacation      = Vacation.find(params[:id])
     @vacation.user = current_user
 
     respond_to do |format|
@@ -104,12 +105,10 @@ class VacationsController < ApplicationController
   # DELETE /vacations/1
   # DELETE /vacations/1.xml
   def destroy
-
     @vacation = Vacation.find(params[:id])
 
-    #TODO needs some logic around this, can't get rid of past holidays etc.
+    #TODO needs some logic around this, can't get rid of past holidays etc. - in model
     #Destroy could cancel just change the status
-
     @vacation.destroy
 
     respond_to do |format|
@@ -118,13 +117,26 @@ class VacationsController < ApplicationController
     end
   end
 
-  def get_details
-    @vacation = Vacation.all
-    y @vacation
+  def holiday_json
+    @vacations = Vacation.where ["user_id = ?", current_user.id]
+    respond_to do |format|
+      format.json do
+        json_data = []
+        @vacations.each do |vacation|
+          hol_hash = {:id                          => vacation.id.to_s, :vacation_description=>vacation.description, :vacation_date_from=>vacation.date_from.strftime("%d/%m/%Y"),
+                      :vacation_date_to            =>vacation.date_to.strftime("%d/%m/%Y"), :vacation_working_days_used => vacation.working_days_used.to_s,
+                      :vacation_status_name        =>vacation.holiday_status.status, :vacation_holiday_status_id=>vacation.holiday_status_id.to_s,
+                      :vacation_holiday_status_name=>vacation.holiday_status.status}
+          json_data << hol_hash
+        end
+        render :json => {:page=> params[:page], :total => 1, :records =>@vacations.size, :rows => json_data}
+      end
+    end
   end
 
   private
 
+  #Move this and calling code to model - is business logic
   def days_in_month date_to_check
     days_in_month = (((date_to_check+1.month).at_beginning_of_month)-1.day).mday
     days_in_month

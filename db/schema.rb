@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110131221234) do
+ActiveRecord::Schema.define(:version => 20110207165621) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                             :default => "", :null => false
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20110131221234) do
     t.datetime "updated_at"
     t.integer  "holiday_status_id"
     t.integer  "user_id"
+    t.integer  "manager_id"
+    t.text     "notes"
   end
 
 end

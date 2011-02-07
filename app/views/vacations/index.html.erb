@@ -1,26 +1,13 @@
+<% javascript_include_tag "vacations" %>
+
+<script src="/javascripts/vacations.js" type="text/javascript"></script>
+
 <%= render 'form' %>
 
-<br>
+<div id="jqgrid">
+  <table id="vacations_list"></table>
+  <div id="vacations_pager"></div>
+</div>
 
-<!--TODO move to partial-->
-<table id="hol">
-  <tr>
-    <th>Date from</th>
-    <th>Date to</th>
-    <th>Description</th>
-    <th>Working Days used</th>
-    <th>Status</th>
-    <th></th>
-  </tr>
 
-  <% @vacations.each do |vacation| %>
-      <tr id="<%= vacation.id %>">
-        <td><%= vacation.date_from.strftime("%d/%m/%Y") %></td>
-        <td><%= vacation.date_to.strftime("%d/%m/%Y") %></td>
-        <td><%= vacation.description %></td>
-        <td><%= vacation.working_days_used %></td>
-        <td><%= vacation.holiday_status.status %></td>
-        <td><img src='/images/update.gif' alt='Update Holiday'/></td>
-      </tr>
-  <% end %>
-</table>
+

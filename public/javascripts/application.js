@@ -30,29 +30,6 @@ $(document).ready(function() {
     $('#vacation_date_from').datepicker();
     $("#vacation_date_to").datepicker();
 
-//    $("#vacation_date_from").datepicker("option", "dateFormat", 'dd/mm/yyyy');
-//    $("#vacation_date_to").datepicker("option", "dateFormat", 'dd/mm/yyyy');
-
-    $('#hol tr').live('click', function() {
-        var holId = $(this).attr("id");
-        $("fieldset.vacation, legend.vacation").removeClass("create").addClass("update");
-        $("legend.vacation").html("Change Holiday");
-        var action = $(this).val() == "people" ? "user" : "content";
-        $("form.vacation").attr("action", "/vacations/" + holId);
-        $("form.vacation").attr("method", "PUT");
-        var desc = $(this).find("td").eq(2).html();
-        var status = $(this).find("td").eq(4).html();
-        $("#vacation_description").val(desc);
-        var status_id = $("#vacation_holiday_status_id option:contains(" + status + ")").val();
-        $("#vacation_holiday_status_id").val(status_id);
-        $("#vacation_date_from").val($(this).find("td").eq(0).html());
-        $("#vacation_date_to").val($(this).find("td").eq(1).html());
-        $("#cancelUpdate").show();
-        $('table .row_highlight:first').removeClass('row_highlight');
-        $(this).toggleClass("row_highlight");
-        $("#vacation_submit").val("Update Holiday");
-    });
-
     $("#cancelUpdate").click(function() {
         $("fieldset.vacation, legend.vacation").removeClass("update").addClass("create");
         $("legend.vacation").html("Create Holiday");
@@ -60,7 +37,6 @@ $(document).ready(function() {
         clearForm($("#new_vacation"));
         $("#vacation_date_from").val($.formatDate(new Date(), "dd/MM/yyyy"));
         $("#vacation_date_to").val($.formatDate(new Date(), "dd/MM/yyyy"));
-        $('table .row_highlight:first').removeClass('row_highlight');
         $("form.vacation").attr("action", "/vacations");
         $("form.vacation").attr("method", "POST");
         $("#vacation_submit").val("Create Holiday");

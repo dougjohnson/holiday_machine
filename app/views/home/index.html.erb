@@ -2,24 +2,13 @@
   <p><%#= link_to 'Sign up as Admin', new_admin_registration_path %></p>
   <p><%#= link_to 'Sign in as Admin', new_admin_session_path %></p>
 <%# end -%>-->
-<div id="signin">
-  <% unless user_signed_in? -%>
-      <%= link_to 'Register ', new_user_registration_path %>
-      <%= link_to 'Sign in', new_user_session_path %>
-  <% end -%>
-
-  <!--<%# if user_signed_in? -%>-->
-      <!--<p><%#= link_to 'Token Authentication Example', token_path(:auth_token => current_user.authentication_token) %></p>-->
-  <!--<%# end -%>-->
-
-</div>
-
-<% if !user_signed_in? %>
-    <div id="homePage">
-      Welcome to the Holiday Machine</br>
-      The gateway to your days off.
+<% unless user_signed_in? %>
+    <div id="signin">
+      <% unless user_signed_in? -%>
+          <%= link_to 'Register ', new_user_registration_path %>
+          <%#= link_to 'Sign in', new_user_session_path %>
+      <% end -%>
     </div>
-
-    <!--TODO add sign in page here-->
-
 <% end %>
+
+

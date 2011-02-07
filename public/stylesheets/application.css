@@ -1,37 +1,39 @@
-body {
-    background-color: #4B7399;
-    font-family: Verdana, Helvetica, Arial;
-    font-size: 14px;
-}
+/*body {*/
+/*background-color: #4B7399;*/
+/*font-family: Verdana, Helvetica, Arial;*/
+/*font-size: 14px;*/
+/*}*/
 
-a img {
-    border: none;
-}
+/*a img {*/
+/*border: none;*/
+/*}*/
 
-a {
-    color: #0000FF;
-}
+/*a {*/
+/*color: #0000FF;*/
+/*}*/
 
-.clear {
-    clear: both;
-    height: 0;
-    overflow: hidden;
-}
+/*.clear {*/
+/*clear: both;*/
+/*height: 0;*/
+/*overflow: hidden;*/
+/*}*/
 
 #container {
     width: 70%;
     margin: 0 auto;
     background-color: #FFF;
     padding: 20px 40px;
-    /*border: solid 1px black;*/
+    border: solid 1px black;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
     margin-top: 20px;
     height: 700px;
 }
 
 #signin {
     position: absolute; /*left: 900px;*/
-    right: 150px;
-    top: 50px;
+    right: 170px;
+    top: 40px;
     font-family: tahoma arial;
     font-style: normal;
 }
@@ -120,7 +122,9 @@ a {
     margin: 0;
 }
 
+/
 /*Calendar*/
+/*
 #month_view table {
     border: 1px solid #999;
     border-collapse: collapse;
@@ -164,15 +168,23 @@ a {
 #month_view .weekend {
     background-color: #efe8e8;
 }
+*/
 
 /*Testing only*/
-#month_view .event {
-    background-color: #ea1515;
-    height: 100%;
-    width: 100%;
+/*#month_view .event {*/
+/*background-color: #ea1515;*/
+/*height: 100%;*/
+/*width: 100%;*/
+/*}*/
+
+/*TODO reinstate code below for the menu, use jquery ui menu images see simple-nav for arrows*/
+
+#top_navigation {
+    width: 60%;
+    height: 40px;
 }
 
-ul {
+#top_navigation ul {
     padding-left: 0;
     margin-left: 0;
     background-color: #036;
@@ -182,11 +194,11 @@ ul {
     font-family: arial, helvetica, sans-serif;
 }
 
-ul li {
+#top_navigation ul li {
     display: inline;
 }
 
-ul li a {
+#top_navigation ul li a {
     padding: 0.2em 1em;
     background-color: #036;
     color: White;
@@ -195,27 +207,28 @@ ul li a {
     border-right: 1px solid #fff;
 }
 
-ul li a:hover {
+#top_navigation ul li a:hover {
     background-color: #369;
     color: #fff;
 }
 
 #vacation_errors {
-    background-color: #ffa100;
+    background-color: #f3f8d1;
     border: 1px solid #ff0049;
     width: 300px;
-    /*font-size: medium;*/
+    font-size: medium;
     float: right;
     font-weight: bold;
     padding: 10px;
 }
 
-#hol {
+/*#hol {*/
 /*background: url("/images/background_gray2.gif") repeat-x scroll 0 0 transparent;*/
 /*border-top: 1px solid #FFFFFF;*/
-    color: #666766;
-}
+/*color: #666766;*/
+/*}*/
 
+/*
 table#hol {
     font-size: 12px;
     width: 642px;
@@ -248,37 +261,96 @@ table #hol  tr.top th {
 table #hol, tr #hol, th #hol, td #hol {
     border: 0;
 }
+*/
+
+/*TODO position this correctly*/
+
+div#vacations_form {
+    position: relative;
+    width: 100%;
+    height: 270px;
+    top: 30px;
+}
+
+#new_vacation {
+    /*position: relative;*/
+    width: 100%;
+    height: 250px;
+    /*left: -1000px;*/
+    /*top: -120px;*/
+}
 
 fieldset {
-    float: left;
+    width: 50%;
 }
 
 legend {
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin-left: 10px;
     padding: 0.2em 0.5em;
-    color: green;
+    color: green; /*background-color: #4ca20b;*/
     font-size: 100%;
     text-align: right;
 }
 
 fieldset.create {
-    border: 2px solid green
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid green;
+    position: absolute;
+    top: 20px;
+    /*width: 50%;*/
+    /*top: 175px;*/
+    left: 75px;
 }
 
 legend.create {
     border: 2px solid green;
-    color: green;
+    background-color: #4ca20b;
+    color: white;
 }
 
 fieldset.update {
-    border: 2px solid red
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid red;
+    position: absolute;
+    top: 20px;
+    /*width: 50%;*/
+    /*position: relative;*/
+    /*top: 175px;*/
+    left: 75px;
 }
 
 legend.update {
     border: 2px solid red;
-    color: red;
+    background-color: #fa4242;
+    color: white;
 }
 
-.row_highlight{
+.row_highlight {
     color: red;
-    font-weight:bold;
+    font-weight: bold;
+}
+
+#jqgrid {
+    position: relative;
+    top: 40px;
+    left: 75px;
+}
+
+#main_login {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid #3e3636;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 50%;
+    margin-top: 120px;
+    margin-bottom: auto;
+    background-color: #097e09;
+    color: white;
 }

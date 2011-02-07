@@ -1,16 +1,23 @@
 HolidayMachine::Application.routes.draw do
 
-  get "user/manage_user"
-
+#  get "user/manage_user"
 #  get "calendar/index"
 
   resources :calendar
 
+  match 'vacations/holiday_json' => 'vacations#holiday_json'
+
   resources :vacations
 
-  resources :users
+  match 'administer/get_team_data' => 'administer#get_team_data'
+
+  resources :administer
 
   devise_for :users, :admin
+
+#  devise_scope :user do
+#     get "sign_in", :to => "vacations"
+#  end
 
   resources :home, :only => :index
   resources :admins, :only => :index
