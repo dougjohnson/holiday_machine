@@ -3,7 +3,11 @@ class User < ActiveRecord::Base
          :rememberable, :registerable, :trackable, :timeoutable, :validatable,
          :token_authenticatable
 
+  scope :users_by_manager, lambda{|manager_id| where="manager_id=?", manager_id}
+
   belongs_to :user_type
+
+  has_many :user_days
 
   has_many :vacations
 

@@ -2,6 +2,7 @@ class UserDaysController < ApplicationController
   # GET /user_days
   # GET /user_days.xml
   def index
+    @users = User.users_by_manager
     @user_days = UserDay.all
 
     respond_to do |format|

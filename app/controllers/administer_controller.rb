@@ -2,7 +2,7 @@ class AdministerController < ApplicationController
 
   before_filter :authenticate_user!
 
-  #TODO restrict to managers only
+  #TODO restrict to managers only   / rename to something else
   
   def index
 #    @vacations = Vacation.where ["user_id = ?", current_user.id]

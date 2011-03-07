@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110305193125) do
+ActiveRecord::Schema.define(:version => 20110307194746) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                             :default => "", :null => false
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(:version => 20110305193125) do
 
   create_table "holiday_statuses", :force => true do |t|
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "holiday_years", :force => true do |t|
+    t.date     "date_start"
+    t.date     "date_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_days", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "no_days"
+    t.string   "reason",          :limit => 100
+    t.integer  "holiday_year_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
