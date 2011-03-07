@@ -1,0 +1,21 @@
+<h1>Listing user_days</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_days.each do |user_day| %>
+  <tr>
+    <td><%= link_to 'Show', user_day %></td>
+    <td><%= link_to 'Edit', edit_user_day_path(user_day) %></td>
+    <td><%= link_to 'Destroy', user_day, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User day', new_user_day_path %>
