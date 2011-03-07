@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110207165621) do
+ActiveRecord::Schema.define(:version => 20110305193125) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                             :default => "", :null => false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20110207165621) do
     t.datetime "updated_at"
     t.string   "authentication_token"
     t.integer  "days_leave"
-    t.string   "user_type_id"
+    t.integer  "user_type_id",         :limit => 255
     t.integer  "manager_id"
   end
 
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20110207165621) do
     t.integer  "user_id"
     t.integer  "manager_id"
     t.text     "notes"
+    t.string   "uuid"
   end
 
 end

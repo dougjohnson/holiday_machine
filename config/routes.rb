@@ -10,6 +10,7 @@ HolidayMachine::Application.routes.draw do
   resources :vacations
 
   match 'administer/get_team_data' => 'administer#get_team_data'
+  match 'administer/create' => 'administer#create'
 
   resources :administer
 

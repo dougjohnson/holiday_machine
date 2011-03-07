@@ -1,37 +1,30 @@
-/*body {*/
-/*background-color: #4B7399;*/
-/*font-family: Verdana, Helvetica, Arial;*/
-/*font-size: 14px;*/
-/*}*/
 
-/*a img {*/
-/*border: none;*/
-/*}*/
-
-/*a {*/
-/*color: #0000FF;*/
-/*}*/
-
-/*.clear {*/
-/*clear: both;*/
-/*height: 0;*/
-/*overflow: hidden;*/
-/*}*/
+body {
+    /*background-image: url("/images/palm_trees.gif");*/
+    background-image: url('/images/BlueToWhiteGradient.jpg');
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    /*filter: alpha(opacity=50);*/
+    /*-moz-opacity: 0.5;*/
+    /*-khtml-opacity: 0.5;*/
+    /*opacity: 0.8;*/
+}
 
 #container {
+    overflow: auto;
     width: 70%;
     margin: 0 auto;
-    background-color: #FFF;
+    /*background-image: url('/images/BlueToWhiteGradient.jpg');*/
+    background-color: white;
     padding: 20px 40px;
     border: solid 1px black;
     -moz-border-radius: 10px;
     border-radius: 10px;
     margin-top: 20px;
-    height: 700px;
+    height: 800px;
 }
 
 #signin {
-    position: absolute; /*left: 900px;*/
+    position: absolute;
     right: 170px;
     top: 40px;
     font-family: tahoma arial;
@@ -122,63 +115,6 @@
     margin: 0;
 }
 
-/
-/*Calendar*/
-/*
-#month_view table {
-    border: 1px solid #999;
-    border-collapse: collapse;
-    font-family: Georgia, Times, serif;
-}
-
-#month_view th {
-    border: 1px solid #999;
-    font-size: 70%;
-    text-transform: uppercase;
-}
-
-#month_view td {
-    border: 1px solid #999;
-    height: 10em;
-    width: 10em;
-    padding: 5px;
-    vertical-align: top;
-}
-
-#month_view caption {
-    font-size: 200%;
-    margin-top: -10px;
-}
-
-#month_view .day {
-    text-align: right;
-}
-
-#month_view .notes {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 80%;
-    text-align: right;
-    padding-left: 20px;
-}
-
-#month_view .birthday {
-    background-color: #ECE;
-}
-
-#month_view .weekend {
-    background-color: #efe8e8;
-}
-*/
-
-/*Testing only*/
-/*#month_view .event {*/
-/*background-color: #ea1515;*/
-/*height: 100%;*/
-/*width: 100%;*/
-/*}*/
-
-/*TODO reinstate code below for the menu, use jquery ui menu images see simple-nav for arrows*/
-
 #top_navigation {
     width: 60%;
     height: 40px;
@@ -222,50 +158,7 @@
     padding: 10px;
 }
 
-/*#hol {*/
-/*background: url("/images/background_gray2.gif") repeat-x scroll 0 0 transparent;*/
-/*border-top: 1px solid #FFFFFF;*/
-/*color: #666766;*/
-/*}*/
-
-/*
-table#hol {
-    font-size: 12px;
-    width: 642px;
-    margin: 0 0 30px -5px;
-    border-collapse: collapse;
-}
-
-table#hol th {
-    color: #555;
-    text-align: left;
-    width: 116px;
-}
-
-table#hol tr {
-    background: url(/images/table_rule.gif) no-repeat;
-}
-
-table#hol tbody tr:hover {
-    cursor:pointer;
-}
-
-table#hol  tr.top {
-    background-image: none;
-}
-
-table #hol  tr.top th {
-    padding-top: 12px;
-}
-
-table #hol, tr #hol, th #hol, td #hol {
-    border: 0;
-}
-*/
-
-/*TODO position this correctly*/
-
-div#vacations_form {
+#vacations_form {
     position: relative;
     width: 100%;
     height: 270px;
@@ -273,57 +166,46 @@ div#vacations_form {
 }
 
 #new_vacation {
-    /*position: relative;*/
     width: 100%;
     height: 250px;
-    /*left: -1000px;*/
-    /*top: -120px;*/
 }
 
-fieldset {
-    width: 50%;
-}
-
-legend {
+.vacation legend {
     -moz-border-radius: 15px;
     border-radius: 15px;
     margin-left: 10px;
     padding: 0.2em 0.5em;
-    color: green; /*background-color: #4ca20b;*/
+    color: green;
     font-size: 100%;
     text-align: right;
 }
 
-fieldset.create {
+fieldset.vacation {float:left}
+
+.vacation fieldset {
+    position: relative;
+    width: 50%;
+    top: 20px;
     -moz-border-radius: 15px;
     border-radius: 15px;
-    border: 2px solid green;
-    position: absolute;
-    top: 20px;
-    /*width: 50%;*/
-    /*top: 175px;*/
-    left: 75px;
+    /*left: 50px;*/
 }
 
-legend.create {
+fieldset.create {
+    border: 2px solid green;
+}
+
+.create legend {
     border: 2px solid green;
     background-color: #4ca20b;
     color: white;
 }
 
 fieldset.update {
-    -moz-border-radius: 15px;
-    border-radius: 15px;
     border: 2px solid red;
-    position: absolute;
-    top: 20px;
-    /*width: 50%;*/
-    /*position: relative;*/
-    /*top: 175px;*/
-    left: 75px;
 }
 
-legend.update {
+.update legend {
     border: 2px solid red;
     background-color: #fa4242;
     color: white;
@@ -336,8 +218,12 @@ legend.update {
 
 #jqgrid {
     position: relative;
-    top: 40px;
-    left: 75px;
+    top: 90px;
+}
+
+#jqgrid2 {
+    position: relative;
+    top: 50px;
 }
 
 #main_login {
@@ -354,3 +240,8 @@ legend.update {
     background-color: #097e09;
     color: white;
 }
+
+#admin_grid {
+    top: 20px;
+}
+

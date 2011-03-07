@@ -6,7 +6,7 @@
     <div id="signin">
       <% unless user_signed_in? -%>
           <%= link_to 'Register ', new_user_registration_path %>
-          <%#= link_to 'Sign in', new_user_session_path %>
+          <%= link_to 'Sign in', new_user_session_path %>
       <% end -%>
     </div>
 <% end %>

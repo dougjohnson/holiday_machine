@@ -1,9 +1,13 @@
 class Vacation < ActiveRecord::Base
 
+#  require "UUID"
+
   belongs_to :holiday_status
   belongs_to :user
 
   before_save :save_working_days
+
+  scope :team_holidays, lambda {|manager_id| where(:manager_id => manager_id) }
 
   validates_presence_of :date_from
   validates_presence_of :date_to
@@ -12,6 +16,13 @@ class Vacation < ActiveRecord::Base
   validate :date_from_must_be_before_date_to
   validate :working_days_greater_than_zero
   validate :date_not_more_than_one_month_ago
+
+#  TODO create UUID https://github.com/assaf/uuid
+#  def uuid= val
+#    guid = UUID.new
+#    test = guid generate
+#    self[:uuid] = guid.generate
+#  end
 
   def date_from= val
     self[:date_from] = convert_uk_date_to_iso val

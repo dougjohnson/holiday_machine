@@ -6,16 +6,10 @@ class VacationsController < ApplicationController
   # GET /vacations.xml
   def index
     #Populates the calendar, so restricted by manager
-    @vacations        = Vacation.where ["manager_id = ?", current_user.manager_id]
+    @vacations        = Vacation.team_holidays current_user.manager_id
     @vacation         = Vacation.new
 
-    @holiday_statuses = HolidayStatus.all
-
-    unless current_user.user_type == UserType.find_by_name("Manager")
-      @holiday_statuses.reject! { |hs|
-        hs.status != "Pending" and hs.status != "Cancelled"
-      }
-    end
+    @holiday_statuses = HolidayStatus.user_statuses current_user.user_type.name
     
     respond_to do |format|
       format.html
@@ -68,6 +62,9 @@ class VacationsController < ApplicationController
     @vacation.user = current_user
     manager_id = current_user.manager_id
     @vacation.manager_id = manager_id # Add manager to all holidays
+
+    guid = UUID.new
+    @vacation.uuid = guid.generate
 
 #    manager = User.find_by_manager_id manager_id
 
@@ -126,20 +123,13 @@ class VacationsController < ApplicationController
           hol_hash = {:id                          => vacation.id.to_s, :vacation_description=>vacation.description, :vacation_date_from=>vacation.date_from.strftime("%d/%m/%Y"),
                       :vacation_date_to            =>vacation.date_to.strftime("%d/%m/%Y"), :vacation_working_days_used => vacation.working_days_used.to_s,
                       :vacation_status_name        =>vacation.holiday_status.status, :vacation_holiday_status_id=>vacation.holiday_status_id.to_s,
-                      :vacation_holiday_status_name=>vacation.holiday_status.status}
+                      :vacation_holiday_status_name=>vacation.holiday_status.status,
+                      :vacation_notes => vacation.notes}
           json_data << hol_hash
         end
         render :json => {:page=> params[:page], :total => 1, :records =>@vacations.size, :rows => json_data}
       end
     end
-  end
-
-  private
-
-  #Move this and calling code to model - is business logic
-  def days_in_month date_to_check
-    days_in_month = (((date_to_check+1.month).at_beginning_of_month)-1.day).mday
-    days_in_month
   end
 
 end

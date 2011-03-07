@@ -2,33 +2,29 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-  <title><%= h(yield(:title) || "Devise") %></title>
+  <title><%= h(yield(:title)) %></title>
   <%= csrf_meta_tag %>
 
-  <%= stylesheet_link_tag :all %>
-  <!--TODO broken by application.css-->
-  <!--<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/scaffold.css"/>-->
-  <!--<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/application.css"/>-->
+  <!--TODO change folder to 1.8.9-->
+  <%= javascript_include_tag 'jquery-1.4.4.min', 'rails', 'application', 'jquery.formatdate', 'jquery-ui-1.8.9-start/js/jquery-ui-1.8.10.custom.min' %>
 
-  <%= javascript_include_tag 'jquery-1.4.4.min', 'rails', 'application', 'jquery.formatdate', 'jquery-ui-1.8.9/js/jquery-ui-1.8.9.custom.min' %>
-
-  <!--<link rel="stylesheet" type="text/css" media="screen" href="/javascripts/jquery-ui-1.8.9/css/smoothness/jquery-ui-1.8.9.custom.css"/>-->
-  <link rel="stylesheet" type="text/css" media="screen" href="/javascripts/jquery-ui-1.8.9-lefrog/css/le-frog/jquery-ui-1.8.9.custom.css"/>
-
+  <link rel="stylesheet" type="text/css" media="screen" href="/javascripts/jquery-ui-1.8.9-start/css/start/jquery-ui-1.8.10.custom.css"/>
+  <!--<link rel="stylesheet" type="text/css" media="screen" href="/javascripts/jquery-ui-1.8.9-lefrog/css/le-frog/jquery-ui-1.8.9.custom.css"/>-->
   <link rel="stylesheet" type="text/css" media="screen" href="/javascripts/jquery.jqGrid-3.8.2/css/ui.jqgrid.css"/>
-
   <link rel='stylesheet' type='text/css' href='/javascripts/fullcalendar-1.4.10/fullcalendar/fullcalendar.css'/>
   <script type='text/javascript' src='/javascripts/fullcalendar-1.4.10/fullcalendar/fullcalendar.min.js'></script>
+  <script src="/javascripts/jquery.jqGrid-3.8.2/js/i18n/grid.locale-en.js" type="text/javascript"></script>
+  <script src="/javascripts/jquery.jqGrid-3.8.2/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+
+
+  <%= stylesheet_link_tag :all %>
 
   <style>
       html, body {
           margin: 0;
-          padding: 0; /*font-size: 75%;*/
+          padding: 0;
       }
   </style>
-
-  <script src=" /javascripts/jquery.jqGrid-3.8.2/js/i18n/grid.locale-en.js" type="text/javascript"></script>
-  <script src="/javascripts/jquery.jqGrid-3.8.2/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
   <%= yield(:head) %>
 </head>
@@ -55,21 +51,21 @@
   <% end -%>
 
 
-  <% unless user_signed_in? -%>
-      <div id="main_login">
-        <%= simple_form_for("user", :url => user_session_path) do |f| %>
-            <%= f.input :email, :input_html=>{:size=>30} %>
-            <%= f.input :password, :input_html=>{:size=>20} %>
-            <!--<%# if devise_mapping.rememberable? -%>-->
-            <!--<p><%#= f.check_box :remember_me %> <%#= f.label :remember_me %></p>-->
-            <!--<%# end -%>-->
-            <p><%= f.submit "Sign in" %></p>
-        <% end -%>
-      </div>
-  <% end -%>
+  <!--<%# unless user_signed_in? -%>-->
+      <!--<div id="main_login">-->
+        <!--<%#= simple_form_for("user", :url => user_session_path) do |f| %>-->
+            <!--<%#= f.input :email, :input_html=>{:size=>30} %>-->
+            <!--<%#= f.input :password, :input_html=>{:size=>20} %>-->
+            <!--&lt;!&ndash;<%# if devise_mapping.rememberable? -%>&ndash;&gt;-->
+            <!--&lt;!&ndash;<p><%#= f.check_box :remember_me %> <%#= f.label :remember_me %></p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<%# end -%>&ndash;&gt;-->
+            <!--<p><%#= f.submit "Sign in" %></p>-->
+        <!--<%# end -%>-->
+      <!--</div>-->
+  <!--<%# end -%>-->
 
 
-  <!--<%#= render :partial => "devise/shared/links" %>-->
+  <%#= render :partial => "devise/shared/links" %>
 
 
   <!--<%# if admin_signed_in? -%>
