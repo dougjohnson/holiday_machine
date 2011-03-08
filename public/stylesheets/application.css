@@ -116,15 +116,15 @@ body {
 }
 
 #top_navigation {
-    width: 60%;
-    height: 40px;
+    width: 90%;
+    height: 50px;
 }
 
 #top_navigation ul {
     padding-left: 0;
     margin-left: 0;
     background-color: #036;
-    color: White;
+    color: white;
     float: left;
     width: 100%;
     font-family: arial, helvetica, sans-serif;
@@ -135,9 +135,9 @@ body {
 }
 
 #top_navigation ul li a {
-    padding: 0.2em 1em;
+    padding: 0.4em 2em;
     background-color: #036;
-    color: White;
+    color: white;
     text-decoration: none;
     float: left;
     border-right: 1px solid #fff;
