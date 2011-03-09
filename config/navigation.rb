@@ -27,6 +27,7 @@ SimpleNavigation::Configuration.run do |navigation|
     primary.item :holiday_link, 'View holidays', vacations_path
     primary.item :calendar_link, 'Show Calendar', "/calendar/show"
     primary.item :management_area_link, "Administer Holidays", "/administer", :if=>Proc.new{current_user.user_type_id.eql?(2)}
+    primary.item :user_day_link, "Manage Users", user_days_path, :if=>Proc.new{current_user.user_type_id.eql?(2)}
   end
 
 =begin

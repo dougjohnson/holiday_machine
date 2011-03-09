@@ -1,0 +1,2 @@
+module ManageDaysHelper
+end

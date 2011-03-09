@@ -1,13 +1,18 @@
 class UserDaysController < ApplicationController
+
+  before_filter :authenticate_user!
+  #TODO restrict to managers only
+
   # GET /user_days
   # GET /user_days.xml
   def index
-    @users = User.users_by_manager
+    #The user viewing this is a manager and wants his own team
+    @users = User.find_all_by_manager_id (current_user.id)
     @user_days = UserDay.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @user_days }
+#      format.xml  { render :xml => @user_days }
     end
   end
 
