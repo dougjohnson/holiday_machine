@@ -21,24 +21,16 @@
       </tr>
       <% user.user_days.each do |user_day| %>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <!--End form here-->
-          <!--TOTALS HERE-->
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>TOTAL DAYS</td>
+            <td>Reason</td>
+            <td><%=user_day.reason%></td>
+            <td>No days</td>
+            <td><%=user_day.no_days%></td>
             <td></td>
           </tr>
       <% end %>
       <tr>
         <%= simple_form_for @user_day, :remote=>true do |f| %>
+            <%= f.input :user_id, :as=>:hidden, :input_html => {:value=>user.id} %>
             <td><%= f.input :reason, :input_html => {:maxlength => 10, :size=> 10} %></td>
             <td><%= f.input :no_days, :input_html => {:maxlength => 3, :size=> 3} %></td>
             <td></td>
@@ -46,14 +38,6 @@
             <td> <%= f.button :submit %></td>
         <% end %>
       </tr>
-
-      <%#= f.input :date_from, :as=>:string, :input_html => { :maxlength => 10, :size=> 10, :value => Date.today.strftime("%d/%m/%Y") }  %>
-      <%#= f.input :date_to, :as=>:string, :input_html => { :maxlength => 10, :size=> 10,:value => Date.today.strftime("%d/%m/%Y") } %>
-      <%#= f.input :description, :input_html => { :size=> 30 } %>
-      <%#= f.label :holiday_status_id, :name=>"Status" %>
-      <%#= f.collection_select :holiday_status_id, @holiday_statuses, :id, :status %>
-      <%#= f.input :notes, :input_html=>{:readonly=>'readonly', :rows=>2} %>
-
   <% end %>
 </table>
 

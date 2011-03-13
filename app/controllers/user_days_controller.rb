@@ -50,18 +50,14 @@ class UserDaysController < ApplicationController
     @user_day = UserDay.new(params[:user_day])
     @user_day.user.days_leave += @user_day.no_days
 
-#    TODO must update the overall days for this user
-
     respond_to do |format|
-      if @user_day.save
+      if @user_day.save and @user_day.user.save
         format.html { redirect_to(@user_day, :notice => 'User day was successfully created.') }
         format.json  {
-#          render :xml => @user_day, :status => :created, :location => @user_day
+#          TODO send something back - use rjs
         }
       else
-#        format.html { render :action => "new" }
         format.json  {
-#          render :xml => @user_day.errors, :status => :unprocessable_entity
         }
       end
     end
