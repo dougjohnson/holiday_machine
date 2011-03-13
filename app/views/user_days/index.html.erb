@@ -1,24 +1,59 @@
 <h2>Listing user_days</h2>
 
-<table>
+<table id="manageDays">
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Name</th>
+    <th>Notes</th>
+    <th>Add</th>
+    <th>Remove</th>
+    <th>Action</th>
   </tr>
-  <!--TODO loop around the users and then add the forms for each as per diagram-->
-  <!--TODO delete the unnecessary views-->
 
+  <% @team_users.each do |user| %>
+      <!--Add form here-->
+      <tr>
+        <td colspan="5"><%= user.email %></td>
+        <!--TODO change this to username -->
+      </tr>
+      <tr>
+        <td>Total Days Leave</td>
+        <td colspan="4"><%=user.days_leave%></td>
+      </tr>
+      <% user.user_days.each do |user_day| %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <!--End form here-->
+          <!--TOTALS HERE-->
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>TOTAL DAYS</td>
+            <td></td>
+          </tr>
+      <% end %>
+      <tr>
+        <%= simple_form_for @user_day, :remote=>true do |f| %>
+            <td><%= f.input :reason, :input_html => {:maxlength => 10, :size=> 10} %></td>
+            <td><%= f.input :no_days, :input_html => {:maxlength => 3, :size=> 3} %></td>
+            <td></td>
+            <td></td>
+            <td> <%= f.button :submit %></td>
+        <% end %>
+      </tr>
 
-<% @user_days.each do |user_day| %>
-  <tr>
-    <td><%= link_to 'Show', user_day %></td>
-    <td><%= link_to 'Edit', edit_user_day_path(user_day) %></td>
-    <td><%= link_to 'Destroy', user_day, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+      <%#= f.input :date_from, :as=>:string, :input_html => { :maxlength => 10, :size=> 10, :value => Date.today.strftime("%d/%m/%Y") }  %>
+      <%#= f.input :date_to, :as=>:string, :input_html => { :maxlength => 10, :size=> 10,:value => Date.today.strftime("%d/%m/%Y") } %>
+      <%#= f.input :description, :input_html => { :size=> 30 } %>
+      <%#= f.label :holiday_status_id, :name=>"Status" %>
+      <%#= f.collection_select :holiday_status_id, @holiday_statuses, :id, :status %>
+      <%#= f.input :notes, :input_html=>{:readonly=>'readonly', :rows=>2} %>
+
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New User day', new_user_day_path %>

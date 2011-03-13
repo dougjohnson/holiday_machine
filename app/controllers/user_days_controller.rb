@@ -7,8 +7,9 @@ class UserDaysController < ApplicationController
   # GET /user_days.xml
   def index
     #The user viewing this is a manager and wants his own team
-    @users = User.find_all_by_manager_id (current_user.id)
+    @team_users = User.find_all_by_manager_id (current_user.id)
     @user_days = UserDay.all
+    @user_day = UserDay.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,14 +48,21 @@ class UserDaysController < ApplicationController
   # POST /user_days.xml
   def create
     @user_day = UserDay.new(params[:user_day])
+    @user_day.user.days_leave += @user_day.no_days
+
+#    TODO must update the overall days for this user
 
     respond_to do |format|
       if @user_day.save
         format.html { redirect_to(@user_day, :notice => 'User day was successfully created.') }
-        format.xml  { render :xml => @user_day, :status => :created, :location => @user_day }
+        format.json  {
+#          render :xml => @user_day, :status => :created, :location => @user_day
+        }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user_day.errors, :status => :unprocessable_entity }
+#        format.html { render :action => "new" }
+        format.json  {
+#          render :xml => @user_day.errors, :status => :unprocessable_entity
+        }
       end
     end
   end
