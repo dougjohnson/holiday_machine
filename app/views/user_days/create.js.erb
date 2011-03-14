@@ -8,4 +8,5 @@
         $("#flash_notice").show();
         $(":input:not(input[type=submit])").val("");
         $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days %></td><td></td></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
+//        TODO update the total
 <% end -%>
