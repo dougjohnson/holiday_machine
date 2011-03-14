@@ -1,8 +1,6 @@
 <div id="user_days_errors" style="display: none;"></div>
 
 <table id="manageDays">
-
-
   <% @team_users.each do |user| %>
       <tr class="userDayReadOnly1">
         <td colspan="4"><%= user.email %></td>
@@ -18,7 +16,6 @@
                 <th>Reason</th>
                 <th>Days Added</th>
                 <th>Days Removed</th>
-                <!--<th></th>-->
               </tr>
           <% end %>
           <% counter+=1 %>
@@ -26,7 +23,6 @@
             <td><%= user_day.reason %></td>
             <td><%= user_day.no_days %></td>
             <td></td>
-            <!--<td></td>-->
           </tr>
       <% end %>
       <tr class="userDayForm formNo<%=user.id%>">
@@ -35,7 +31,6 @@
             <td><%= f.input :reason, :input_html => {:maxlength => 40, :size=> 10} %></td>
             <td><%= f.input :no_days, :input_html => {:maxlength => 3, :size=> 3} %></td>
             <td><%= f.button :submit %></td>
-            <!--<td></td>-->
         <% end %>
       </tr>
   <% end %>
