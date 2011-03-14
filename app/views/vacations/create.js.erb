@@ -3,6 +3,7 @@
         $("#vacation_errors").html("<%= escape_javascript(@vacation.errors.full_messages.to_sentence) %>");
         $("#vacation_errors").show();
 <% else -%>
+        alert("Hello");
         $("#vacation_errors").hide(300);
         $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
         $("#flash_notice").show();

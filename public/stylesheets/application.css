@@ -1,19 +1,16 @@
-
 body {
-    /*background-image: url("/images/palm_trees.gif");*/
+/*background-image: url("/images/palm_trees.gif");*/
     background-image: url('/images/BlueToWhiteGradient.jpg');
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-    /*filter: alpha(opacity=50);*/
-    /*-moz-opacity: 0.5;*/
-    /*-khtml-opacity: 0.5;*/
-    /*opacity: 0.8;*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; /*filter: alpha(opacity=50);*/
+/*-moz-opacity: 0.5;*/
+/*-khtml-opacity: 0.5;*/
+/*opacity: 0.8;*/
 }
 
 #container {
     overflow: auto;
     width: 70%;
-    margin: 0 auto;
-    /*background-image: url('/images/BlueToWhiteGradient.jpg');*/
+    margin: 0 auto; /*background-image: url('/images/BlueToWhiteGradient.jpg');*/
     background-color: white;
     padding: 20px 40px;
     border: solid 1px black;
@@ -148,7 +145,17 @@ body {
     color: #fff;
 }
 
-#vacation_errors {
+#vacation_errors{
+    background-color: #f3f8d1;
+    border: 1px solid #ff0049;
+    width: 300px;
+    font-size: medium;
+    float: right;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#user_days_errors{
     background-color: #f3f8d1;
     border: 1px solid #ff0049;
     width: 300px;
@@ -180,15 +187,16 @@ body {
     text-align: right;
 }
 
-fieldset.vacation {float:left}
+fieldset.vacation {
+    float: left
+}
 
 .vacation fieldset {
     position: relative;
     width: 50%;
     top: 20px;
     -moz-border-radius: 15px;
-    border-radius: 15px;
-    /*left: 50px;*/
+    border-radius: 15px; /*left: 50px;*/
 }
 
 fieldset.create {
@@ -245,3 +253,29 @@ fieldset.update {
     top: 20px;
 }
 
+.userDayReadOnly {
+    background-color: #0063ff;
+    border: 1px solid #090968;
+}
+
+.userDayReadOnly1 {
+    color: white;
+    background-color: #84aff2;
+    border: 1px solid #090968;
+}
+
+.userDayReadOnly1 {
+    background-color: #98a5ba;
+    border: 1px solid #090968;
+}
+
+.userDayReadOnly2 {
+    background-color: #f8e60e;
+    border: 1px solid #68090c;
+}
+
+.userDaysHeader{
+    background-color:#00289E;
+    color:white;
+    border: 1px solid #001452;
+}

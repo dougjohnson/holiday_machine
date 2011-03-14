@@ -1,41 +1,41 @@
-<h2>Listing user_days</h2>
+<div id="user_days_errors" style="display: none;"></div>
 
 <table id="manageDays">
-  <tr>
-    <th>Name</th>
-    <th>Notes</th>
-    <th>Add</th>
-    <th>Remove</th>
-    <th>Action</th>
-  </tr>
+
 
   <% @team_users.each do |user| %>
-      <!--Add form here-->
-      <tr>
-        <td colspan="5"><%= user.email %></td>
-        <!--TODO change this to username -->
+      <tr class="userDayReadOnly1">
+        <td colspan="4"><%= user.email %></td>
       </tr>
-      <tr>
-        <td>Total Days Leave</td>
-        <td colspan="4"><%=user.days_leave%></td>
+      <tr class="userDayReadOnly2">
+        <td>Total Days Leave:</td>
+        <td colspan="3"><%= user.days_leave %></td>
       </tr>
+      <% counter = 0 %>
       <% user.user_days.each do |user_day| %>
-          <tr>
-            <td>Reason</td>
-            <td><%=user_day.reason%></td>
-            <td>No days</td>
-            <td><%=user_day.no_days%></td>
+          <% if counter == 0 %>
+              <tr class="userDaysHeader">
+                <th>Reason</th>
+                <th>Days Added</th>
+                <th>Days Removed</th>
+                <!--<th></th>-->
+              </tr>
+          <% end %>
+          <% counter+=1 %>
+          <tr class="userDayReadOnly">
+            <td><%= user_day.reason %></td>
+            <td><%= user_day.no_days %></td>
             <td></td>
+            <!--<td></td>-->
           </tr>
       <% end %>
-      <tr>
+      <tr class="userDayForm formNo<%=user.id%>">
         <%= simple_form_for @user_day, :remote=>true do |f| %>
             <%= f.input :user_id, :as=>:hidden, :input_html => {:value=>user.id} %>
-            <td><%= f.input :reason, :input_html => {:maxlength => 10, :size=> 10} %></td>
+            <td><%= f.input :reason, :input_html => {:maxlength => 40, :size=> 10} %></td>
             <td><%= f.input :no_days, :input_html => {:maxlength => 3, :size=> 3} %></td>
-            <td></td>
-            <td></td>
-            <td> <%= f.button :submit %></td>
+            <td><%= f.button :submit %></td>
+            <!--<td></td>-->
         <% end %>
       </tr>
   <% end %>

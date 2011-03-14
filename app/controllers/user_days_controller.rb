@@ -52,13 +52,9 @@ class UserDaysController < ApplicationController
 
     respond_to do |format|
       if @user_day.save and @user_day.user.save
-        format.html { redirect_to(@user_day, :notice => 'User day was successfully created.') }
-        format.json  {
-#          TODO send something back - use rjs
-        }
+        format.js
       else
-        format.json  {
-        }
+        format.js
       end
     end
   end

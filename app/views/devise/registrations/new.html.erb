@@ -9,7 +9,7 @@
 
     <%= f.input :password_confirmation %>
 
-    <%= f.input :days_leave, :input_html=>{:max_length=>2, :size=>5} %>
+    <%#= f.input :days_leave, :input_html=>{:max_length=>2, :size=>5} %>
 
     <%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %>
 
