@@ -7,6 +7,6 @@
         $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
         $("#flash_notice").show();
         $(":input:not(input[type=submit])").val("");
-        $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days %></td><td></td></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
-//        TODO update the total
+        $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days > 0 ? @user_day.no_days : '' %></td><td><%= @user_day.no_days < 0 ? @user_day.no_days.abs : '' %></td></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
+        $(".totalLeave").html(<%=@user_day.user.days_leave%>)
 <% end -%>

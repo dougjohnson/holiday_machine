@@ -1,13 +1,12 @@
 class Vacation < ActiveRecord::Base
 
-#  require "UUID"
-
   belongs_to :holiday_status
+  belongs_to :holiday_year
   belongs_to :user
 
   before_save :save_working_days
 
-  scope :team_holidays, lambda {|manager_id| where(:manager_id => manager_id) }
+  scope :team_holidays, lambda { |manager_id| where(:manager_id => manager_id) }
 
   validates_presence_of :date_from
   validates_presence_of :date_to
@@ -16,13 +15,9 @@ class Vacation < ActiveRecord::Base
   validate :date_from_must_be_before_date_to
   validate :working_days_greater_than_zero
   validate :date_not_more_than_one_month_ago
+  validate :holiday_must_not_straddle_holiday_years
 
-#  TODO create UUID https://github.com/assaf/uuid
-#  def uuid= val
-#    guid = UUID.new
-#    test = guid generate
-#    self[:uuid] = guid.generate
-#  end
+  #TODO validate against the holiday year - a holiday must only belong to
 
   def date_from= val
     self[:date_from] = convert_uk_date_to_iso val
@@ -45,7 +40,7 @@ class Vacation < ActiveRecord::Base
 
   def self.convert_to_json holidays, bank_holidays
     #TODO the colour class should be per user not per holiday
-    json  = []
+    json = []
     color = 0
 
     holidays.each do |hol|
@@ -77,20 +72,37 @@ class Vacation < ActiveRecord::Base
     errors.add(:date_from, "must be less than one month ago") if date_from < (Date.today - 1.month)
   end
 
+  def holiday_must_not_straddle_holiday_years
+    #TODO this query will not be right - test with sql
+    number_years = HolidayYear.holiday_years_containing_holiday(date_from, date_from).count
+    errors.add(:date_to, "- Holiday must not cross years") if number_years> 1
+  end
+
   def convert_uk_date_to_iso date_str
     split_date=date_str.split("/")
     Date.new(split_date[2].to_i, split_date[1].to_i, split_date[0].to_i)
   end
 
-  def save_working_days
+  def save_working_days #TODO rename method
     self[:working_days_used] = @working_days # = business_days_between
+
+    unless self[:uuid]
+      guid = UUID.new
+      self[:uuid] = guid.generate
+    end
+
+    unless self[:holiday_year]
+      current_year = HolidayYear.current_year
+      self.holiday_year = HolidayYear.current_year
+    end
+
   end
 
   def business_days_between
-    holidays       = BankHoliday.where("date_of_hol BETWEEN ? AND ?", date_from, date_to)
+    holidays = BankHoliday.where("date_of_hol BETWEEN ? AND ?", date_from, date_to)
     holidays_array = holidays.collect { |hol| hol.date_of_hol }
-    weekdays       = (date_from..date_to).reject { |d| [0, 6].include? d.wday or holidays_array.include?(d) }
-    business_days  = weekdays.length
+    weekdays = (date_from..date_to).reject { |d| [0, 6].include? d.wday or holidays_array.include?(d) }
+    business_days = weekdays.length
   end
 
 end

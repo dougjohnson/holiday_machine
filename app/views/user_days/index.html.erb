@@ -7,7 +7,7 @@
       </tr>
       <tr class="userDayReadOnly2">
         <td>Total Days Leave:</td>
-        <td colspan="3"><%= user.days_leave %></td>
+        <td colspan="3" class="totalLeave"><%= user.days_leave %></td>
       </tr>
       <% counter = 0 %>
       <% user.user_days.each do |user_day| %>
@@ -21,8 +21,8 @@
           <% counter+=1 %>
           <tr class="userDayReadOnly">
             <td><%= user_day.reason %></td>
-            <td><%= user_day.no_days %></td>
-            <td></td>
+            <td><%= user_day.no_days > 0 ? user_day.no_days : '' %></td>
+            <td><%= user_day.no_days < 0 ? user_day.no_days.abs : '' %></td>
           </tr>
       <% end %>
       <tr class="userDayForm formNo<%=user.id%>">

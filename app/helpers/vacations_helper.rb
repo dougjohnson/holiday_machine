@@ -1,5 +1,7 @@
 module VacationsHelper
 
+=begin
+
   def show_calendar calendar_date
 
 #    TODO to remove????
@@ -55,6 +57,8 @@ module VacationsHelper
     html << "</tbody></table></div>"
     return html
   end
+
+=end
 
   def create_holiday_row holiday
     html = "<tr id='#{holiday.id}'>"

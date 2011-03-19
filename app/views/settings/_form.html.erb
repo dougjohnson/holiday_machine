@@ -1,0 +1,21 @@
+<%= simple_form_for(@setting, :remote=>true) do |f| %>
+  <% if @setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+      <ul>
+      <% @setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="inputs">
+     <%= f.input :year_start_day, :input_html => { :maxlength => 2, :size=> 5,:value => 1, :readonly=>'readonly'} %>
+     <%= f.input :year_start_month, :collection=>['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, :html => {:value=>"Update Year Start"}  %>
+  </div>
+<% end %>

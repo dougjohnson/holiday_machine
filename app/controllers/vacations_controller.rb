@@ -63,8 +63,8 @@ class VacationsController < ApplicationController
     manager_id = current_user.manager_id
     @vacation.manager_id = manager_id # Add manager to all holidays
 
-    guid = UUID.new
-    @vacation.uuid = guid.generate
+#    guid = UUID.new
+#    @vacation.uuid = guid.generate
 
 #    manager = User.find_by_manager_id manager_id
 

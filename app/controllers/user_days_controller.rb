@@ -13,7 +13,6 @@ class UserDaysController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-#      format.xml  { render :xml => @user_days }
     end
   end
 
@@ -61,19 +60,19 @@ class UserDaysController < ApplicationController
 
   # PUT /user_days/1
   # PUT /user_days/1.xml
-  def update
-    @user_day = UserDay.find(params[:id])
-
-    respond_to do |format|
-      if @user_day.update_attributes(params[:user_day])
-        format.html { redirect_to(@user_day, :notice => 'User day was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user_day.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+#  def update
+#    @user_day = UserDay.find(params[:id])
+#
+#    respond_to do |format|
+#      if @user_day.update_attributes(params[:user_day])
+#        format.html { redirect_to(@user_day, :notice => 'User day was successfully updated.') }
+#        format.xml  { head :ok }
+#      else
+#        format.html { render :action => "edit" }
+#        format.xml  { render :xml => @user_day.errors, :status => :unprocessable_entity }
+#      end
+#    end
+#  end
 
   # DELETE /user_days/1
   # DELETE /user_days/1.xml

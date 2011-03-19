@@ -11,6 +11,10 @@ HolidayMachine::Application.routes.draw do
 
   resources :user_days
 
+  resources :settings
+
+  #TODO nest settings
+
   match 'administer/get_team_data' => 'administer#get_team_data'
   match 'administer/create' => 'administer#create'
 
