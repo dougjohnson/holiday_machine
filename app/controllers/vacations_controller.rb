@@ -3,13 +3,12 @@ class VacationsController < ApplicationController
   before_filter :authenticate_user!
 
   # GET /vacations
-  # GET /vacations.xml
   def index
     #Populates the calendar, so restricted by manager
     @vacations        = Vacation.team_holidays current_user.manager_id
     @vacation         = Vacation.new
 
-    @holiday_statuses = HolidayStatus.user_statuses current_user.user_type.name
+    @holiday_statuses = HolidayStatus.pending_only
     
     respond_to do |format|
       format.html
@@ -21,7 +20,6 @@ class VacationsController < ApplicationController
   end
 
   # GET /vacations/1
-  # GET /vacations/1.xml
   def show
     @vacation = Vacation.find(params[:id])
 
@@ -63,15 +61,10 @@ class VacationsController < ApplicationController
     manager_id = current_user.manager_id
     @vacation.manager_id = manager_id # Add manager to all holidays
 
-#    guid = UUID.new
-#    @vacation.uuid = guid.generate
-
-#    manager = User.find_by_manager_id manager_id
 
     respond_to do |format|
       if @vacation.save
-        #TODO commented out for now
-#        HolidayMailer.holiday_request(current_user, manager, @vacation).deliver #TODO may be having some issues
+#        HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
         #TODO check the mailer was successful
         flash[:notice] = "Successfully created holiday."
         format.js

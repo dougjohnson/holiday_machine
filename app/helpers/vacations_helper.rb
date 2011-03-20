@@ -67,7 +67,6 @@ module VacationsHelper
     html << "<td>#{holiday.description}</td>"
     html << "<td>#{holiday.working_days_used}</td>"
     html << "<td>#{holiday.holiday_status.status}</td>"
-    html << "<td><img src='/images/update.gif' alt='Update Holiday'/></td>"
     html << "</tr>"
     html
   end

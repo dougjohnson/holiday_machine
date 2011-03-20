@@ -1,0 +1,20 @@
+<table id="holidaysTable" class="standard_table">
+  <thead>
+  <th class="text">Description</th>
+  <th class="date">Date from</th>
+  <th class="date">Date to</th>
+  <th class="numeric">Working Days Used</th>
+  <th class= "text">Status</th>
+  </thead>
+  <tbody>
+  <% @vacations.each do |vacation| %>
+      <tr id="<%=vacation.id%>">
+        <td><%=vacation.description%></td>
+        <td><%=vacation.date_from.strftime("%d/%m/%Y") %></td>
+        <td><%=vacation.date_from.strftime("%d/%m/%Y") %></td>
+        <td><%=vacation.working_days_used %></td>
+        <td><%=vacation.holiday_status.status %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
