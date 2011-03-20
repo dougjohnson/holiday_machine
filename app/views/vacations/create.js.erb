@@ -3,12 +3,12 @@
         $("#vacation_errors").html("<%= escape_javascript(@vacation.errors.full_messages.to_sentence) %>");
         $("#vacation_errors").show();
 <% else -%>
-alert("Test");
         $("#vacation_errors").hide(300);
         $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
         $("#flash_notice").show();
         $(":input:not(input[type=submit])").val("");//TODO this should reset to today's date for the correct field
 //        $("#vacations_list").trigger("reloadGrid");
-        alert("Hello" + '<%=create_holiday_row @vacation %>');
-        $("#holidaysTable > tbody:last").append(<%=create_holiday_row @vacation %>);
+//        alert("Hello" + '<%=create_holiday_row @vacation %>');
+        $('#holidaysTable tbody').append("<%=raw(create_holiday_row(@vacation))%>");
+//        $("#holidaysTable > tbody:last").append(<%=create_holiday_row @vacation %>);
 <% end -%>

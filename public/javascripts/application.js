@@ -36,18 +36,6 @@ $(document).ready(function() {
     $('#vacation_date_from').datepicker();
     $("#vacation_date_to").datepicker();
 
-    $("#cancelUpdate").click(function() {
-        $("fieldset.vacation, legend.vacation").removeClass("update").addClass("create");
-        $("legend.vacation").html("Create Holiday");
-        $(this).hide();
-        clearForm($("#new_vacation"));
-        $("#vacation_date_from").val($.formatDate(new Date(), "dd/MM/yyyy"));
-        $("#vacation_date_to").val($.formatDate(new Date(), "dd/MM/yyyy"));
-        $("form.vacation").attr("action", "/vacations");
-        $("form.vacation").attr("method", "POST");
-        $("#vacation_submit").val("Create Holiday");
-    });
-
 });
 
 function clearForm(myForm) {

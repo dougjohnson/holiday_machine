@@ -6,10 +6,11 @@
         $("#vacation_errors").hide(300);
         $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
         $("#flash_notice").show();
-        var grid = $("#vacations_list")
-        grid.trigger("reloadGrid");
-        grid.setSelection(<%=@vacation.id.to_s%>);
+//        var grid = $("#vacations_list")
+//        grid.trigger("reloadGrid");
+//        grid.setSelection(<%#=@vacation.id.to_s%>);
         clearForm($("#new_vacation"));
         $("#vacation_date_from").val($.formatDate(new Date(), "dd/MM/yyyy"));
         $("#vacation_date_to").val($.formatDate(new Date(), "dd/MM/yyyy"));
+        $("#holidaysTable tbody tr#<%=@vacation.id%>").replaceWith("<%=raw(create_holiday_row(@vacation))%>");
 <% end -%>

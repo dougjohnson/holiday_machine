@@ -1,10 +1,6 @@
 body {
-/*background-image: url("/images/palm_trees.gif");*/
     background-image: url('/images/BlueToWhiteGradient.jpg');
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; /*filter: alpha(opacity=50);*/
-/*-moz-opacity: 0.5;*/
-/*-khtml-opacity: 0.5;*/
-/*opacity: 0.8;*/
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; *//*filter: alpha(opacity=50);*/
 }
 
 #container {
@@ -292,4 +288,47 @@ fieldset.update {
     background-color:#00289E;
     color:white;
     border: 1px solid #001452;
+}
+
+table#holidaysTable {
+    font-size: 12px;
+    width: 642px;
+    margin: 0 0 30px -5px;
+    border-collapse: collapse;
+}
+
+table#holidaysTable th {
+    color: white;
+    text-align: left;
+    width: 200px;
+}
+
+table#holidaysTable tr {
+    border-bottom: 1px solid #3399CC;
+}
+
+table#holidaysTable tbody tr:hover {
+    cursor:pointer;
+}
+
+table#holidaysTable  tr.top {
+    background-image: none;
+}
+
+table #holidaysTable  tr.top th {
+    padding-top: 12px;
+}
+
+table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {
+    border: 0;
+}
+
+.row_highlight{
+    color: #ff8d00;
+    font-weight:bold;
+}
+
+.highlight{
+    color: white;
+    background-color: #cec6ce !important;
 }
