@@ -8,7 +8,7 @@
 
 $(document).ready(function() {
 
-    $('#holidaysTable tr').click(function() {
+    $('#holidaysTable tr').live('click', function() {
         $('table .row_highlight:first').removeClass('row_highlight');
         $(this).toggleClass("row_highlight");
         var holidayHash = new Object();
@@ -20,7 +20,6 @@ $(document).ready(function() {
         updateForm(holidayHash);
     });
 
-
     $("#holidaysTable tr").hover(
             function() {  // mouseover
                 $(this).addClass('highlight');
@@ -28,7 +27,7 @@ $(document).ready(function() {
             function() {  // mouseout
                 $(this).removeClass('highlight');
             }
-            );
+    );
 
     $("#cancelUpdate").click(function() {
         $('table .row_highlight:first').removeClass('row_highlight');

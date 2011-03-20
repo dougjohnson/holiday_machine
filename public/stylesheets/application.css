@@ -224,6 +224,7 @@ fieldset.update {
     position: relative;
     top: 20px;
     width:600px;
+    border-collapse: collapse;
 }
 
 .standard_table thead {
@@ -264,7 +265,7 @@ fieldset.update {
 }
 
 .userDayReadOnly {
-    background-color: #0063ff;
+    background-color: #B3C6FF;
     border: 1px solid #090968;
 }
 
@@ -288,6 +289,10 @@ fieldset.update {
     background-color:#00289E;
     color:white;
     border: 1px solid #001452;
+}
+
+table#manageDays{
+   border-collapse: collapse;
 }
 
 table#holidaysTable {

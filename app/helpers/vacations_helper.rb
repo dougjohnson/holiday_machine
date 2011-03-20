@@ -62,9 +62,9 @@ module VacationsHelper
 
   def create_holiday_row holiday
     html = "<tr id='#{holiday.id}'>"
+    html << "<td>#{holiday.description}</td>"
     html << "<td>#{holiday.date_from.strftime("%d/%m/%Y")}</td>"
     html << "<td>#{holiday.date_to.strftime("%d/%m/%Y")}</td>"
-    html << "<td>#{holiday.description}</td>"
     html << "<td>#{holiday.working_days_used}</td>"
     html << "<td>#{holiday.holiday_status.status}</td>"
     html << "</tr>"

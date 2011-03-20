@@ -1,6 +1,6 @@
 class VacationsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except=>
 
   # GET /vacations
   def index
@@ -60,11 +60,11 @@ class VacationsController < ApplicationController
     @vacation.user = current_user
     manager_id = current_user.manager_id
     @vacation.manager_id = manager_id # Add manager to all holidays
-
+    manager = User.find_by_id(manager_id)
 
     respond_to do |format|
       if @vacation.save
-#        HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
+        HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
         #TODO check the mailer was successful
         flash[:notice] = "Successfully created holiday."
         format.js
