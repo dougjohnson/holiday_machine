@@ -17,6 +17,8 @@ class Vacation < ActiveRecord::Base
   validate :date_not_more_than_one_month_ago
   validate :holiday_must_not_straddle_holiday_years
 
+  validate :no_overlapping_holidays, :on => :create
+
   #TODO validate against the holiday year - a holiday must only belong to
 
   def date_from= val
@@ -37,6 +39,10 @@ class Vacation < ActiveRecord::Base
   end
 
   private
+
+#  def overlaps?(other)
+#    (date_from - other.end_date) * (other.start_date - date_to) >= 0
+#  end
 
   def self.convert_to_json holidays, bank_holidays
     #TODO the colour class should be per user not per holiday
@@ -76,6 +82,17 @@ class Vacation < ActiveRecord::Base
     #TODO this query will not be right - test with sql
     number_years = HolidayYear.holiday_years_containing_holiday(date_from, date_from).count
     errors.add(:date_to, "- Holiday must not cross years") if number_years> 1
+  end
+
+  def no_overlapping_holidays
+    holidays = Vacation.where("user_id = ?", self.user_id)
+    holidays.each do |holiday|
+      errors.add(:base, "A holiday already exists within this date range") if overlaps?(holiday)
+    end
+  end
+
+  def overlaps?(holiday)
+    (date_from - holiday.date_to) * (holiday.date_from - date_to) >= 0
   end
 
   def convert_uk_date_to_iso date_str

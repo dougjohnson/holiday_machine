@@ -84,7 +84,7 @@ body {
 .login {
     position: absolute;
     float: right;
-    top: 20px;
+    top: 30px;
     right: 15%;
 }
 
@@ -190,7 +190,7 @@ fieldset.vacation {
 .vacation fieldset {
     position: relative;
     width: 50%;
-    top: 20px;
+    /*top: 20px;*/
     -moz-border-radius: 15px;
     border-radius: 15px; /*left: 50px;*/
 }
@@ -222,7 +222,7 @@ fieldset.update {
 
 .standard_table{
     position: relative;
-    top: 20px;
+    top: 5px;
     width:600px;
     border-collapse: collapse;
 }
@@ -337,3 +337,36 @@ table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {
     color: white;
     background-color: #cec6ce !important;
 }
+
+fieldset.login{
+	background-color:#fff9e7;
+	border-width:2px;
+	border-style:solid;
+	border-color:#7c5b47;
+
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+
+	margin:20px 0px 20px 0px;
+	width:350px;
+	position:relative;
+	display:block;
+	padding: 0px 10px 10px 10px;
+}
+
+legend.login{
+	background-color:#7c5b47;
+	border-width:1px;
+	border-style:solid;
+	border-color:#7c5b47;
+	color:#ffcc99;
+	font-weight:bold;
+	font-variant:small-caps;
+	font-size:110%;
+	padding:2px 5px;
+	margin:0px 0px 10px 0px;
+	position:relative;
+	top: -12px;
+}
+
+

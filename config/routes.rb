@@ -22,6 +22,8 @@ HolidayMachine::Application.routes.draw do
 
   devise_for :users, :admin
 
+  match 'vacations' => 'vacations#index', :as => 'user_root'
+
 #  devise_scope :user do
 #     get "sign_in", :to => "vacations"
 #  end
@@ -29,8 +31,8 @@ HolidayMachine::Application.routes.draw do
   resources :home, :only => :index
   resources :admins, :only => :index
 
-  root :to => 'home#index'
+  root :to => 'vacations#index'
 
-  match '/token' => 'home#token', :as => :token
+#  match '/token' => 'home#token', :as => :token
 
 end

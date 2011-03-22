@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= @user.email %> Has cancelled a holiday</h1>
+    <p>
+      From: <%= @holiday.date_from.strftime("%d/%m/%Y")%> to <%=@holiday.date_to.strftime("%d/%m/%Y") %>
+    </p>
+  </body>
+</html>

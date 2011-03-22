@@ -11,8 +11,9 @@
         <%= f.input :description, :input_html => { :size=> 30 } %>
         <%= f.label :holiday_status_id, :name=>"Status" %>
         <%= f.collection_select :holiday_status_id, @holiday_statuses, :id, :status %>
-        <%= f.input :notes, :input_html=>{:readonly=>'readonly', :rows=>2} %>
+        <!--<%#= f.input :notes, :input_html=>{:readonly=>'readonly', :rows=>2} %>-->
       </div>
+
       <br>
 
       <div class="actions">

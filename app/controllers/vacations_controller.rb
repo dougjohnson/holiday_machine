@@ -2,14 +2,14 @@ class VacationsController < ApplicationController
 
   before_filter :authenticate_user!, :except=>
 
-  # GET /vacations
+      # GET /vacations
   def index
     #Populates the calendar, so restricted by manager
-    @vacations        = Vacation.team_holidays current_user.manager_id
-    @vacation         = Vacation.new
+    @vacations = Vacation.team_holidays current_user.manager_id
+    @vacation = Vacation.new
 
     @holiday_statuses = HolidayStatus.pending_only
-    
+
     respond_to do |format|
       format.html
       format.json {
@@ -44,7 +44,7 @@ class VacationsController < ApplicationController
 
   # GET /vacations/1/edit
   def edit
-    @vacation         = Vacation.find(params[:id])
+    @vacation = Vacation.find(params[:id])
     @holiday_statuses = HolidayStatus.all
 
     unless current_user.user_type != UserType.find_by_name("Manager")
@@ -56,7 +56,7 @@ class VacationsController < ApplicationController
   # POST /vacations
   # POST /vacations.xml
   def create
-    @vacation      = Vacation.new(params[:vacation])
+    @vacation = Vacation.new(params[:vacation])
     @vacation.user = current_user
     manager_id = current_user.manager_id
     @vacation.manager_id = manager_id # Add manager to all holidays
@@ -64,7 +64,9 @@ class VacationsController < ApplicationController
 
     respond_to do |format|
       if @vacation.save
-        HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
+        unless manager.nil?
+          HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
+        end
         #TODO check the mailer was successful
         flash[:notice] = "Successfully created holiday."
         format.js
@@ -78,16 +80,38 @@ class VacationsController < ApplicationController
   # PUT /vacations/1
   # PUT /vacations/1.xml
   def update
-    @vacation      = Vacation.find(params[:id])
+    @row_id = params[:id]
+    @vacation = Vacation.find(params[:id])
     @vacation.user = current_user
+    holiday_status_id = params[:vacation][:holiday_status_id]
+    manager = User.find_by_id(@vacation.manager_id)
 
     respond_to do |format|
-      if @vacation.update_attributes(params[:vacation])
-        flash[:notice] = "Successfully changed your holiday."
-        format.js
+      #TODO holiday can only be updated if pending
+      if holiday_status_id == "3" # cancelled
+
+        if @vacation.holiday_status_id==1
+          unless manager.nil?
+            HolidayMailer.holiday_cancellation(current_user, manager, @vacation).deliver
+          end
+        end
+
+        @vacation.destroy
+        flash[:notice] = "Cancelled holiday was deleted"
+        format.js {
+          render 'delete_row.js.erb'
+        }
       else
-        flash[:notice] = "Problem changing the holiday"
-        format.js
+        if @vacation.update_attributes(params[:vacation])
+          unless manager.nil?
+            HolidayMailer.holiday_amendment(current_user, manager, @vacation).deliver
+          end
+          flash[:notice] = "Successfully changed your holiday."
+          format.js
+        else
+          flash[:notice] = "Problem changing the holiday"
+          format.js { render 'delete_row.js.erb' }
+        end
       end
     end
   end
@@ -113,9 +137,9 @@ class VacationsController < ApplicationController
       format.json do
         json_data = []
         @vacations.each do |vacation|
-          hol_hash = {:id                          => vacation.id.to_s, :vacation_description=>vacation.description, :vacation_date_from=>vacation.date_from.strftime("%d/%m/%Y"),
-                      :vacation_date_to            =>vacation.date_to.strftime("%d/%m/%Y"), :vacation_working_days_used => vacation.working_days_used.to_s,
-                      :vacation_status_name        =>vacation.holiday_status.status, :vacation_holiday_status_id=>vacation.holiday_status_id.to_s,
+          hol_hash = {:id => vacation.id.to_s, :vacation_description=>vacation.description, :vacation_date_from=>vacation.date_from.strftime("%d/%m/%Y"),
+                      :vacation_date_to =>vacation.date_to.strftime("%d/%m/%Y"), :vacation_working_days_used => vacation.working_days_used.to_s,
+                      :vacation_status_name =>vacation.holiday_status.status, :vacation_holiday_status_id=>vacation.holiday_status_id.to_s,
                       :vacation_holiday_status_name=>vacation.holiday_status.status,
                       :vacation_notes => vacation.notes}
           json_data << hol_hash
