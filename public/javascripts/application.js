@@ -1,5 +1,4 @@
 // Place your application-specific JavaScript functions and classes here
-//TODO move much of this to files for specific features
 
 $(document).ajaxSend(function(e, xhr, options) {
   var token = $("meta[name='csrf-token']").attr("content");
