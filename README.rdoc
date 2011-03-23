@@ -5,4 +5,4 @@ Create and manage holidays
 
 == License
 
-MIT License. Copyright 2010 Eamon Skelly
+MIT License. Copyright 2011 Eamon Skelly
