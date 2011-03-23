@@ -235,11 +235,6 @@ fieldset.update {
     text-align:right;
 }
 
-/*#jqgrid {*/
-    /*position: relative;*/
-    /*top: 90px;*/
-/*}*/
-
 #jqgrid2 {
     position: relative;
     top: 50px;
@@ -296,7 +291,7 @@ table#manageDays{
 }
 
 table#holidaysTable {
-    font-size: 12px;
+    font-size: 14px;
     width: 642px;
     margin: 0 0 30px -5px;
     border-collapse: collapse;
@@ -316,12 +311,12 @@ table#holidaysTable tbody tr:hover {
     cursor:pointer;
 }
 
-table#holidaysTable  tr.top {
-    background-image: none;
-}
+/*table#holidaysTable  tr.top {*/
+    /*background-image: none;*/
+/*}*/
 
 table #holidaysTable  tr.top th {
-    padding-top: 12px;
+    padding-top: 16px;
 }
 
 table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {
