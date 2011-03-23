@@ -121,6 +121,8 @@ class VacationsController < ApplicationController
   def destroy
     @vacation = Vacation.find(params[:id])
 
+    #TODO check status
+
     #TODO needs some logic around this, can't get rid of past holidays etc. - in model
     #Destroy could cancel just change the status
     @vacation.destroy

@@ -5,6 +5,7 @@
   <th class="date">Date to</th>
   <th class="numeric">Days Used</th>
   <th class= "text">Status</th>
+  <th>Delete</th>
   </thead>
   <tbody>
   <% @vacations.each do |vacation| %>
@@ -14,6 +15,7 @@
         <td><%=vacation.date_from.strftime("%d/%m/%Y") %></td>
         <td><%=vacation.working_days_used %></td>
         <td><%=vacation.holiday_status.status %></td>
+        <td>Delete me</td>
       </tr>
   <% end %>
   </tbody>

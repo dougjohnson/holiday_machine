@@ -50,7 +50,9 @@ class Vacation < ActiveRecord::Base
     color = 0
 
     holidays.each do |hol|
-      hol_hash = {:id => hol.id, :title=>hol.description, :start=>hol.date_from.to_s, :end=>hol.date_to.to_s, :className=>"holcolor" + color.to_s}
+      email = hol.user.email
+
+      hol_hash = {:id => hol.id, :title=>email + " "+ hol.description, :start=>hol.date_from.to_s, :end=>hol.date_to.to_s, :className=>"holcolor" + color.to_s}
       json << hol_hash
       if color < 5
         color += 1;
