@@ -114,6 +114,8 @@ body {
 }
 
 #top_navigation ul {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     padding-left: 0;
     margin-left: 0;
     background-color: #036;
@@ -174,8 +176,8 @@ body {
 }
 
 .vacation legend {
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     margin-left: 10px;
     padding: 0.2em 0.5em;
     color: green;
@@ -190,9 +192,8 @@ fieldset.vacation {
 .vacation fieldset {
     position: relative;
     width: 50%;
-    /*top: 20px;*/
-    -moz-border-radius: 15px;
-    border-radius: 15px; /*left: 50px;*/
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 fieldset.create {
@@ -333,7 +334,10 @@ table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {
     background-color: #cec6ce !important;
 }
 
+/*TODO give this a more general class name*/
 fieldset.login{
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 	background-color:#fff9e7;
 	border-width:2px;
 	border-style:solid;
@@ -356,6 +360,8 @@ fieldset.register{
 }
 
 legend.login{
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 	background-color:#7c5b47;
 	border-width:1px;
 	border-style:solid;
