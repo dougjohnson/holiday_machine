@@ -1,25 +1,29 @@
-<h2>Sign up</h2>
+<fieldset class="login register">
+  <legend class="login register">Sign up</legend>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 
-    <%= f.input :email %>
+      <%= devise_error_messages! %>
 
-    <%= f.input :password %>
+      </br>
+      <p><%= f.input :email, :input_html => { :size => 35 } %></p>
 
-    <%= f.input :password_confirmation %>
+      <p><%= f.input :password %></p>
 
-    <%#= f.input :days_leave, :input_html=>{:max_length=>2, :size=>5} %>
+      <p><%= f.input :password_confirmation %></p>
 
-    <%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %>
+      <p><%= f.input :current_password %></p>
 
-    <%= f.label :manager_id, :name=>"Manager" %>
+      <p><%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %></p>
 
-    <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email %>
+      <p><%= f.label :manager_id, :name=>"Manager" %>
+      <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email %></p>
 
-    <p><%= f.submit "Sign up" %></p>
+      <p><%= f.submit "Sign up" %></p>
 
-<% end %>
+  <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+  <%= render :partial => "devise/shared/links" %>
+
+</fieldset>
 

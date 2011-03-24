@@ -1,32 +1,35 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<fieldset class="login">
+  <legend class="login">Edit <%= resource_name.to_s.humanize %></legend>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-    <%= f.input :email %>
+      </br>
+      <p><%= f.input :email, :input_html => { :size => 35 } %></p>
 
-    <%= f.input :password %>
+      <p><%= f.input :password %></p>
 
-    <%= f.input :password_confirmation %>
+      <p><%= f.input :password_confirmation %></p>
 
-    <%= f.input :current_password %>
+      <p><%= f.input :current_password %></p>
 
-    <%#= f.input :days_leave, :input_html=>{:max_length=>2, :size=>5} %>
+      <%#= f.input :days_leave, :input_html=>{:max_length=>2, :size=>5} %>
 
-    <%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %>
+      <p><%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %></p>
 
-    <%= f.label :manager_id, :name=>"Manager" %>
+      <p><%= f.label :manager_id, :name=>"Manager" %><
+      <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email %></p>
 
-    <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email %>
+      <p><%= f.submit "Save" %></p>
 
-    <p><%= f.submit "Save" %></p>
-
-<% end %>
+  <% end %>
 
 
-<h3>Cancel my account</h3>
+  <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %></p>
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %></p>
 
-<%= link_to "Back", :back %>
+  <%= link_to "Back", :back %>
+
+</fieldset>
 

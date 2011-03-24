@@ -345,8 +345,14 @@ fieldset.login{
 	margin:20px 0px 20px 0px;
 	width:350px;
 	position:relative;
+    left: 200px;
 	display:block;
+    float :left;
 	padding: 0px 10px 10px 10px;
+}
+
+fieldset.register{
+	width:600px;
 }
 
 legend.login{
