@@ -3,22 +3,18 @@
 
     <fieldset class="vacation create">
 
-      <legend class="vacation create">Create Holiday</legend>
+      <legend class="vacation create">Register Holiday</legend>
 
-      <div class="inputs">
         <%= f.input :date_from, :as=>:string, :input_html => { :maxlength => 10, :size=> 10, :value => Date.today.strftime("%d/%m/%Y") }  %>
         <%= f.input :date_to, :as=>:string, :input_html => { :maxlength => 10, :size=> 10,:value => Date.today.strftime("%d/%m/%Y") } %>
         <%= f.input :description, :input_html => { :size=> 30 } %>
-        <%= f.label :holiday_status_id, :name=>"Status" %>
-        <%= f.collection_select :holiday_status_id, @holiday_statuses, :id, :status %>
+        <%#= f.label :holiday_status_id, :name=>"Status" %>
+        <%#= f.collection_select :holiday_status_id, @holiday_statuses, :id, :status %>
         <!--<%#= f.input :notes, :input_html=>{:readonly=>'readonly', :rows=>2} %>-->
-      </div>
-
-      <br>
 
       <div class="actions">
         <%= f.button :submit %>
-        <input type="button" value="Cancel" id="cancelUpdate" style="display: none;"/>
+        <!--<input type="button" value="Cancel" id="cancelUpdate" style="display: none;"/>-->
       </div>
 
     </fieldset>
