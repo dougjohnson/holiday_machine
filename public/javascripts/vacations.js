@@ -23,14 +23,14 @@ $(document).ready(function() {
     $('#holidaysTable tr').live('click', function() {
         $('table .row_highlight:first').removeClass('row_highlight');
         $(this).toggleClass("row_highlight");
-        var holidayHash = new Object();
-        holidayHash["id"] = this.id;
-        holidayHash["description"] = this.cells[0].innerHTML;
-        holidayHash["dateFrom"] = this.cells[1].innerHTML;
-        holidayHash["dateTo"] = this.cells[2].innerHTML;
-        holidayHash["workingDays"] = this.cells[3].innerHTML;
-        holidayHash["status"] = this.cells[4].innerHTML;
-        updateForm(holidayHash);
+//        var holidayHash = new Object();
+//        holidayHash["id"] = this.id;
+//        holidayHash["description"] = this.cells[0].innerHTML;
+//        holidayHash["dateFrom"] = this.cells[1].innerHTML;
+//        holidayHash["dateTo"] = this.cells[2].innerHTML;
+//        holidayHash["workingDays"] = this.cells[3].innerHTML;
+//        holidayHash["status"] = this.cells[4].innerHTML;
+//        updateForm(holidayHash);
     });
 
     $("#holidaysTable tr").hover(
@@ -47,6 +47,7 @@ $(document).ready(function() {
     });
 });
 
+/*
 function clearUpdate() {
     $("#vacation_holiday_status_id option.temp").each(function() {
         $(this).remove();
@@ -95,4 +96,11 @@ function updateForm(holdata) {
     $("#cancelUpdate").show();
     $("#vacation_submit").val("Update Holiday");
 }
+*/
+
+function removeHoliday(vacation_id){
+
+}
+
+
 

@@ -58,6 +58,7 @@ class VacationsController < ApplicationController
   def create
     @vacation = Vacation.new(params[:vacation])
     @vacation.user = current_user
+    @vacation.holiday_status_id = 1
     manager_id = current_user.manager_id
     @vacation.manager_id = manager_id # Add manager to all holidays
     manager = User.find_by_id(manager_id)
@@ -122,14 +123,14 @@ class VacationsController < ApplicationController
     @vacation = Vacation.find(params[:id])
 
     #TODO check status
-
     #TODO needs some logic around this, can't get rid of past holidays etc. - in model
     #Destroy could cancel just change the status
     @vacation.destroy
 
+    @row_id = params[:id]
+
     respond_to do |format|
-      format.html { redirect_to(vacations_url) }
-      format.xml { head :ok }
+      format.js
     end
   end
 

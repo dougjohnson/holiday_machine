@@ -15,9 +15,14 @@
         <td><%=vacation.date_from.strftime("%d/%m/%Y") %></td>
         <td><%=vacation.working_days_used %></td>
         <td><%=vacation.holiday_status.status %></td>
-        <td><a href="#" onClick="removeHoliday('<%= vacation.id %>');">
-                <%= image_tag('delete.png', :width => '20') %>
-         </a></td>
+        <td>
+          <%= link_to 'Destroy', vacation,
+          :confirm => 'Are you sure?',
+          :method => :delete, :remote=>true %>
+        </td>
+        <!--<td><a href="#" onClick="removeHoliday('<%#= vacation.id %>');">-->
+                <!--<%#= image_tag('delete.png', :width => '20') %>-->
+         <!--</a></td>-->
       </tr>
   <% end %>
   </tbody>
