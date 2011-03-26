@@ -13,7 +13,9 @@
 
       <p><%= f.input :current_password %></p>
 
-      <%#= f.input :days_leave, :input_html=>{:max_length=>2, :size=>5} %>
+      <p><%= f.input :forename, :input_html => { :size => 40 } %></p>
+
+      <p><%= f.input :surname, :input_html => { :size => 40 } %></p>
 
       <p><%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %></p>
 

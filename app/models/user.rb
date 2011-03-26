@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
 
   has_many :vacations
 
-  attr_accessible :email, :password, :password_confirmation, :days_leave, :user_type_id, :manager_id
+  validates_presence_of :email, :forename, :surname, :manager_id, :user_type
+
+  attr_accessible :email, :password, :password_confirmation, :forename, :surname, :user_type_id, :manager_id
+
+
+
 
 end
