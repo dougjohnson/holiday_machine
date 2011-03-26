@@ -5,6 +5,7 @@ class Vacation < ActiveRecord::Base
   belongs_to :user
 
   before_save :save_working_days
+  before_destroy :check_if_holiday_has_passed
 
   scope :team_holidays, lambda { |manager_id| where(:manager_id => manager_id) }
 
@@ -14,7 +15,7 @@ class Vacation < ActiveRecord::Base
 
   validate :date_from_must_be_before_date_to
   validate :working_days_greater_than_zero
-  validate :date_not_more_than_one_month_ago
+#  validate :date_not_more_than_one_month_ago
   validate :holiday_must_not_straddle_holiday_years
 
   validate :no_overlapping_holidays, :on => :create
@@ -38,11 +39,17 @@ class Vacation < ActiveRecord::Base
     self.convert_to_json holidays, bank_holidays
   end
 
+
+
   private
 
-#  def overlaps?(other)
-#    (date_from - other.end_date) * (other.start_date - date_to) >= 0
-#  end
+  def check_if_holiday_has_passed
+     unless holiday_status_id != 1
+       if date_to < Date.today
+         false
+       end
+     end
+  end
 
   def self.convert_to_json holidays, bank_holidays
     #TODO the colour class should be per user not per holiday
@@ -67,6 +74,10 @@ class Vacation < ActiveRecord::Base
     json
   end
 
+  def intra_team_holiday_clashes
+
+  end
+
   def date_from_must_be_before_date_to
     errors.add(:date_from, " must be before date to.") if date_from > date_to
   end
@@ -76,9 +87,9 @@ class Vacation < ActiveRecord::Base
     errors.add(:working_days_used, " - This holiday request uses no working days") if @working_days==0
   end
 
-  def date_not_more_than_one_month_ago
-    errors.add(:date_from, "must be less than one month ago") if date_from < (Date.today - 1.month)
-  end
+#  def date_not_more_than_one_month_ago
+#    errors.add(:date_from, "must be less than one month ago") if date_from < (Date.today - 1.month)
+#  end
 
   def holiday_must_not_straddle_holiday_years
     #TODO this query will not be right - test with sql

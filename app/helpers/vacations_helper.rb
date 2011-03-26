@@ -7,7 +7,9 @@ module VacationsHelper
     html << "<td>#{holiday.date_to.strftime("%d/%m/%Y")}</td>"
     html << "<td>#{holiday.working_days_used}</td>"
     html << "<td>#{holiday.holiday_status.status}</td>"
-    html << "<td>Delete me</td>"
+    html << "<td>"
+    html <<  (link_to 'Destroy', holiday,:confirm => 'Are you sure?', :method => :delete, :remote=>true)
+    html << "</td>"
     html << "</tr>"
     html
   end

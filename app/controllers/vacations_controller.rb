@@ -43,15 +43,15 @@ class VacationsController < ApplicationController
 #  end
 
   # GET /vacations/1/edit
-  def edit
-    @vacation = Vacation.find(params[:id])
-    @holiday_statuses = HolidayStatus.all
-
-    unless current_user.user_type != UserType.find_by_name("Manager")
-      @holiday_statuses.reject! { |status| status.status != "Pending" }
-    end
-
-  end
+#  def edit
+#    @vacation = Vacation.find(params[:id])
+#    @holiday_statuses = HolidayStatus.all
+#
+#    unless current_user.user_type != UserType.find_by_name("Manager")
+#      @holiday_statuses.reject! { |status| status.status != "Pending" }
+#    end
+#
+#  end
 
   # POST /vacations
   # POST /vacations.xml
@@ -80,6 +80,7 @@ class VacationsController < ApplicationController
 
   # PUT /vacations/1
   # PUT /vacations/1.xml
+=begin
   def update
     @row_id = params[:id]
     @vacation = Vacation.find(params[:id])
@@ -88,7 +89,6 @@ class VacationsController < ApplicationController
     manager = User.find_by_id(@vacation.manager_id)
 
     respond_to do |format|
-      #TODO holiday can only be updated if pending
       if holiday_status_id == "3" # cancelled
 
         if @vacation.holiday_status_id==1
@@ -117,23 +117,33 @@ class VacationsController < ApplicationController
     end
   end
 
+=end
+
   # DELETE /vacations/1
   # DELETE /vacations/1.xml
   def destroy
     @vacation = Vacation.find(params[:id])
 
-    #TODO check status
-    #TODO needs some logic around this, can't get rid of past holidays etc. - in model
-    #Destroy could cancel just change the status
-    @vacation.destroy
-
-    @row_id = params[:id]
+    manager = User.find_by_id(@vacation.manager_id)
 
     respond_to do |format|
-      format.js
+      if @vacation.destroy
+        unless manager.nil?
+          HolidayMailer.holiday_cancellation(current_user, manager, @vacation).deliver
+        end
+        @row_id = params[:id]
+        flash[:notice] = "Holiday deleted"
+        @failed = true
+        format.js
+      else
+        flash[:notice] = "Could not delete holiday which has passed"
+        @failed = false
+        format.js
+      end
     end
   end
 
+=begin
   def holiday_json
     @vacations = Vacation.where ["user_id = ?", current_user.id]
     respond_to do |format|
@@ -151,5 +161,6 @@ class VacationsController < ApplicationController
       end
     end
   end
+=end
 
 end

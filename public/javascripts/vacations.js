@@ -98,9 +98,6 @@ function updateForm(holdata) {
 }
 */
 
-function removeHoliday(vacation_id){
-
-}
 
 
 
