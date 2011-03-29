@@ -66,7 +66,8 @@ class VacationsController < ApplicationController
     respond_to do |format|
       if @vacation.save
         unless manager.nil?
-          HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
+          HolidayMailer.holiday_actioned(current_user, manager, @vacation).deliver
+#          HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
         end
         #TODO check the mailer was successful
         flash[:notice] = "Successfully created holiday."
@@ -133,34 +134,14 @@ class VacationsController < ApplicationController
         end
         @row_id = params[:id]
         flash[:notice] = "Holiday deleted"
-        @failed = true
-        format.js
-      else
-        flash[:notice] = "Could not delete holiday which has passed"
         @failed = false
         format.js
+      else
+        flash[:notice] = "Could not delete a holiday which has passed"
+        @failed = true
+        format.js
       end
     end
   end
-
-=begin
-  def holiday_json
-    @vacations = Vacation.where ["user_id = ?", current_user.id]
-    respond_to do |format|
-      format.json do
-        json_data = []
-        @vacations.each do |vacation|
-          hol_hash = {:id => vacation.id.to_s, :vacation_description=>vacation.description, :vacation_date_from=>vacation.date_from.strftime("%d/%m/%Y"),
-                      :vacation_date_to =>vacation.date_to.strftime("%d/%m/%Y"), :vacation_working_days_used => vacation.working_days_used.to_s,
-                      :vacation_status_name =>vacation.holiday_status.status, :vacation_holiday_status_id=>vacation.holiday_status_id.to_s,
-                      :vacation_holiday_status_name=>vacation.holiday_status.status,
-                      :vacation_notes => vacation.notes}
-          json_data << hol_hash
-        end
-        render :json => {:page=> params[:page], :total => 1, :records =>@vacations.size, :rows => json_data}
-      end
-    end
-  end
-=end
 
 end

@@ -308,13 +308,12 @@ table#holidaysTable tr {
     border-bottom: 1px solid #3399CC;
 }
 
-table#holidaysTable tbody tr:hover {
+/*table#holidaysTable tbody trhover {*/
+/*}*/
+
+table#holidaysTable  tr input.deleteButton:hover {
     cursor:pointer;
 }
-
-/*table#holidaysTable  tr.top {*/
-    /*background-image: none;*/
-/*}*/
 
 table #holidaysTable  tr.top th {
     padding-top: 16px;

@@ -15,10 +15,7 @@
         <td><%=vacation.date_from.strftime("%d/%m/%Y") %></td>
         <td><%=vacation.working_days_used %></td>
         <td><%=vacation.holiday_status.status %></td>
-        <td>
-          <%= link_to 'Destroy', vacation,
-          :confirm => 'Are you sure?',
-          :method => :delete, :remote=>true %>
+        <td><input value='Delete' type="button" class='deleteButton' id='vacation<%=vacation.id%>' />
         </td>
       </tr>
   <% end %>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+<h1><%=@subject%></h1>
+
+<p>
+  From: <%= @holiday.date_from.strftime("%d/%m/%y") %> to <%= @holiday.date_to.strftime("%d/%m/%y") %>
+</p>
+
+<p>Reason:<%= @holiday.notes%></p>
+
+</body>
+</html>

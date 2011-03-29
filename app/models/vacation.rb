@@ -15,7 +15,6 @@ class Vacation < ActiveRecord::Base
 
   validate :date_from_must_be_before_date_to
   validate :working_days_greater_than_zero
-#  validate :date_not_more_than_one_month_ago
   validate :holiday_must_not_straddle_holiday_years
 
   validate :no_overlapping_holidays, :on => :create
@@ -39,13 +38,12 @@ class Vacation < ActiveRecord::Base
     self.convert_to_json holidays, bank_holidays
   end
 
-
-
   private
 
   def check_if_holiday_has_passed
-     unless holiday_status_id != 1
+     unless holiday_status_id == 1
        if date_to < Date.today
+         errors.add(:base, "Holiday has passed")
          false
        end
      end
@@ -54,18 +52,10 @@ class Vacation < ActiveRecord::Base
   def self.convert_to_json holidays, bank_holidays
     #TODO the colour class should be per user not per holiday
     json = []
-    color = 0
-
     holidays.each do |hol|
       email = hol.user.email
-
-      hol_hash = {:id => hol.id, :title=>email + " "+ hol.description, :start=>hol.date_from.to_s, :end=>hol.date_to.to_s, :className=>"holcolor" + color.to_s}
+      hol_hash = {:id => hol.id, :title=>hol.user.forename + ": "+ hol.description, :start=>hol.date_from.to_s, :end=>hol.date_to.to_s, :className=>"holcolor" + hol.holiday_status_id.to_s}
       json << hol_hash
-      if color < 5
-        color += 1;
-      else
-        color = 0;
-      end
     end
     bank_holidays.each do |hol|
       hol_hash = {:id => hol.id, :title=>hol.name, :start=>hol.date_of_hol.to_s, :className=>"bankHol"}
@@ -74,9 +64,8 @@ class Vacation < ActiveRecord::Base
     json
   end
 
-  def intra_team_holiday_clashes
-
-  end
+#  def intra_team_holiday_clashes
+#  end
 
   def date_from_must_be_before_date_to
     errors.add(:date_from, " must be before date to.") if date_from > date_to

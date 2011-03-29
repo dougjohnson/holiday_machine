@@ -8,7 +8,7 @@ module VacationsHelper
     html << "<td>#{holiday.working_days_used}</td>"
     html << "<td>#{holiday.holiday_status.status}</td>"
     html << "<td>"
-    html <<  (link_to 'Destroy', holiday,:confirm => 'Are you sure?', :method => :delete, :remote=>true)
+    html << "<input value='Delete' id='vacation#{holiday.id}' type='button' class='deleteButton'/>"
     html << "</td>"
     html << "</tr>"
     html

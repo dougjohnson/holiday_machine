@@ -20,18 +20,13 @@ $(document).ready(function() {
     });
 
 
-    $('#holidaysTable tr').live('click', function() {
-        $('table .row_highlight:first').removeClass('row_highlight');
-        $(this).toggleClass("row_highlight");
-//        var holidayHash = new Object();
-//        holidayHash["id"] = this.id;
-//        holidayHash["description"] = this.cells[0].innerHTML;
-//        holidayHash["dateFrom"] = this.cells[1].innerHTML;
-//        holidayHash["dateTo"] = this.cells[2].innerHTML;
-//        holidayHash["workingDays"] = this.cells[3].innerHTML;
-//        holidayHash["status"] = this.cells[4].innerHTML;
-//        updateForm(holidayHash);
+    $(".deleteButton").live('click',function(){
+        $.ajax({
+          type: 'DELETE',
+          url: '/vacations/'+$(this).closest('tr').attr('id')
+        });
     });
+
 
     $("#holidaysTable tr").hover(
             function() {  // mouseover

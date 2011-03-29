@@ -32,7 +32,17 @@ class HolidayMailer < ActionMailer::Base
          :subject => "This user has cancelled a holiday")
   end
 
-#  def holiday_acceptance
-#  end
+  def holiday_actioned(manager, holiday)
+    @holiday = holiday
+    @user = @holiday.user
+    @manager = manager
+    @subject = if holiday.holiday_status_id = 2
+                "Your holiday has been accepted"
+              elsif holiday.holiday_status_id=3
+                "Your holiday request has been rejected"
+              end
+    mail(:to      => @user.email, :from => @user.email,
+         :subject => subject)
+  end
 
 end
