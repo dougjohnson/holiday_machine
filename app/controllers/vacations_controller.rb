@@ -10,6 +10,8 @@ class VacationsController < ApplicationController
 
     @holiday_statuses = HolidayStatus.pending_only
 
+    @days_remaining = current_user.get_holiday_allowance.days_remaining
+
     respond_to do |format|
       format.html
       format.json {
@@ -67,7 +69,6 @@ class VacationsController < ApplicationController
       if @vacation.save
         unless manager.nil?
           HolidayMailer.holiday_actioned(current_user, manager, @vacation).deliver
-#          HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
         end
         #TODO check the mailer was successful
         flash[:notice] = "Successfully created holiday."
@@ -79,46 +80,6 @@ class VacationsController < ApplicationController
     end
   end
 
-  # PUT /vacations/1
-  # PUT /vacations/1.xml
-=begin
-  def update
-    @row_id = params[:id]
-    @vacation = Vacation.find(params[:id])
-    @vacation.user = current_user
-    holiday_status_id = params[:vacation][:holiday_status_id]
-    manager = User.find_by_id(@vacation.manager_id)
-
-    respond_to do |format|
-      if holiday_status_id == "3" # cancelled
-
-        if @vacation.holiday_status_id==1
-          unless manager.nil?
-            HolidayMailer.holiday_cancellation(current_user, manager, @vacation).deliver
-          end
-        end
-
-        @vacation.destroy
-        flash[:notice] = "Cancelled holiday was deleted"
-        format.js {
-          render 'delete_row.js.erb'
-        }
-      else
-        if @vacation.update_attributes(params[:vacation])
-          unless manager.nil?
-            HolidayMailer.holiday_amendment(current_user, manager, @vacation).deliver
-          end
-          flash[:notice] = "Successfully changed your holiday."
-          format.js
-        else
-          flash[:notice] = "Problem changing the holiday"
-          format.js { render 'delete_row.js.erb' }
-        end
-      end
-    end
-  end
-
-=end
 
   # DELETE /vacations/1
   # DELETE /vacations/1.xml

@@ -1,6 +1,5 @@
 body {
-    background-image: url('/images/BlueToWhiteGradient.jpg');
-    /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; *//*filter: alpha(opacity=50);*/
+    background-image: url('/images/BlueToWhiteGradient.jpg'); /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; *//*filter: alpha(opacity=50);*/
 }
 
 #container {
@@ -143,7 +142,7 @@ body {
     color: #fff;
 }
 
-#vacation_errors{
+#vacation_errors {
     background-color: #f3f8d1;
     border: 1px solid #ff0049;
     width: 300px;
@@ -153,7 +152,7 @@ body {
     padding: 10px;
 }
 
-#user_days_errors{
+#user_days_errors {
     background-color: #f3f8d1;
     border: 1px solid #ff0049;
     width: 300px;
@@ -221,19 +220,19 @@ fieldset.update {
     font-weight: bold;
 }
 
-.standard_table{
+.standard_table {
     position: relative;
     top: 5px;
-    width:600px;
+    width: 600px;
     border-collapse: collapse;
 }
 
 .standard_table thead {
-    background-color:green;
+    background-color: green;
 }
 
-.numeric td{
-    text-align:right;
+.numeric td {
+    text-align: right;
 }
 
 #jqgrid2 {
@@ -281,14 +280,14 @@ fieldset.update {
     border: 1px solid #68090c;
 }
 
-.userDaysHeader{
-    background-color:#00289E;
-    color:white;
+.userDaysHeader {
+    background-color: #00289E;
+    color: white;
     border: 1px solid #001452;
 }
 
-table#manageDays{
-   border-collapse: collapse;
+table#manageDays {
+    border-collapse: collapse;
 }
 
 table#holidaysTable {
@@ -312,7 +311,7 @@ table#holidaysTable tr {
 /*}*/
 
 table#holidaysTable  tr input.deleteButton:hover {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 table #holidaysTable  tr.top th {
@@ -323,56 +322,66 @@ table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {
     border: 0;
 }
 
-.row_highlight{
+.row_highlight {
     color: #ff8d00;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.highlight{
+.highlight {
     color: white;
     background-color: #cec6ce !important;
 }
 
 /*TODO give this a more general class name*/
-fieldset.login{
+fieldset.login {
     -moz-border-radius: 5px;
     border-radius: 5px;
-	background-color:#fff9e7;
-	border-width:2px;
-	border-style:solid;
-	border-color:#7c5b47;
+    background-color: #fff9e7;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #7c5b47;
 
-	font-family:Verdana, Arial, Helvetica, sans-serif;
-	font-size:12px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
 
-	margin:20px 0px 20px 0px;
-	width:350px;
-	position:relative;
+    margin: 20px 0px 20px 0px;
+    width: 350px;
+    position: relative;
     left: 200px;
-	display:block;
-    float :left;
-	padding: 0px 10px 10px 10px;
+    display: block;
+    float: left;
+    padding: 0px 10px 10px 10px;
 }
 
-fieldset.register{
-	width:600px;
+fieldset.register {
+    width: 600px;
 }
 
-legend.login{
+legend.login {
     -moz-border-radius: 5px;
     border-radius: 5px;
-	background-color:#7c5b47;
-	border-width:1px;
-	border-style:solid;
-	border-color:#7c5b47;
-	color:#ffcc99;
-	font-weight:bold;
-	font-variant:small-caps;
-	font-size:110%;
-	padding:2px 5px;
-	margin:0px 0px 10px 0px;
-	position:relative;
-	top: -12px;
+    background-color: #7c5b47;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #7c5b47;
+    color: #ffcc99;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 110%;
+    padding: 2px 5px;
+    margin: 0px 0px 10px 0px;
+    position: relative;
+    top: -12px;
 }
+
+#days_remaining {
+    background-color: green;
+    -moz-border-radius: 5px;
+    color :white;
+    border-radius: 5px;
+    background-color: green;
+    width: 500px;
+}
+
 
 

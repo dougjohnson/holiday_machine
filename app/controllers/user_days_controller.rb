@@ -7,7 +7,8 @@ class UserDaysController < ApplicationController
   # GET /user_days.xml
   def index
     #The user viewing this is a manager and wants his own team
-    @team_users = User.find_all_by_manager_id (current_user.id)
+#    @team_users = User.find_all_by_manager_id (current_user.id)
+    @team_users = User.get_team_users(current_user.id)
     @user_days = UserDay.all
     @user_day = UserDay.new
 
@@ -47,10 +48,12 @@ class UserDaysController < ApplicationController
   # POST /user_days.xml
   def create
     @user_day = UserDay.new(params[:user_day])
-    @user_day.user.days_leave += @user_day.no_days
+    @allowance = @user_day.user.get_holiday_allowance
+    @allowance.days_remaining += @user_day.no_days
+#    @user_day.user.days_leave += @user_day.no_days
 
     respond_to do |format|
-      if @user_day.save and @user_day.user.save
+      if @user_day.save and @allowance.save
         format.js
       else
         format.js
@@ -78,8 +81,10 @@ class UserDaysController < ApplicationController
   # DELETE /user_days/1.xml
   def destroy
     @user_day = UserDay.find(params[:id])
+    @allowance = @user_day.user.get_holiday_allowance
+    @allowance.days_remaining -= @user_day.no_days
     @user_day.destroy
-
+    @allowance.save
     respond_to do |format|
       format.html { redirect_to(user_days_url) }
       format.xml  { head :ok }

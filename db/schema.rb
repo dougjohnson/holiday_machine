@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110326163308) do
+ActiveRecord::Schema.define(:version => 20110403211329) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                             :default => "", :null => false
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(:version => 20110326163308) do
     t.datetime "updated_at"
   end
 
+  create_table "user_days_for_years", :force => true do |t|
+    t.integer  "days_remaining"
+    t.integer  "user_id"
+    t.integer  "holiday_year_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -86,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20110326163308) do
     t.datetime "updated_at"
     t.string   "authentication_token"
     t.integer  "days_leave"
-    t.integer  "user_type_id",         :limit => 255
+    t.integer  "user_type_id"
     t.integer  "manager_id"
     t.string   "forename",             :limit => 80
     t.string   "surname",              :limit => 80

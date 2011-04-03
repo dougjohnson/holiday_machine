@@ -1,9 +1,9 @@
 class HolidayYear < ActiveRecord::Base
 
   has_many :vacations
+  has_many :user_days_for_years
 
   scope :holiday_years_containing_holiday, lambda{|date_start, date_end| where('date_start<=? and date_end>=?', date_start, date_end)}
-#  scope :current_year, lambda {where('date_start<=? and date_end>=?', Date.today, Date.today).first}
 
   def self.current_year
     today = Date.today

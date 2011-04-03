@@ -7,6 +7,9 @@ class Vacation < ActiveRecord::Base
   before_save :save_working_days
   before_destroy :check_if_holiday_has_passed
 
+  after_destroy :add_days_remaining
+  after_create :decrease_days_remaining
+
   scope :team_holidays, lambda { |manager_id| where(:manager_id => manager_id) }
 
   validates_presence_of :date_from
@@ -122,6 +125,18 @@ class Vacation < ActiveRecord::Base
     holidays_array = holidays.collect { |hol| hol.date_of_hol }
     weekdays = (date_from..date_to).reject { |d| [0, 6].include? d.wday or holidays_array.include?(d) }
     business_days = weekdays.length
+  end
+
+  def decrease_days_remaining
+    holiday_allowance = self.user.get_holiday_allowance
+    holiday_allowance.days_remaining -= business_days_between
+    holiday_allowance.save
+  end
+
+  def add_days_remaining
+    holiday_allowance = self.user.get_holiday_allowance
+    holiday_allowance.days_remaining += business_days_between
+    holiday_allowance.save
   end
 
 end
