@@ -22,7 +22,7 @@ HolidayMachine::Application.configure do
   :port                 => 587,
   :domain               => 'gmail.com',
   :user_name            => 'etskelly',
-  :password             => 'Ca11isto',
+  :password             => 'Banana',
   :authentication       => 'plain',
   :enable_starttls_auto => true  }
 
