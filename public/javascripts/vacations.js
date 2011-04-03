@@ -42,56 +42,6 @@ $(document).ready(function() {
     });
 });
 
-/*
-function clearUpdate() {
-    $("#vacation_holiday_status_id option.temp").each(function() {
-        $(this).remove();
-    });
-    $('table .row_highlight:first').removeClass('row_highlight');
-    $("fieldset.vacation, legend.vacation").removeClass("update").addClass("create");
-    $("legend.vacation").html("Create Holiday");
-    $(this).hide();
-    clearForm($("#new_vacation"));
-    $("#vacation_date_from").val($.formatDate(new Date(), "dd/MM/yyyy"));
-    $("#vacation_date_to").val($.formatDate(new Date(), "dd/MM/yyyy"));
-    $("form.vacation").attr("action", "/vacations");
-    $("form.vacation").attr("method", "POST");
-    $("#vacation_submit").val("Create Holiday");
-}
-
-function updateForm(holdata) {
-    clearForm($("#new_vacation"));
-    $("#vacation_description").val(holdata["description"]);
-    $("#vacation_date_from").val(holdata["dateFrom"]);
-    $("#vacation_date_to").val(holdata["dateTo"]);
-
-    $("form.vacation").attr("action", "/vacations");
-    $("form.vacation").attr("method", "POST");
-    $("#vacation_submit").val("Create Holiday");
-
-//    var holId = $(this).attr("id");
-    $("fieldset.vacation, legend.vacation").removeClass("create").addClass("update");
-    $("legend.vacation").html("Change Holiday");
-    var action = $(this).val() == "people" ? "user" : "content";
-    $("form.vacation").attr("action", "/vacations/" + holdata["id"]);
-    $("form.vacation").attr("method", "PUT");
-
-    $("#vacation_holiday_status_id option.temp").each(function() {
-        $(this).remove();
-    });
-
-    var status_id = $("#vacation_holiday_status_id option:contains(" + holdata["status"] + ")").val();
-
-    if (status_id != 4) {
-        $("#vacation_holiday_status_id").append('<option class="temp" value=3>Cancelled</option>');
-    }
-
-    $("#vacation_holiday_status_id").val(status_id);
-
-    $("#cancelUpdate").show();
-    $("#vacation_submit").val("Update Holiday");
-}
-*/
 
 
 

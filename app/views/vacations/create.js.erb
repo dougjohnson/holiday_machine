@@ -12,6 +12,7 @@ $(document).ready(function (){
         $("#vacation_date_from").val($.formatDate(new Date(), "dd/MM/yyyy"));
         $("#vacation_date_to").val($.formatDate(new Date(), "dd/MM/yyyy"));
         $('#holidaysTable tbody').append("<%= raw(create_holiday_row(@vacation))%>");
+        $("#days_remaining").html("Days Remaining:<%=@days_remaining%>");
 <% end -%>
 
 });

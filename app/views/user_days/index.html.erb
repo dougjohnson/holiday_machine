@@ -7,7 +7,7 @@
       </tr>
       <tr class="userDayReadOnly2">
         <td>Total Days Leave:</td>
-        <td colspan="3" class="totalLeave"><%= user.days_leave %></td>
+        <td colspan="3" class="totalLeave"><%= user.get_holiday_allowance.days_remaining %></td>
       </tr>
       <% counter = 0 %>
       <% user.user_days.each do |user_day| %>

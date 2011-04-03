@@ -7,7 +7,6 @@ class UserDaysController < ApplicationController
   # GET /user_days.xml
   def index
     #The user viewing this is a manager and wants his own team
-#    @team_users = User.find_all_by_manager_id (current_user.id)
     @team_users = User.get_team_users(current_user.id)
     @user_days = UserDay.all
     @user_day = UserDay.new
@@ -48,9 +47,9 @@ class UserDaysController < ApplicationController
   # POST /user_days.xml
   def create
     @user_day = UserDay.new(params[:user_day])
+
     @allowance = @user_day.user.get_holiday_allowance
     @allowance.days_remaining += @user_day.no_days
-#    @user_day.user.days_leave += @user_day.no_days
 
     respond_to do |format|
       if @user_day.save and @allowance.save
@@ -60,22 +59,6 @@ class UserDaysController < ApplicationController
       end
     end
   end
-
-  # PUT /user_days/1
-  # PUT /user_days/1.xml
-#  def update
-#    @user_day = UserDay.find(params[:id])
-#
-#    respond_to do |format|
-#      if @user_day.update_attributes(params[:user_day])
-#        format.html { redirect_to(@user_day, :notice => 'User day was successfully updated.') }
-#        format.xml  { head :ok }
-#      else
-#        format.html { render :action => "edit" }
-#        format.xml  { render :xml => @user_day.errors, :status => :unprocessable_entity }
-#      end
-#    end
-#  end
 
   # DELETE /user_days/1
   # DELETE /user_days/1.xml

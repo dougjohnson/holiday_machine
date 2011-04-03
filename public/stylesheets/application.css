@@ -142,6 +142,12 @@ body {
     color: #fff;
 }
 
+#top_navigation ul li a.selected {
+    background-color: #5a94cf;
+    color: #fff;
+}
+
+
 #vacation_errors {
     background-color: #f3f8d1;
     border: 1px solid #ff0049;

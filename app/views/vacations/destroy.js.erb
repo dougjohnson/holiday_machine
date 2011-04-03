@@ -4,4 +4,5 @@
         $("#vacation_errors").show();
 <% else -%>
         $("#holidaysTable tbody tr#<%=@row_id%>").remove();
+        $("#days_remaining").html("Days Remaining:<%=@days_remaining%>");
 <% end -%>

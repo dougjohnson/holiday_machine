@@ -32,28 +32,6 @@ class VacationsController < ApplicationController
     end
   end
 
-#
-#  # GET /vacations/new
-#  # GET /vacations/new.xml
-#  def new
-#    @vacation = Vacation.new
-#
-#    respond_to do |format|
-#      format.html # new.html.erb
-#      format.xml  { render :xml => @vacation }
-#    end
-#  end
-
-  # GET /vacations/1/edit
-#  def edit
-#    @vacation = Vacation.find(params[:id])
-#    @holiday_statuses = HolidayStatus.all
-#
-#    unless current_user.user_type != UserType.find_by_name("Manager")
-#      @holiday_statuses.reject! { |status| status.status != "Pending" }
-#    end
-#
-#  end
 
   # POST /vacations
   # POST /vacations.xml
@@ -70,6 +48,8 @@ class VacationsController < ApplicationController
         unless manager.nil?
           HolidayMailer.holiday_actioned(current_user, manager, @vacation).deliver
         end
+        @days_remaining = current_user.get_holiday_allowance.days_remaining
+
         #TODO check the mailer was successful
         flash[:notice] = "Successfully created holiday."
         format.js
@@ -93,6 +73,7 @@ class VacationsController < ApplicationController
         unless manager.nil?
           HolidayMailer.holiday_cancellation(current_user, manager, @vacation).deliver
         end
+        @days_remaining = current_user.get_holiday_allowance.days_remaining
         @row_id = params[:id]
         flash[:notice] = "Holiday deleted"
         @failed = false

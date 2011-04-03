@@ -25,7 +25,7 @@ class AdministerController < ApplicationController
   end
 
   def get_team_data
-    vacations = Vacation.where("manager_id = ? and user_id != ?", current_user.id, current_user.id).includes(:user)
+    vacations = Vacation.where("manager_id = ? or user_id = ?", current_user.id, current_user.id).includes(:user)
     #TODO move creation of this data to the model
     #TODO - restrict by current holiday year (in a default scope)
     respond_to do |format|
@@ -35,7 +35,8 @@ class AdministerController < ApplicationController
           hol_hash = {:id => vacation.id.to_s, :vacation_description=>vacation.description, :vacation_date_from=>vacation.date_from.strftime("%d/%m/%Y"),
                       :vacation_date_to =>vacation.date_to.strftime("%d/%m/%Y"), :vacation_working_days_used => vacation.working_days_used.to_s,
                       :vacation_status_name =>vacation.holiday_status.status, :vacation_holiday_status_id=>vacation.holiday_status_id.to_s,
-                      :vacation_holiday_status_name=>vacation.holiday_status.status, :email=>vacation.user.email, :vacation_notes=>vacation.notes}
+                      :vacation_holiday_status_name=>vacation.holiday_status.status, :email=>vacation.user.email, :vacation_notes=>vacation.notes,
+                      :vacation_name => vacation.user.forename + " " + vacation.user.surname}
           json_data << hol_hash
         end
         render :json => {:page=> params[:page], :total => 1, :records =>vacations.size, :rows => json_data}

@@ -13,11 +13,11 @@ $(document).ready(function() {
         height: "250px",
         datatype: "json",
         mtype: 'GET',
-        colNames:['','id', 'Email', 'Date From','Date To', 'Description', 'Working Days Used','Holiday Status', 'Notes', 'Holiday Status ID'],
+        colNames:['','id', 'Name', 'Date From','Date To', 'Description', 'Working Days Used','Holiday Status', 'Notes', 'Holiday Status ID'],
         colModel:[
             {name:'act', index:'act', width:50,sortable:false},
             {name:'id', index:'id', hidden:true},
-            {name:'email',index:'email', hidden:true},
+            {name:'vacation_name',index:'vacation_name', hidden:true},
             {name:'vacation_date_from',index:'vacation_date_from', width:100},
             {name:'vacation_date_to',index:'vacation_date_to', width:100},
             {name:'vacation_description',index:'vacation_description', width:200},
@@ -48,7 +48,7 @@ $(document).ready(function() {
         editurl: "/administer/create",
         grouping:true,
         groupingView : {
-            groupField : ['email'],
+            groupField : ['vacation_name'],
             groupColumnShow : [false]
         },
         viewrecords: true,
