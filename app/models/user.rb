@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
 
   scope :get_team_users, lambda { |manager_id| where('manager_id = ? or id = ?', manager_id, manager_id) }
 
+  def full_name
+    self[:forename] + " " + self[:surname]
+  end
+
   def get_holiday_allowance
     today = Date.today
     holiday_year = HolidayYear.where('date_start<=? and date_end>=?', today, today).first

@@ -3,7 +3,7 @@
 <table id="manageDays">
   <% @team_users.each do |user| %>
       <tr class="userDayReadOnly1">
-        <td colspan="4"><%= user.email %></td>
+        <td colspan="4"><%= user.full_name %></td>
       </tr>
       <tr class="userDayReadOnly2">
         <td>Total Days Leave:</td>
@@ -30,7 +30,7 @@
             <%= f.input :user_id, :as=>:hidden, :input_html => {:value=>user.id} %>
             <td><%= f.input :reason, :input_html => {:maxlength => 40, :size=> 10} %></td>
             <td><%= f.input :no_days, :input_html => {:maxlength => 3, :size=> 3} %></td>
-            <td><%= f.button :submit %></td>
+            <td><%= f.button :submit, :label_text=>"Add days" %></td>
         <% end %>
       </tr>
   <% end %>

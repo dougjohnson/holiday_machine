@@ -48,6 +48,11 @@ class UserDaysController < ApplicationController
   def create
     @user_day = UserDay.new(params[:user_day])
 
+    today = Date.today
+    #TODO this should be a selected year
+    holiday_year = HolidayYear.where('date_start<=? and date_end>=?', today, today).first
+    @user_day.holiday_year = holiday_year
+
     @allowance = @user_day.user.get_holiday_allowance
     @allowance.days_remaining += @user_day.no_days
 

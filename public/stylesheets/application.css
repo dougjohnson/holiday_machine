@@ -294,6 +294,8 @@ fieldset.update {
 
 table#manageDays {
     border-collapse: collapse;
+    margin: 0 0 30px -5px;
+
 }
 
 table#holidaysTable {
