@@ -8,6 +8,7 @@ class UserDaysController < ApplicationController
   def index
     #The user viewing this is a manager and wants his own team
     @team_users = User.get_team_users(current_user.id)
+
     @user_days = UserDay.all
     @user_day = UserDay.new
 
@@ -47,6 +48,8 @@ class UserDaysController < ApplicationController
   # POST /user_days.xml
   def create
     @user_day = UserDay.new(params[:user_day])
+
+    y @user_day
 
     today = Date.today
     #TODO this should be a selected year
