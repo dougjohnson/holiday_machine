@@ -4,9 +4,9 @@
         $("#user_days_errors").show();
 <% else -%>
         $("#user_days_errors").hide(300);
-        $("#user_day_reason").val("");
-        $("#user_day_no_days").val("");
+        $(".clearAfter").each(function(){
+            $(this).val("")
+        });
         $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days > 0 ? @user_day.no_days : '' %></td><td><%= @user_day.no_days < 0 ? @user_day.no_days.abs : '' %></td></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
-        $(".totalLeave").text(<%=@user_day.user.get_holiday_allowance.days_remaining %>);
-//        #TODO need to ensure only the nearest total is affected
+        $(".totalLeave<%=@user_day.user.id%>").text(<%=@user_day.user.get_holiday_allowance.days_remaining %>);
 <% end -%>

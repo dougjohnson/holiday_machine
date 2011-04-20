@@ -5,7 +5,12 @@ class AdministerController < ApplicationController
   #TODO restrict to managers only  via  / rename to something else
 
   def index
-#    @vacations = Vacation.where ["user_id = ?", current_user.id]
+    #TODO restrict holidays by year
+    @statuses = HolidayStatus.all
+    @users = User.get_team_users(current_user.id).includes(:vacations)
+    respond_to do |format|
+       format.html
+    end
   end
 
   def create
@@ -24,6 +29,7 @@ class AdministerController < ApplicationController
     render :nothing =>true
   end
 
+=begin
   def get_team_data
     vacations = Vacation.where("manager_id = ? or user_id = ?", current_user.id, current_user.id).includes(:user)
     #TODO move creation of this data to the model
@@ -43,5 +49,6 @@ class AdministerController < ApplicationController
       end
     end
   end
+=end
 
 end

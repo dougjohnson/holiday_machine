@@ -147,7 +147,6 @@ body {
     color: #fff;
 }
 
-
 #vacation_errors {
     background-color: #f3f8d1;
     border: 1px solid #ff0049;
@@ -293,6 +292,8 @@ fieldset.update {
 }
 
 table#manageDays {
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     border-collapse: collapse;
     margin: 0 0 30px -5px;
 
@@ -314,9 +315,6 @@ table#holidaysTable th {
 table#holidaysTable tr {
     border-bottom: 1px solid #3399CC;
 }
-
-/*table#holidaysTable tbody trhover {*/
-/*}*/
 
 table#holidaysTable  tr input.deleteButton:hover {
     cursor: pointer;
@@ -385,7 +383,7 @@ legend.login {
 #days_remaining {
     background-color: green;
     -moz-border-radius: 5px;
-    color :white;
+    color: white;
     border-radius: 5px;
     background-color: green;
     width: 500px;

@@ -1,8 +1,44 @@
-<% javascript_include_tag "administration" %>
+<!--<%# javascript_include_tag "administration" %>-->
 
-<script src="/javascripts/administration.js" type="text/javascript"></script>
+<table id="admininsterHols">
+  <% @users.each do |user| %>
+      <% if user.vacations.size > 0 %>
+          <tr>
+            <td colspan="6" style="text-decoration:blink"><%= user.full_name %></td>
+          </tr>
+          <tr>
+            <th>Date From</th>
+            <th>Date To</th>
+            <th>Description</th>
+            <th>Days Used</th>
+            <th>Status</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+      <% end %>
+      <% user.vacations.each do |holiday| %>
+          <tr>
+            <th><%= holiday.date_from.strftime("%d/%m/%Y") %></th>
+            <th><%= holiday.date_to.strftime("%d/%m/%Y") %></th>
+            <th><%= holiday.description %></th>
+            <th><%= holiday.working_days_used.to_s %></th>
+            <%#= simple_form_for holiday do |hol| -%>
+                <!--<td><%#= hol.association :holiday_status, :collection => @statuses, :label_method => :status %></td>-->
+                <!--<td><%#= hol.input :notes, :as => :string, :label_html_options=>{:style=>"display:none;"} %></td>-->
+                <!--<td><%#= hol.submit 'Go' %></td>-->
+            <%# end -%>
+             <%= form_for holiday do |hol| -%>
+                <td><%= hol.collection_select :holiday_status_id, @statuses, :id, :status %></td>
+                <td><%= hol.text_field :notes %></td>
+                <td><%= hol.submit 'Update Holiday' %></td>
+            <% end -%>
+          </tr>
+      <% end %>
+  <% end %>
 
-<div id="jqgrid2">
-  <table id="admin_grid"></table>
-  <div id="admin_pager"></div>
-</div>
+</table>
+
+<!--<div id="jqgrid2">-->
+<!--<table id="admin_grid"></table>-->
+<!--<div id="admin_pager"></div>-->
+<!--</div>-->

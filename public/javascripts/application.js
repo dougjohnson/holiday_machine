@@ -30,6 +30,26 @@ $(document).ready(function() {
     $('#vacation_date_from').datepicker();
     $("#vacation_date_to").datepicker();
 
+
+    $('a.delete').live('click', function(event) {
+
+        if (confirm("Are you sure you want to delete these days?"))
+            $.ajax({
+                url: this.href.replace('/destroy', ''),
+                type: 'post',
+                dataType: 'script',
+                data: { '_method': 'destroy' },
+                success: function() {
+                    alert("Success");
+                },
+                failure: function(){
+                    alert("failed");
+                }
+            });
+
+        return false;
+    });
+
 });
 
 function clearForm(myForm) {

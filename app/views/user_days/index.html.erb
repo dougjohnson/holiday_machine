@@ -7,7 +7,7 @@
       </tr>
       <tr class="userDayReadOnly2">
         <td>Total Days Leave:</td>
-        <td colspan="3" class="totalLeave"><%= user.get_holiday_allowance.days_remaining %></td>
+        <td colspan="4" class="totalLeave<%=user.id%>"><%= user.get_holiday_allowance.days_remaining %></td>
       </tr>
       <% counter = 0 %>
       <% user.user_days.each do |user_day| %>
@@ -16,6 +16,7 @@
                 <th>Reason</th>
                 <th>Days Added</th>
                 <th>Days Removed</th>
+                <th></th>
               </tr>
           <% end %>
           <% counter+=1 %>
@@ -23,14 +24,16 @@
             <td><%= user_day.reason %></td>
             <td><%= user_day.no_days > 0 ? user_day.no_days : '' %></td>
             <td><%= user_day.no_days < 0 ? user_day.no_days.abs : '' %></td>
+            <td><%= button_to "Delete", { :action => "destroy", :id => user_day.id },
+          :confirm => "Are you sure?", :method => :delete %></td>
           </tr>
       <% end %>
       <tr class="userDayForm formNo<%=user.id%>">
         <%= simple_form_for @user_day, :remote=>true do |f| %>
             <%= f.input :user_id, :as=>:hidden, :input_html => {:value=>user.id} %>
-            <td><%= f.input :reason, :input_html => {:maxlength => 40, :size=> 10} %></td>
-            <td><%= f.input :no_days, :input_html => {:maxlength => 3, :size=> 3} %></td>
-            <td><%= f.button :submit, :label_text=>"Add days" %></td>
+            <td><%= f.input :reason, :input_html => {:class=>"clearAfter", :maxlength => 40, :size=> 10} %></td>
+            <td><%= f.input :no_days, :input_html => {:class=>"clearAfter",:maxlength => 3, :size=> 3} %></td>
+            <td><%= f.submit 'Alter days' %></td>
         <% end %>
       </tr>
   <% end %>
