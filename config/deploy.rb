@@ -1,11 +1,20 @@
 set :application, "holiday_machine"
-set :domain, "thalamouse.com"
-#set :repository,  "ssh://#{domain}/path-to-your-git-repo/#{application}.git"
-set :repository, "file:///home/eamon/Projects/#{application}.git/.git"
-set :user, "root"
-set :use_sudo, true
-set :deploy_to, "/webapps/#{application}"
 set :scm, :git
+#set :domain, "thalamouse.com"
+set :repository, "git://github.com/etskelly/#{application}.git"
+set :scm_username, "etskelly"
+set :user, "root"
+#set :use_sudo, false
+set :deploy_to, "/webapps/#{application}"
+
+server "thalamouse.com", :app, :web, :db, :primary => true
+
+
+#ssh_options[:forward_agent] = true
+set :branch, "master"
+
+set :deploy_via, :remote_cache
+
 
 role :app, domain
 role :web, domain
