@@ -7,10 +7,11 @@ class UserSettingsController < ApplicationController
   end
 
   def update
-    p params
+    current_user.manager_id = params[:user][:manager_id]
+    current_user.save!
 
     respond_to do |format|
-      format.js {}
+      format.js
     end
   end
 
