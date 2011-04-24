@@ -2,10 +2,10 @@ $(document).ready(function (){
 
 <% if @vacation.errors.any? -%>
         $("#flash_notice").hide(300);
-        $("#vacation_errors").html("<%= escape_javascript(@vacation.errors.full_messages.to_sentence) %>");
-        $("#vacation_errors").show();
+        $("#error_panel").html("<%= escape_javascript(@vacation.errors.full_messages.to_sentence) %>");
+        $("#error_panel").show();
 <% else -%>
-        $("#vacation_errors").hide(300);
+        $("#error_panel").hide(300);
         $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
         $("#flash_notice").show();
         clearForm();

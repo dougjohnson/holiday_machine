@@ -147,25 +147,26 @@ body {
     color: #fff;
 }
 
-#vacation_errors {
-    background-color: #f3f8d1;
-    border: 1px solid #ff0049;
+#error_panel {
+    position:absolute;
+    top: 10px;
+    display:none;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-image: url('/images/BlueToWhiteGradient.jpg');
+    border: 1px solid #090968;
+    color: #090968;
+    height: 100%;
     width: 300px;
     font-size: medium;
-    float: right;
     font-weight: bold;
     padding: 10px;
 }
-
-#user_days_errors {
-    background-color: #f3f8d1;
-    border: 1px solid #ff0049;
-    width: 300px;
-    font-size: medium;
-    float: right;
-    font-weight: bold;
-    padding: 10px;
-}
+/*#error_panel .close {*/
+    /*position: relative;*/
+    /*top: 0px;*/
+    /*right: 0px;*/
+/*}*/
 
 #vacations_form {
     position: relative;

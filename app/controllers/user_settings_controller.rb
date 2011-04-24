@@ -8,7 +8,7 @@ class UserSettingsController < ApplicationController
 
   def update
     current_user.manager_id = params[:user][:manager_id]
-    current_user.save!
+    current_user.save
 
     respond_to do |format|
       format.js

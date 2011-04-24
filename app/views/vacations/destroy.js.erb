@@ -1,7 +1,7 @@
 <% if @failed -%>
         $("#flash_notice").hide(300);
-        $("#vacation_errors").html("<%= escape_javascript(@vacation.errors.full_messages.to_sentence) %>");
-        $("#vacation_errors").show();
+        $("#error_panel").html("<%= escape_javascript(@vacation.errors.full_messages.to_sentence) %>");
+        $("#error_panel").show();
 <% else -%>
         $("#holidaysTable tbody tr#<%=@row_id%>").remove();
         $("#days_remaining").html("Days Remaining:<%=@days_remaining%>");

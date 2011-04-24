@@ -1,12 +1,13 @@
 <% if @user_day.errors.any? -%>
-        $("#flash_notice").hide(300);
-        $("#user_days_errors").html("<%= escape_javascript(@user_day.errors.full_messages.to_sentence) %>");
-        $("#user_days_errors").show();
+    $("#flash_notice").hide(300);
+    $("#error_panel").html("<%= escape_javascript(@user_day.errors.full_messages.to_sentence) %>");
+    $('#error_panel').show('slow');
+    $('#error_panel').delay(5000).fadeOut('slow');
 <% else -%>
-        $("#user_days_errors").hide(300);
-        $(".clearAfter").each(function(){
-            $(this).val("")
-        });
-        $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days > 0 ? @user_day.no_days : '' %></td><td><%= @user_day.no_days < 0 ? @user_day.no_days.abs : '' %></td></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
-        $(".totalLeave<%=@user_day.user.id%>").text(<%=@user_day.user.get_holiday_allowance.days_remaining %>);
+    $("#error_panel").hide(300);
+    $(".clearAfter").each(function() {
+        $(this).val("")
+    });
+    $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days > 0 ? @user_day.no_days : '' %></td><td><%= @user_day.no_days < 0 ? @user_day.no_days.abs : '' %></td></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
+    $(".totalLeave<%=@user_day.user.id%>").text(<%=@user_day.user.get_holiday_allowance.days_remaining %>);
 <% end -%>
