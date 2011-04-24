@@ -389,5 +389,12 @@ legend.login {
     width: 500px;
 }
 
+#showMessages{
+    display: none;
+    color: red;
+    width: 100%;
+    height: 15px;
+}
+
 
 

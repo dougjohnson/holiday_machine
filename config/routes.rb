@@ -1,5 +1,7 @@
 HolidayMachine::Application.routes.draw do
 
+  get "user_settings/change_manager"
+
 #  get "user/manage_user"
 #  get "calendar/index"
 
@@ -12,6 +14,10 @@ HolidayMachine::Application.routes.draw do
   resources :user_days
 
   resources :settings
+
+  resources :user_settings
+
+#  match 'user_settings/save' => 'user_settings#save'
 
   #TODO nest settings
 

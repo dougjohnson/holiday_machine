@@ -1,0 +1,11 @@
+<fieldset class="login register">
+  <legend class="login register">Add or change manager</legend>
+
+    <%= simple_form_for @user, :url=>"/user_settings/update", :remote=>true do |f| %>
+        <p><%= f.label :manager_id, :name=>"Manager" %>
+          <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email %></p>
+        <p><%= f.submit "Choose Manager" %></p>
+      <div id="showMessages">Manager has been changed</div>
+    <% end %>
+
+</fieldset>
