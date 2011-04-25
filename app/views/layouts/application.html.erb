@@ -50,16 +50,16 @@
 
 
   <!--<%# unless user_signed_in? -%>-->
-      <!--<div id="main_login">-->
-        <!--<%#= simple_form_for("user", :url => user_session_path) do |f| %>-->
-            <!--<%#= f.input :email, :input_html=>{:size=>30} %>-->
-            <!--<%#= f.input :password, :input_html=>{:size=>20} %>-->
-            <!--&lt;!&ndash;<%# if devise_mapping.rememberable? -%>&ndash;&gt;-->
-            <!--&lt;!&ndash;<p><%#= f.check_box :remember_me %> <%#= f.label :remember_me %></p>&ndash;&gt;-->
-            <!--&lt;!&ndash;<%# end -%>&ndash;&gt;-->
-            <!--<p><%#= f.submit "Sign in" %></p>-->
-        <!--<%# end -%>-->
-      <!--</div>-->
+  <!--<div id="main_login">-->
+  <!--<%#= simple_form_for("user", :url => user_session_path) do |f| %>-->
+  <!--<%#= f.input :email, :input_html=>{:size=>30} %>-->
+  <!--<%#= f.input :password, :input_html=>{:size=>20} %>-->
+  <!--&lt;!&ndash;<%# if devise_mapping.rememberable? -%>&ndash;&gt;-->
+  <!--&lt;!&ndash;<p><%#= f.check_box :remember_me %> <%#= f.label :remember_me %></p>&ndash;&gt;-->
+  <!--&lt;!&ndash;<%# end -%>&ndash;&gt;-->
+  <!--<p><%#= f.submit "Sign in" %></p>-->
+  <!--<%# end -%>-->
+  <!--</div>-->
   <!--<%# end -%>-->
 
 
@@ -83,7 +83,10 @@
 </div>
 
 <div id="error_panel">
-  <img src="/images/close.jpeg" alt="close" class="close"/>
+  <div id="closeButton">
+  </div>
+  <div id="messages">
+  </div>
 </div>
 
 </body>

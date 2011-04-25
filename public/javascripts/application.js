@@ -42,12 +42,16 @@ $(document).ready(function() {
                 success: function() {
                     alert("Success");
                 },
-                failure: function(){
+                failure: function() {
                     alert("failed");
                 }
             });
 
         return false;
+    });
+
+    $('#closeButton').click(function() {
+        $("#error_panel").hide('slide', {direction: 'right'}, 1000);
     });
 
 });

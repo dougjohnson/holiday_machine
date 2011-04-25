@@ -2,7 +2,7 @@ class VacationsController < ApplicationController
 
   before_filter :authenticate_user!
 
-      # GET /vacations
+  # GET /vacations
   def index
     #Populates the calendar, so restricted by manager
     @vacations = Vacation.team_holidays current_user.manager_id

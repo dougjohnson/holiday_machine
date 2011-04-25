@@ -1,8 +1,7 @@
 <% if @user_day.errors.any? -%>
     $("#flash_notice").hide(300);
-    $("#error_panel").html("<%= escape_javascript(@user_day.errors.full_messages.to_sentence) %>");
-    $('#error_panel').show('slow');
-    $('#error_panel').delay(5000).fadeOut('slow');
+    $("#messages").html("<%= raw(show_errors_as_list(@user_day.errors)) %>");
+    $('#error_panel').show('slide', {direction: 'left'}, 1000);
 <% else -%>
     $("#error_panel").hide(300);
     $(".clearAfter").each(function() {
