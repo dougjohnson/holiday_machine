@@ -24,7 +24,8 @@ $(document).ready(function() {
         eventClick: function() {
             $dialog.dialog('open');
         },
-        events: "/vacations"
+        theme: true,
+        events: "/calendar"
     });
 
     $('#vacation_date_from').datepicker();

@@ -35,6 +35,10 @@ html .fc,
 
 /* Header
 ------------------------------------------------------------------------*/
+.fc-header{
+    /*Added by  E.Skelly to ensure the header is not flying off to the right*/
+    float: left;
+}
 
 .fc-header td {
 	white-space: nowrap;

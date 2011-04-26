@@ -2,6 +2,16 @@ class CalendarController < ApplicationController
 
   before_filter :authenticate_user!
 
+  def index
+    #Populate the calendar
+    respond_to do |format|
+      format.json {
+        holidays_json = Vacation.holidays_as_json params[:start], params[:end]
+        render :json => holidays_json
+      }
+    end
+  end
+
   def show
     @vacations = Vacation.all
 
@@ -10,7 +20,7 @@ class CalendarController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @vacations }
+      format.xml { render :xml => @vacations }
     end
   end
 

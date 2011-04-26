@@ -2,9 +2,6 @@ HolidayMachine::Application.routes.draw do
 
   get "user_settings/change_manager"
 
-#  get "user/manage_user"
-#  get "calendar/index"
-
   resources :calendar
 
   match 'vacations/holiday_json' => 'vacations#holiday_json'

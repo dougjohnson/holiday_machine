@@ -55,14 +55,16 @@ class Vacation < ActiveRecord::Base
 
   def self.convert_to_json holidays, bank_holidays
     #TODO the colour class should be per user not per holiday
+    hol_colors = ['yellow', 'green', 'red', 'blue']
+
     json = []
     holidays.each do |hol|
       email = hol.user.email
-      hol_hash = {:id => hol.id, :title=>hol.user.forename + ": "+ hol.description, :start=>hol.date_from.to_s, :end=>hol.date_to.to_s, :className=>"holcolor" + hol.holiday_status_id.to_s}
+      hol_hash = {:id => hol.id, :title=>hol.user.forename + ": "+ hol.description, :start=>hol.date_from.to_s, :end=>hol.date_to.to_s, :color=>hol_colors[hol.holiday_status_id-1]}
       json << hol_hash
     end
     bank_holidays.each do |hol|
-      hol_hash = {:id => hol.id, :title=>hol.name, :start=>hol.date_of_hol.to_s, :className=>"bankHol"}
+      hol_hash = {:id => hol.id, :title=>hol.name, :start=>hol.date_of_hol.to_s, :color=>"black"}
       json << hol_hash
     end
     json

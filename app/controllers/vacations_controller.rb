@@ -5,8 +5,6 @@ class VacationsController < ApplicationController
   # GET /vacations
   def index
     #Populates the calendar, so restricted by manager
-#    @vacations = Vacation.team_holidays current_user.manager_id
-
     @vacations = Vacation.user_holidays current_user.id
 
     @vacations ||= []
@@ -19,10 +17,10 @@ class VacationsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {
-        holidays_json = Vacation.holidays_as_json params[:start], params[:end]
-        render :json => holidays_json
-      }
+#      format.json {
+#        holidays_json = Vacation.holidays_as_json params[:start], params[:end]
+#        render :json => holidays_json
+#      }
     end
   end
 
