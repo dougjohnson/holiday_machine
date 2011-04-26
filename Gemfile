@@ -8,8 +8,6 @@ gem 'devise', '1.1.7'
 
 gem 'cancan'
 
-#gem 'savon'
-
 gem 'simple_form'
 
 gem 'uuid'

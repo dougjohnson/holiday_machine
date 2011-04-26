@@ -5,7 +5,12 @@ class VacationsController < ApplicationController
   # GET /vacations
   def index
     #Populates the calendar, so restricted by manager
-    @vacations = Vacation.team_holidays current_user.manager_id
+#    @vacations = Vacation.team_holidays current_user.manager_id
+
+    @vacations = Vacation.user_holidays current_user.id
+
+    @vacations ||= []
+
     @vacation = Vacation.new
 
     @holiday_statuses = HolidayStatus.pending_only

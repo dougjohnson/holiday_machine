@@ -11,6 +11,7 @@ class Vacation < ActiveRecord::Base
   after_create :decrease_days_remaining
 
   scope :team_holidays, lambda { |manager_id| where(:manager_id => manager_id) }
+  scope :user_holidays, lambda {|user_id| where(:user_id => user_id)}
 
   validates_presence_of :date_from
   validates_presence_of :date_to
