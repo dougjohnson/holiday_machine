@@ -1,4 +1,4 @@
-<%= simple_form_for(@vacation, :remote=>true) do |f| %>
+<%= simple_form_for(@vacation, :remote=>true, :validate => true) do |f| %>
 
     <fieldset class="vacation create">
 
@@ -7,13 +7,9 @@
         <%= f.input :date_from, :as=>:string, :input_html => { :maxlength => 10, :size=> 10, :value => Date.today.strftime("%d/%m/%Y") }  %>
         <%= f.input :date_to, :as=>:string, :input_html => { :maxlength => 10, :size=> 10,:value => Date.today.strftime("%d/%m/%Y") } %>
         <%= f.input :description, :input_html => { :size=> 30 } %>
-        <%#= f.label :holiday_status_id, :name=>"Status" %>
-        <%#= f.collection_select :holiday_status_id, @holiday_statuses, :id, :status %>
-        <!--<%#= f.input :notes, :input_html=>{:readonly=>'readonly', :rows=>2} %>-->
 
       <div class="actions">
         <%= f.button :submit %>
-        <!--<input type="button" value="Cancel" id="cancelUpdate" style="display: none;"/>-->
       </div>
 
     </fieldset>
