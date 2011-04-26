@@ -1,4 +1,5 @@
 <% if @user_day.errors.any? -%>
+    alert("Hello");
     $("#flash_notice").hide(300);
     $("#messages").html("<%= raw(show_errors_as_list(@user_day.errors)) %>");
     $('#error_panel').show('slide', {direction: 'left'}, 1000);

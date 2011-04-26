@@ -32,6 +32,8 @@ GEM
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     cancan (1.6.4)
+    client_side_validations (3.0.4)
+      activesupport (~> 3.0.0)
     devise (1.1.7)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
@@ -97,6 +99,7 @@ PLATFORMS
 
 DEPENDENCIES
   cancan
+  client_side_validations
   devise (= 1.1.7)
   mysql2
   rails (= 3.0.7)

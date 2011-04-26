@@ -46,7 +46,7 @@ class VacationsController < ApplicationController
     respond_to do |format|
       if @vacation.save
         unless manager.nil?
-          HolidayMailer.holiday_actioned(current_user, manager, @vacation).deliver
+          HolidayMailer.holiday_actioned(manager, @vacation).deliver
         end
         @days_remaining = current_user.get_holiday_allowance.days_remaining
 

@@ -16,6 +16,8 @@ gem 'uuid'
 
 gem "simple-navigation"
 
+gem 'client_side_validations'
+
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
