@@ -33,11 +33,11 @@ class Vacation < ActiveRecord::Base
     self[:date_to] = convert_uk_date_to_iso val
   end
 
-  def self.holidays_as_json start_date, end_date
-    #TODO restrict by team
+  def self.team_holidays_as_json current_user, start_date, end_date
+    #TODO filter this to show all hols, by team, and by user
     date_from = Time.at(start_date.to_i).to_date
     date_to = Time.at(end_date.to_i).to_date
-    holidays = self.where "date_from >= ? and date_to <= ?", date_from, date_to
+    holidays = self.where "date_from >= ? and date_to <= ? and (manager_id=? or user_id=?)", date_from, date_to, current_user.manager_id, current_user.id
     bank_holidays = BankHoliday.where "date_of_hol between ? and ? ", date_from, date_to
     self.convert_to_json holidays, bank_holidays
   end
