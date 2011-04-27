@@ -3,9 +3,9 @@
 <table id="admininsterHols">
   <% @users.each do |user| %>
       <% if user.vacations.size > 0 %>
-          <tr>
-            <td colspan="6" style="text-decoration:blink"><%= user.full_name %></td>
-          </tr>
+          <thead>
+            <th style="color:green; float:left;" colspan="6"><%= user.full_name %></th>
+          </thead>
           <tr>
             <th>Date From</th>
             <th>Date To</th>
@@ -22,12 +22,7 @@
             <th><%= holiday.date_to.strftime("%d/%m/%Y") %></th>
             <th><%= holiday.description %></th>
             <th><%= holiday.working_days_used.to_s %></th>
-            <%#= simple_form_for holiday do |hol| -%>
-                <!--<td><%#= hol.association :holiday_status, :collection => @statuses, :label_method => :status %></td>-->
-                <!--<td><%#= hol.input :notes, :as => :string, :label_html_options=>{:style=>"display:none;"} %></td>-->
-                <!--<td><%#= hol.submit 'Go' %></td>-->
-            <%# end -%>
-             <%= form_for holiday do |hol| -%>
+             <%= form_for (holiday, :remote => true) do |hol| -%>
                 <td><%= hol.collection_select :holiday_status_id, @statuses, :id, :status %></td>
                 <td><%= hol.text_field :notes %></td>
                 <td><%= hol.submit 'Update Holiday' %></td>
@@ -37,8 +32,3 @@
   <% end %>
 
 </table>
-
-<!--<div id="jqgrid2">-->
-<!--<table id="admin_grid"></table>-->
-<!--<div id="admin_pager"></div>-->
-<!--</div>-->

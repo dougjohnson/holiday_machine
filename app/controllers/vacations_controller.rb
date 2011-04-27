@@ -63,6 +63,20 @@ class VacationsController < ApplicationController
     end
   end
 
+  def update
+    vacation = Vacation.find_by_id(params[:id])
+    vacation.notes = params[:vacation][:notes]
+    vacation.holiday_status_id = params[:vacation][:holiday_status_id]
+    vacation.save
+    manager = User.find_by_id(vacation.manager_id)
+    #TODO prevent holiday status being switched to pending
+    if manager
+      HolidayMailer.holiday_actioned(manager, vacation).deliver
+    end
+    #TODO what is the response to the grid??
+    render :nothing =>true
+  end
+
 
   # DELETE /vacations/1
   # DELETE /vacations/1.xml
