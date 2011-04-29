@@ -1,0 +1,11 @@
+$(document).ready(function (){
+<% if @vacation.errors.any? -%>
+        $("#flash_notice").hide(300);
+        $("#messages").html("<%= raw(show_errors_as_list(@vacation.errors)) %>");
+        $('#error_panel').show('slide', {direction: 'right'}, 1000);
+<% else -%>
+        $("#error_panel").hide(300);
+        $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
+        $("#flash_notice").show();
+<% end -%>
+});
