@@ -17,10 +17,6 @@ class VacationsController < ApplicationController
 
     respond_to do |format|
       format.html
-#      format.json {
-#        holidays_json = Vacation.holidays_as_json params[:start], params[:end]
-#        render :json => holidays_json
-#      }
     end
   end
 
@@ -64,17 +60,21 @@ class VacationsController < ApplicationController
   end
 
   def update
-    vacation = Vacation.find_by_id(params[:id])
-    vacation.notes = params[:vacation][:notes]
-    vacation.holiday_status_id = params[:vacation][:holiday_status_id]
-    vacation.save
-    manager = User.find_by_id(vacation.manager_id)
+    @vacation = Vacation.find_by_id(params[:id])
+    @vacation.notes = params[:vacation][:notes]
+    @vacation.holiday_status_id = params[:vacation][:holiday_status_id]
+    @vacation.save
+    manager = User.find_by_id(@vacation.manager_id)
     #TODO prevent holiday status being switched to pending
     if manager
-      HolidayMailer.holiday_actioned(manager, vacation).deliver
+      HolidayMailer.holiday_actioned(manager, @vacation).deliver
     end
-    #TODO what is the response to the grid??
-    render :nothing =>true
+
+    respond_to do |format|
+      flash[:notice] = "Holiday status has been changed"
+      format.js
+    end
+
   end
 
 

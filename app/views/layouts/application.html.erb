@@ -29,13 +29,7 @@
 <body>
 
 <div id="container">
-
-  <div id="flash_notice" style="display: none;"></div>
   <%= content_tag :h1, yield(:title) if show_title? %>
-
-  <%#- flash.each do |name, msg| -%>
-  <%#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-  <%#- end -%>
 
   <% if user_signed_in? -%>
       <div id="top_navigation">
@@ -47,6 +41,8 @@
         <%= link_to 'Sign out', destroy_user_session_path %>
       </div>
   <% end -%>
+
+  <div id="flash_notice" style="display: none;"></div>
 
 
   <!--<%# unless user_signed_in? -%>-->

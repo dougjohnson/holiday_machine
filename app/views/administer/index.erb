@@ -1,12 +1,11 @@
-<!--<%# javascript_include_tag "administration" %>-->
-
-<table id="admininsterHols">
+<!--<table id="admininsterHols">-->
+<table id="holidaysTable" class="standard_table">
   <% @users.each do |user| %>
       <% if user.vacations.size > 0 %>
           <thead>
-            <th style="color:green; float:left;" colspan="6"><%= user.full_name %></th>
+            <th style="float:left;" colspan="6"><%= user.full_name %></th>
           </thead>
-          <tr>
+          <tr class="subHead">
             <th>Date From</th>
             <th>Date To</th>
             <th>Description</th>
@@ -18,10 +17,10 @@
       <% end %>
       <% user.vacations.each do |holiday| %>
           <tr>
-            <th><%= holiday.date_from.strftime("%d/%m/%Y") %></th>
-            <th><%= holiday.date_to.strftime("%d/%m/%Y") %></th>
-            <th><%= holiday.description %></th>
-            <th><%= holiday.working_days_used.to_s %></th>
+            <td><%= holiday.date_from.strftime("%d/%m/%Y") %></td>
+            <td><%= holiday.date_to.strftime("%d/%m/%Y") %></td>
+            <td><%= holiday.description %></td>
+            <td><%= holiday.working_days_used.to_s %></td>
              <%= form_for (holiday, :remote => true) do |hol| -%>
                 <td><%= hol.collection_select :holiday_status_id, @statuses, :id, :status %></td>
                 <td><%= hol.text_field :notes %></td>

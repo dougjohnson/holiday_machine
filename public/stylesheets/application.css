@@ -29,10 +29,12 @@ body {
 
 #flash_notice, #flash_alert {
     padding: 5px 8px;
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
 #flash_notice {
+    -moz-border-radius: 10px;
+    border-radius: 10px;
     background-color: #CFC;
     border: solid 1px #6C6;
 }
@@ -326,13 +328,14 @@ table#holidaysTable {
     border-collapse: collapse;
 }
 
-table#holidaysTable th {
+table#holidaysTable tbody th {
     color: white;
     text-align: left;
     width: 200px;
 }
 
-table#holidaysTable tr {
+table#holidaysTable tbody tr {
+    color: black;
     border-bottom: 1px solid #3399CC;
 }
 
@@ -346,6 +349,17 @@ table #holidaysTable  tr.top th {
 
 table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {
     border: 0;
+}
+
+.subHead{
+    padding-right:10px;
+    color: black;
+    background-color: #097e09;
+}
+
+.subRow{
+    padding-right:10px;
+    color: black;
 }
 
 .row_highlight {
@@ -409,12 +423,6 @@ legend.login {
     width: 500px;
 }
 
-/*#showMessages{*/
-    /*display: none;*/
-    /*color: red;*/
-    /*width: 100%;*/
-    /*height: 15px;*/
-/*}*/
 
 
 
