@@ -1,12 +1,11 @@
 <% if @user_day.errors.any? -%>
-    alert("Hello");
     $("#flash_notice").hide(300);
     $("#messages").html("<%= raw(show_errors_as_list(@user_day.errors)) %>");
     $('#error_panel').show('slide', {direction: 'left'}, 1000);
 <% else -%>
     $("#error_panel").hide(300);
     $(".clearAfter").each(function() {
-        $(this).val("")
+        $(this).val("");
     });
     $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days > 0 ? @user_day.no_days : '' %></td><td><%= @user_day.no_days < 0 ? @user_day.no_days.abs : '' %></td></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
     $(".totalLeave<%=@user_day.user.id%>").text(<%=@user_day.user.get_holiday_allowance.days_remaining %>);
