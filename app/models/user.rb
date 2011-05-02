@@ -34,10 +34,12 @@ class User < ActiveRecord::Base
 
   def create_allowance
     today = Date.today
-    holiday_year = HolidayYear.where('date_start<=? and date_end>=?', today, today).first
-    days_allowed = UserDaysForYear.new(:user_id => self.id, :holiday_year_id => holiday_year.id)
-    days_allowed.days_remaining=25
-    days_allowed.save
+    holiday_years = HolidayYear.all
+    holiday_years.each do |year|
+      days_allowed = UserDaysForYear.new(:user_id => self.id, :holiday_year_id => year.id)
+      days_allowed.days_remaining=25
+      days_allowed.save
+    end
   end
 
   def delete_allowance

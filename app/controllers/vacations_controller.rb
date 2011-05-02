@@ -5,7 +5,9 @@ class VacationsController < ApplicationController
   # GET /vacations
   def index
     #Populates the calendar, so restricted by manager
-    @vacations = Vacation.user_holidays current_user.id
+
+    #TODO what happens when a new holiday year is created
+    #TODO (see the create_allowance method in users)
 
     @vacations ||= []
 
@@ -13,9 +15,17 @@ class VacationsController < ApplicationController
 
     @holiday_statuses = HolidayStatus.pending_only
 
-    @days_remaining = current_user.get_holiday_allowance.days_remaining
+    if params[:holiday_year_id]
+      user_days_per_year = UserDaysForYear.where(:user_id=> current_user.id, :holiday_year_id=>params[:holiday_year_id])
+      @days_remaining = user_days_per_year.days_remaining
+      @vacations = Vacation.user_holidays(current_user.id).per_holiday_year(params[:holiday_year_id])
+    else
+      @days_remaining = current_user.get_holiday_allowance.days_remaining
+      @vacations = Vacation.user_holidays current_user.id
+    end
 
     respond_to do |format|
+      format.js
       format.html
     end
   end

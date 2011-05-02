@@ -8,6 +8,7 @@
   <th>Delete</th>
   </thead>
   <tbody>
+  <% y @vacations %>
   <% @vacations.each do |vacation| %>
       <tr id="<%=vacation.id%>">
         <td><%=vacation.description%></td>

@@ -19,11 +19,18 @@ $(document).ready(function() {
         }
     });
 
-
-    $(".deleteButton").live('click',function(){
+    $("#vacation_holiday_year_id").change(function() {
         $.ajax({
-          type: 'DELETE',
-          url: '/vacations/'+$(this).closest('tr').attr('id')
+            type: 'GET',
+            data: {holiday_year_id: $(this).val()},
+            url: '/vacations/'
+        });
+    });
+
+    $(".deleteButton").live('click', function() {
+        $.ajax({
+            type: 'DELETE',
+            url: '/vacations/' + $(this).closest('tr').attr('id')
         });
     });
 

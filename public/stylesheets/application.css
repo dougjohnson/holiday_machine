@@ -420,9 +420,24 @@ legend.login {
     color: white;
     border-radius: 5px;
     background-color: green;
-    width: 500px;
+    width: 350px;
+    height: 50px;
 }
 
+#days_remaining label {
+   width: 50px;
+}
+
+#year_filter {
+    height:20px;
+}
+
+#show_days{
+    position: relative;
+    left: 0px;
+    top: 10px;
+    font-weight:bold
+}
 
 
 
