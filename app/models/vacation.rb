@@ -118,8 +118,9 @@ class Vacation < ActiveRecord::Base
     end
 
     unless self[:holiday_year]
-      current_year = HolidayYear.current_year
-      self.holiday_year = HolidayYear.current_year
+#       current_year = HolidayYear.current_year
+#      self.holiday_year = HolidayYear.where('date_start<=? and date_end>=?', today, today).first
+      self.holiday_year = HolidayYear.holiday_year_used(self[:date_from], self[:date_to]).first
     end
 
   end

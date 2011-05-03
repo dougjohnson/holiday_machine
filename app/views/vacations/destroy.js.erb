@@ -1,10 +1,10 @@
 <% if @failed -%>
-$("#flash_notice").hide(300);
-$("#messages").html("<%= escape_javascript(@vacation.errors.full_messages.to_sentence) %>");
-$('#error_panel').show('slide', {direction: 'right'}, 1000);
+    $("#flash_notice").hide(300);
+    $("#messages").html("<%= escape_javascript(@vacation.errors.full_messages.to_sentence) %>");
+    $('#error_panel').show('slide', {direction: 'right'}, 1000);
 <% else -%>
-$("#holidaysTable tbody tr#<%=@row_id%>").remove();
-$("#days_remaining").html("Days Remaining:<%=@days_remaining%>");
-$("#flash_notice").show();
-$("#flash_notice").fadeOut(10000);
+    $("#holidaysTable tbody tr#<%=@row_id%>").remove();
+    $("#show_days").html("Days Remaining:<%=@days_remaining%>");
+    $("#flash_notice").show();
+    $("#flash_notice").fadeOut(10000);
 <% end -%>

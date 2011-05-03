@@ -18,7 +18,7 @@
       <p><%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %></p>
 
       <p><%= f.label :manager_id, :name=>"Manager" %><
-      <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email %></p>
+      <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email, :prompt => "Choose a manager" %></p>
 
       <p><%= f.submit "Save" %></p>
 

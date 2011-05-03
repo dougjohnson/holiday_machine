@@ -16,7 +16,7 @@ class VacationsController < ApplicationController
     @holiday_statuses = HolidayStatus.pending_only
 
     if params[:holiday_year_id]
-      user_days_per_year = UserDaysForYear.where(:user_id=> current_user.id, :holiday_year_id=>params[:holiday_year_id])
+      user_days_per_year = UserDaysForYear.where(:user_id=> current_user.id, :holiday_year_id=>params[:holiday_year_id]).first
       @days_remaining = user_days_per_year.days_remaining
       @vacations = Vacation.user_holidays(current_user.id).per_holiday_year(params[:holiday_year_id])
     else
@@ -59,7 +59,6 @@ class VacationsController < ApplicationController
         end
         @days_remaining = current_user.get_holiday_allowance.days_remaining
 
-        #TODO check the mailer was successful
         flash[:notice] = "Successfully created holiday."
         format.js
       else

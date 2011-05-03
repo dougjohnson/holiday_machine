@@ -34,16 +34,6 @@ $(document).ready(function() {
         });
     });
 
-
-    $("#holidaysTable tr").hover(
-            function() {  // mouseover
-                $(this).addClass('highlight');
-            },
-            function() {  // mouseout
-                $(this).removeClass('highlight');
-            }
-            );
-
     $("#cancelUpdate").click(function() {
         clearUpdate();
     });

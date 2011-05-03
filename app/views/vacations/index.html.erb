@@ -11,12 +11,12 @@
     <%= simple_form_for(@vacation, :remote=>true) do |f| %>
         <%= f.label :Year %>
         <%= f.collection_select :holiday_year_id, HolidayYear.all, :id, :description %>
-    <% end %>
+    <%end %>
   </div>
   <div id="show_days">Days Remaining:<%= @days_remaining %></div>
 </div>
 
-</br>
+<br/>
 
 <div id="tableHolder" style="float:left; width:600px;">
   <%= render 'table' %>
