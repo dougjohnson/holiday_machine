@@ -4,11 +4,6 @@ class VacationsController < ApplicationController
 
   # GET /vacations
   def index
-    #Populates the calendar, so restricted by manager
-
-    #TODO what happens when a new holiday year is created
-    #TODO (see the create_allowance method in users)
-
     @vacations ||= []
 
     @vacation = Vacation.new
