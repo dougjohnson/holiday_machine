@@ -11,8 +11,13 @@ $(document).ready(function (){
         clearForm();
         $("#vacation_date_from").val($.formatDate(new Date(), "dd/MM/yyyy"));
         $("#vacation_date_to").val($.formatDate(new Date(), "dd/MM/yyyy"));
-        $('#holidaysTable tbody').append("<%= raw(create_holiday_row(@vacation))%>");
-        $("#show_days").html("Days Remaining:<%=@days_remaining%>");
+
+        var holiday_year_id = $("#holiday_year_id").val();
+//        alert(holiday_year_id);
+        if (holiday_year_id == <%=@vacation.holiday_year_id%>){
+            $('#holidaysTable tbody').append("<%= raw(create_holiday_row(@vacation))%>");
+            $("#show_days").html("Days Remaining:<%=@days_remaining%>");
+        }
 <% end -%>
 
 });

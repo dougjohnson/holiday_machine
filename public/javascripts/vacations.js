@@ -19,7 +19,8 @@ $(document).ready(function() {
         }
     });
 
-    $("#vacation_holiday_year_id").change(function() {
+    $("#holiday_year_id").change(function() {
+        $("#vacation_holiday_year_id").val($(this).val());
         $.ajax({
             type: 'GET',
             data: {holiday_year_id: $(this).val()},

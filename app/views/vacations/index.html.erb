@@ -4,13 +4,11 @@
 
 <%= render 'form' %>
 
-<!--TODO add years filter for the days remaining and table - default to this year-->
-
 <div id="days_remaining">
   <div id="year_filter">
-    <%= simple_form_for(@vacation, :remote=>true) do |f| %>
+    <%= simple_form_for('holiday_year', :remote=>true) do |f| %>
         <%= f.label :Year %>
-        <%= f.collection_select :holiday_year_id, HolidayYear.all, :id, :description %>
+        <%= f.collection_select :id, HolidayYear.all, :id, :description, :selected => HolidayYear.current_year.id  %>
     <%end %>
   </div>
   <div id="show_days">Days Remaining:<%= @days_remaining %></div>

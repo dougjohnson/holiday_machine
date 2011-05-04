@@ -7,6 +7,8 @@ class VacationsController < ApplicationController
     @vacations ||= []
 
     @vacation = Vacation.new
+    #Initially sets the current year as default - TODO ensure this is the case for the dropdown
+    @vacation.holiday_year_id = HolidayYear.current_year.id
 
     @holiday_statuses = HolidayStatus.pending_only
 
@@ -41,6 +43,7 @@ class VacationsController < ApplicationController
   # POST /vacations.xml
   def create
     @vacation = Vacation.new(params[:vacation])
+    @vacation.holiday_year_id = nil #THIS MUST BE REMOVED OR WILL BE FROM THE FILTER
     @vacation.user = current_user
     @vacation.holiday_status_id = 1
     manager_id = current_user.manager_id
@@ -52,7 +55,9 @@ class VacationsController < ApplicationController
         unless manager.nil?
           HolidayMailer.holiday_actioned(manager, @vacation).deliver
         end
-        @days_remaining = current_user.get_holiday_allowance.days_remaining
+
+        user_days_per_year = UserDaysForYear.where(:user_id=> current_user.id, :holiday_year_id => params[:vacation][:holiday_year_id]).first
+        @days_remaining = user_days_per_year.days_remaining
 
         flash[:notice] = "Successfully created holiday."
         format.js

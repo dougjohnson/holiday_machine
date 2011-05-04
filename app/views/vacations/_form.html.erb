@@ -4,6 +4,7 @@
 
       <legend class="vacation create">Register Holiday</legend>
 
+        <%= f.input :holiday_year_id, :as=>:hidden %>
         <%= f.input :date_from, :as=>:string, :input_html => { :maxlength => 10, :size=> 10, :value => Date.today.strftime("%d/%m/%Y") }  %>
         <%= f.input :date_to, :as=>:string, :input_html => { :maxlength => 10, :size=> 10,:value => Date.today.strftime("%d/%m/%Y") } %>
         <%= f.input :description, :input_html => { :size=> 30 } %>
