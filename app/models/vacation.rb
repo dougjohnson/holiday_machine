@@ -4,7 +4,7 @@ class Vacation < ActiveRecord::Base
   belongs_to :holiday_year
   belongs_to :user
 
-  before_save :save_working_days
+  before_save :save_working_days, :check_if_days_straddle
   before_destroy :check_if_holiday_has_passed
 
   after_destroy :add_days_remaining
@@ -23,6 +23,8 @@ class Vacation < ActiveRecord::Base
   validate :holiday_must_not_straddle_holiday_years
 
   validate :no_overlapping_holidays, :on => :create
+
+  validate :dont_exceed_days_remaining, :on => :create
 
   #TODO validate against the holiday year - a holiday must only belong to
 
@@ -71,6 +73,7 @@ class Vacation < ActiveRecord::Base
     json
   end
 
+  #TODO add the overlaps between team members
 #  def intra_team_holiday_clashes
 #  end
 
@@ -83,13 +86,10 @@ class Vacation < ActiveRecord::Base
     errors.add(:working_days_used, " - This holiday request uses no working days") if @working_days==0
   end
 
-#  def date_not_more_than_one_month_ago
-#    errors.add(:date_from, "must be less than one month ago") if date_from < (Date.today - 1.month)
-#  end
 
   def holiday_must_not_straddle_holiday_years
     #TODO this query will not be right - test with sql
-    number_years = HolidayYear.holiday_years_containing_holiday(date_from, date_from).count
+    number_years = HolidayYear.holiday_years_containing_holiday(date_from, date_to).count
     errors.add(:date_to, "- Holiday must not cross years") if number_years> 1
   end
 
@@ -110,7 +110,7 @@ class Vacation < ActiveRecord::Base
   end
 
   def save_working_days #TODO rename method
-    self[:working_days_used] = @working_days # = business_days_between
+    self[:working_days_used] = @working_days
 
     unless self[:uuid]
       guid = UUID.new
@@ -131,15 +131,21 @@ class Vacation < ActiveRecord::Base
   end
 
   def decrease_days_remaining
-    holiday_allowance = self.user.get_holiday_allowance
+    holiday_allowance = self.user.get_holiday_allowance_for_dates self.date_from, self.date_to
     holiday_allowance.days_remaining -= business_days_between
     holiday_allowance.save
   end
 
   def add_days_remaining
-    holiday_allowance = self.user.get_holiday_allowance
+    holiday_allowance = self.user.get_holiday_allowance_for_dates self.date_from, self.date_to
     holiday_allowance.days_remaining += business_days_between
     holiday_allowance.save
+  end
+
+  def dont_exceed_days_remaining
+     holiday_allowance = self.user.get_holiday_allowance_for_dates self.date_from, self.date_to
+     if holiday_allowance == 0 then return end
+     errors.add(:working_days_used, "-Number of days selected exceeds your allowance!") if holiday_allowance.days_remaining < business_days_between
   end
 
 end

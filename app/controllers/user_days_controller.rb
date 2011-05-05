@@ -70,7 +70,7 @@ class UserDaysController < ApplicationController
   # DELETE /user_days/1.xml
   def destroy
     @user_day = UserDay.find(params[:id])
-    @allowance = @user_day.user.get_holiday_allowance
+    @allowance = @user_day.user.get_holiday_allowance_for_dates self[:date_from], self[:date_to]
     @allowance.days_remaining -= @user_day.no_days
     @user_day.destroy
     @allowance.save

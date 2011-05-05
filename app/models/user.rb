@@ -25,7 +25,13 @@ class User < ActiveRecord::Base
     self[:forename] + " " + self[:surname]
   end
 
-  def get_holiday_allowance
+  def get_holiday_allowance_for_dates date_from, date_to
+    holiday_year = HolidayYear.where('date_start<=? and date_end>=?', date_from, date_to).first
+    allowance = UserDaysForYear.where("user_id = ? and holiday_year_id = ?", self.id, holiday_year.id).first
+    allowance
+  end
+
+  def get_holiday_allowance #For current year
     today = Date.today
     holiday_year = HolidayYear.where('date_start<=? and date_end>=?', today, today).first
     allowance = UserDaysForYear.where("user_id = ? and holiday_year_id = ?", self.id, holiday_year.id).first
@@ -43,6 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def delete_allowance
+    #TODO this needs to be for the current holiday year
     today = Date.today
     holiday_year = HolidayYear.where('date_start<=? and date_end>=?', today, today).first
     UserDaysForYear.destroy(:user_id => self.id, :holiday_year_id => holiday_year.id)
