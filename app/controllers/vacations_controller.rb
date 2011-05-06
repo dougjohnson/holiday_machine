@@ -101,9 +101,10 @@ class VacationsController < ApplicationController
         end
         @days_remaining = current_user.get_holiday_allowance.days_remaining
         @row_id = params[:id]
-        flash[:notice] = "Holiday deleted"
         @failed = false
+        flash[:notice] = "Holiday deleted"
         format.js
+        p flash[:notice]
       else
         flash[:notice] = "Could not delete a holiday which has passed"
         @failed = true

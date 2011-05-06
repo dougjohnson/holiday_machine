@@ -4,7 +4,7 @@ class Vacation < ActiveRecord::Base
   belongs_to :holiday_year
   belongs_to :user
 
-  before_save :save_working_days, :check_if_days_straddle
+  before_save :save_working_days
   before_destroy :check_if_holiday_has_passed
 
   after_destroy :add_days_remaining
@@ -18,13 +18,12 @@ class Vacation < ActiveRecord::Base
   validates_presence_of :date_to
   validates_presence_of :description
 
-  validate :date_from_must_be_before_date_to
-  validate :working_days_greater_than_zero
   validate :holiday_must_not_straddle_holiday_years
 
-  validate :no_overlapping_holidays, :on => :create
-
   validate :dont_exceed_days_remaining, :on => :create
+  validate :date_from_must_be_before_date_to#, :unless => self.errors.size > 1
+  validate :working_days_greater_than_zero#, :unless => self.errors.size > 1
+  validate :no_overlapping_holidays, :on => :create#, :unless => self.errors.size > 1
 
   #TODO validate against the holiday year - a holiday must only belong to
 
@@ -90,7 +89,7 @@ class Vacation < ActiveRecord::Base
   def holiday_must_not_straddle_holiday_years
     #TODO this query will not be right - test with sql
     number_years = HolidayYear.holiday_years_containing_holiday(date_from, date_to).count
-    errors.add(:date_to, "- Holiday must not cross years") if number_years> 1
+    errors.add(:base, "Holiday must not cross years") if number_years> 1
   end
 
   def no_overlapping_holidays
@@ -144,7 +143,7 @@ class Vacation < ActiveRecord::Base
 
   def dont_exceed_days_remaining
      holiday_allowance = self.user.get_holiday_allowance_for_dates self.date_from, self.date_to
-     if holiday_allowance == 0 then return end
+     if holiday_allowance == 0 or holiday_allowance.nil? then return end
      errors.add(:working_days_used, "-Number of days selected exceeds your allowance!") if holiday_allowance.days_remaining < business_days_between
   end
 

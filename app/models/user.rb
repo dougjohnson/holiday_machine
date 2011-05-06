@@ -27,7 +27,9 @@ class User < ActiveRecord::Base
 
   def get_holiday_allowance_for_dates date_from, date_to
     holiday_year = HolidayYear.where('date_start<=? and date_end>=?', date_from, date_to).first
-    allowance = UserDaysForYear.where("user_id = ? and holiday_year_id = ?", self.id, holiday_year.id).first
+    unless holiday_year.nil? #If a holiday isn't in a year( maybe straddles year) then returns nil
+      allowance = UserDaysForYear.where("user_id = ? and holiday_year_id = ?", self.id, holiday_year.id).first
+    end
     allowance
   end
 
@@ -49,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def delete_allowance
-    #TODO this needs to be for the current holiday year
+    #TODO this needs to be for the current holiday year - until we allow selection
     today = Date.today
     holiday_year = HolidayYear.where('date_start<=? and date_end>=?', today, today).first
     UserDaysForYear.destroy(:user_id => self.id, :holiday_year_id => holiday_year.id)

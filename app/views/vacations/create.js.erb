@@ -7,7 +7,7 @@ $(document).ready(function (){
         $("#error_panel").hide(300);
         $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
         $("#flash_notice").show();
-        $("#flash_notice").fadeOut(10000);
+        $("#flash_notice").fadeOut(5000);
         clearForm($('#new_vacation'));
         $("#vacation_date_from").val($.formatDate(new Date(), "dd/MM/yyyy"));
         $("#vacation_date_to").val($.formatDate(new Date(), "dd/MM/yyyy"));

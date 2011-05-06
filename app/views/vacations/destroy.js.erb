@@ -5,6 +5,7 @@
 <% else -%>
     $("#holidaysTable tbody tr#<%=@row_id%>").remove();
     $("#show_days").html("Days Remaining:<%=@days_remaining%>");
+    $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
     $("#flash_notice").show();
-    $("#flash_notice").fadeOut(10000);
+    $("#flash_notice").fadeOut(5000);
 <% end -%>
