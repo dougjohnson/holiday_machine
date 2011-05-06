@@ -247,20 +247,20 @@ fieldset.update {
     font-weight: bold;
 }
 
-.standard_table {
-    position: relative;
-    top: 5px;
-    width: 600px;
-    border-collapse: collapse;
-}
+/*.standard_table {*/
+    /*position: relative;*/
+    /*top: 5px;*/
+    /*width: 600px;*/
+    /*border-collapse: collapse;*/
+/*}*/
 
-.standard_table thead {
-    background-color: green;
-}
+/*.standard_table thead {*/
+    /*background-color: green;*/
+/*}*/
 
-.numeric td {
-    text-align: right;
-}
+/*.numeric td {*/
+    /*text-align: right;*/
+/*}*/
 
 #jqgrid2 {
     position: relative;
@@ -313,42 +313,46 @@ fieldset.update {
     border: 1px solid #001452;
 }
 
-table#manageDays {
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border-collapse: collapse;
-    margin: 0 0 30px -5px;
+/*table#manageDays {*/
+    /*-moz-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+    /*border-collapse: collapse;*/
+    /*margin: 0 0 30px -5px;*/
 
-}
+/*}*/
 
-table#holidaysTable {
-    font-size: 14px;
-    width: 642px;
-    margin: 0 0 30px -5px;
-    border-collapse: collapse;
-}
+/*table#holidaysTable {*/
+    /*font-size: 14px;*/
+    /*width: 642px;*/
+    /*margin: 0 0 30px -5px;*/
+    /*border-collapse: collapse;*/
+/*}*/
 
-table#holidaysTable tbody th {
-    color: white;
-    text-align: left;
-    width: 200px;
-}
+/*table#holidaysTable tbody th {*/
+    /*color: white;*/
+    /*text-align: left;*/
+    /*width: 200px;*/
+/*}*/
 
-table#holidaysTable tbody tr {
-    color: black;
-    border-bottom: 1px solid #3399CC;
-}
+/*table#holidaysTable tbody tr {*/
+    /*color: black;*/
+    /*border-bottom: 1px solid #3399CC;*/
+/*}*/
 
-table#holidaysTable  tr input.deleteButton:hover {
-    cursor: pointer;
-}
+/*table#holidaysTable  tr input.deleteButton:hover {*/
+    /*cursor: pointer;*/
+/*}*/
 
-table #holidaysTable  tr.top th {
-    padding-top: 16px;
-}
+/*table #holidaysTable  tr.top th {*/
+    /*padding-top: 16px;*/
+/*}*/
 
-table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {
-    border: 0;
+/*table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {*/
+    /*border: 0;*/
+/*}*/
+
+.deleteButton:hover{
+    cursor:pointer;
 }
 
 .subHead{

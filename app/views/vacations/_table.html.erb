@@ -1,24 +1,28 @@
-<table id="holidaysTable" class="standard_table" width="600px">
-  <thead>
-  <th class="text">Description</th>
-  <th class="date">Date from</th>
-  <th class="date">Date to</th>
-  <th class="numeric">Days Used</th>
-  <th class= "text">Status</th>
-  <th>Delete</th>
-  </thead>
-  <tbody>
-  <% y @vacations %>
-  <% @vacations.each do |vacation| %>
-      <tr id="<%=vacation.id%>">
-        <td><%=vacation.description%></td>
-        <td><%=vacation.date_from.strftime("%d/%m/%Y") %></td>
-        <td><%=vacation.date_from.strftime("%d/%m/%Y") %></td>
-        <td><%=vacation.working_days_used %></td>
-        <td><%=vacation.holiday_status.status %></td>
-        <td><input value='Delete' type="button" class='deleteButton' id='vacation<%=vacation.id%>' />
-        </td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+<div class="ui-grid ui-widget ui-widget-content ui-corner-all">
+  <div class="ui-grid-header ui-widget-header ui-corner-top">&nbsp;Holidays</div>
+  <table class="ui-grid-header ui-widget-header ui-corner-top" width="600px">
+    <thead>
+    <th class="ui-state-default">Description</th>
+    <th class="ui-state-default">Date from</th>
+    <th class="ui-state-default">Date to</th>
+    <th class="ui-state-default">Days Used</th>
+    <th class="ui-state-default">Status</th>
+    <th>Delete</th>
+    </thead>
+    <tbody>
+    <% @vacations.each do |vacation| %>
+        <tr id="<%= vacation.id %>">
+          <td class="ui-widget-content"><%= vacation.description %></td>
+          <td class="ui-widget-content"><%= vacation.date_from.strftime("%d/%m/%Y") %></td>
+          <td class="ui-widget-content"><%= vacation.date_from.strftime("%d/%m/%Y") %></td>
+          <td class="ui-widget-content"><%= vacation.working_days_used %></td>
+          <td class="ui-widget-content"><%= vacation.holiday_status.status %></td>
+          <td class="ui-widget-content">
+            <input value='Delete' type="button" class='deleteButton' id='vacation<%= vacation.id %>'/>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+</div
