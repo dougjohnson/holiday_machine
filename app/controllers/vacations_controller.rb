@@ -43,7 +43,7 @@ class VacationsController < ApplicationController
   # POST /vacations.xml
   def create
     @vacation = Vacation.new(params[:vacation])
-    @vacation.holiday_year_id = nil #THIS MUST BE REMOVED OR WILL BE FROM THE FILTER
+    @vacation.holiday_year_id = nil #THIS MUST BE REMOVED OR WILL BE PASSED FROM THE FILTER
     @vacation.user = current_user
     @vacation.holiday_status_id = 1
     manager_id = current_user.manager_id

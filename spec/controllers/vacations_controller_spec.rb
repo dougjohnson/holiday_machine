@@ -2,19 +2,38 @@ require 'spec_helper'
 
 describe VacationsController do
 
-  def mock_vacation(stubs={})
-    (@mock_vacation ||= mock_model(Vacation).as_null_object).tap do |vacation|
-      vacation.stub(stubs) unless stubs.empty?
-    end
+#  def mock_vacation(stubs={})
+#    (@mock_vacation ||= mock_model(Vacation).as_null_object).tap do |vacation|
+#      vacation.stub(stubs) unless stubs.empty?
+#    end
+#  end
+
+  before do
+#    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @user = Factory.create(:user)
+    @user.confirm!
+    sign_in @user
+
+#    @user = Factory.create(:user)
+#    @request.env['devise.mapping'] = :user
+#    @user.confirm!
+#    sign_in @user
   end
 
   describe "GET index" do
     it "assigns all vacations as @vacations" do
-      Vacation.stub(:all) { [mock_vacation] }
       get :index
-      assigns(:vacations).should eq([mock_vacation])
+      response.should be_success
+    end
+
+    it "has 25 days remaining since no holidays have been raised"  do
+      get :index
+      days_remaining=controller.instance_variable_get(:@days_remaining)
+      days_remaining.should == 25
     end
   end
+
+=begin
 
   describe "GET index" do
     it "assigns the requested vacation as @vacation" do
@@ -123,5 +142,7 @@ describe VacationsController do
       response.should redirect_to(vacations_url)
     end
   end
+
+=end
 
 end

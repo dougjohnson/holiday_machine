@@ -16,7 +16,7 @@
           </tr>
       <% end %>
       <% user.vacations.each do |holiday| %>
-          <tr>
+          <tr class='<%=holiday.id%>'>
             <td><%= holiday.date_from.strftime("%d/%m/%Y") %></td>
             <td><%= holiday.date_to.strftime("%d/%m/%Y") %></td>
             <td><%= holiday.description %></td>
@@ -29,5 +29,5 @@
           </tr>
       <% end %>
   <% end %>
-
 </table>
+
