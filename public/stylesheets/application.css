@@ -401,6 +401,10 @@ fieldset.register {
     width: 600px;
 }
 
+fieldset.medium {
+    width: 600px;
+}
+
 legend.login {
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -443,9 +447,15 @@ legend.login {
     font-weight:bold
 }
 
+#showMessages{
+    display:none;
+}
+
 input.button:hover{
    cursor:pointer;
 }
+
+/*TODO change login class name - used on many forms*/
 
 
 

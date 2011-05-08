@@ -1,5 +1,5 @@
-<fieldset class="login register">
-  <legend class="login register">Add or change manager</legend>
+<fieldset class="login medium">
+  <legend class="login medium">Add or change manager</legend>
 
     <%= simple_form_for @user, :url=>"/user_settings/update", :remote=>true do |f| %>
         <p><%= f.label :manager_id, :name=>"Manager" %>
