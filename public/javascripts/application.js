@@ -6,10 +6,10 @@ $(document).ready(function() {
                                 changeMonth: true,
 			                    changeYear: true });
 
-    var $dialog = $("#holidayFormDialog").dialog({
-        autoOpen: false,
-        title: 'Edit holiday'
-    });
+//    var $dialog = $("#holidayFormDialog").dialog({
+//        autoOpen: false,
+//        title: 'Edit holiday'
+//    });
 
     var date = new Date();
     var d = date.getDate();

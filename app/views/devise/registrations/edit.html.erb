@@ -1,5 +1,5 @@
-<fieldset class="login">
-  <legend class="login">Edit <%= resource_name.to_s.humanize %></legend>
+<fieldset class="login register">
+  <legend class="login register">Edit <%= resource_name.to_s.humanize %></legend>
 
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -17,7 +17,7 @@
 
       <p><%= f.association :user_type, :collection => UserType.all, :prompt => "Choose a user type" %></p>
 
-      <p><%= f.label :manager_id, :name=>"Manager" %><
+      <p><%= f.label :manager_id, :name=>"Manager" %>
       <%= f.collection_select :manager_id, User.where("user_type_id = 2"), :id, :email, :prompt => "Choose a manager" %></p>
 
       <p><%= f.submit "Save" %></p>
