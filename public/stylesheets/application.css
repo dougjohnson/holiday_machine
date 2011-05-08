@@ -443,12 +443,10 @@ legend.login {
     font-weight:bold
 }
 
-/*.hideInitially input{*/
-    /*display:none;*/
-/*}*/
-/*.hideInitially select{*/
-    /*display:none;*/
-/*}*/
+input.button:hover{
+   cursor:pointer;
+}
+
 
 
 

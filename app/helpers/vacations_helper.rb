@@ -2,13 +2,14 @@ module VacationsHelper
 
   def create_holiday_row holiday
     html = "<tr id='#{holiday.id}'>"
-    html << "<td>#{holiday.description}</td>"
-    html << "<td>#{holiday.date_from.strftime("%d/%m/%Y")}</td>"
-    html << "<td>#{holiday.date_to.strftime("%d/%m/%Y")}</td>"
-    html << "<td>#{holiday.working_days_used}</td>"
-    html << "<td>#{holiday.holiday_status.status}</td>"
-    html << "<td>"
-    html << "<input value='Delete' id='vacation#{holiday.id}' type='button' class='deleteButton'/>"
+    html << "<td class='ui-widget-content'>#{holiday.description}</td>"
+    html << "<td class='ui-widget-content'>#{holiday.date_from.strftime("%d/%m/%Y")}</td>"
+    html << "<td class='ui-widget-content'>#{holiday.date_to.strftime("%d/%m/%Y")}</td>"
+    html << "<td class='ui-widget-content'>#{holiday.working_days_used}</td>"
+    html << "<td class='ui-widget-content'>#{holiday.holiday_status.status}</td>"
+    html << "<td class='ui-widget-content'>"
+#    html << "<input value='Delete' id='vacation#{holiday.id}' type='button' class='deleteButton'/>"
+    html << "<span id='vacation<%= vacation.id %>' class='ui-icon ui-icon-trash deleteButton'/>"
     html << "</td>"
     html << "</tr>"
     html

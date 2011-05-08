@@ -2,7 +2,9 @@
 
 $(document).ready(function() {
 
-    $.datepicker.setDefaults({ dateFormat: 'dd/mm/yy' });
+    $.datepicker.setDefaults({  dateFormat: 'dd/mm/yy',
+                                changeMonth: true,
+			                    changeYear: true });
 
     var $dialog = $("#holidayFormDialog").dialog({
         autoOpen: false,

@@ -53,7 +53,7 @@ class VacationsController < ApplicationController
     respond_to do |format|
       if @vacation.save
         unless manager.nil?
-          HolidayMailer.holiday_actioned(manager, @vacation).deliver
+          HolidayMailer.holiday_request(current_user, manager, @vacation).deliver
         end
 
         user_days_per_year = UserDaysForYear.where(:user_id=> current_user.id, :holiday_year_id => params[:vacation][:holiday_year_id]).first

@@ -24,12 +24,11 @@ SimpleNavigation::Configuration.run do |navigation|
   # Define the primary navigation
   navigation.items do |primary|
 #    primary.item :home_link, 'Home', root_path
-    primary.item :holiday_link, 'View holidays', vacations_path
-    primary.item :calendar_link, 'Show Calendar', "/calendar/show"
-    primary.item :management_area_link, "Administer Holidays", "/administer", :if=>Proc.new{current_user.user_type_id.eql?(2)}
-    primary.item :user_day_link, "Manage Users", user_days_path, :if=>Proc.new{current_user.user_type_id.eql?(2)}
+    primary.item :holiday_link, 'Add holidays', vacations_path
+    primary.item :calendar_link, 'Calendar', "/calendar/show"
+    primary.item :management_area_link, "Manage Holidays", "/administer", :if=>Proc.new{current_user.user_type_id.eql?(2)}
+    primary.item :user_day_link, "Manage Holiday Allowance", user_days_path, :if=>Proc.new{current_user.user_type_id.eql?(2)}
     primary.item :settings_link, "Settings", user_settings_path
-#    primary.item :settings_link, "Settings", settings_path, :if=>Proc.new{current_user.user_type_id.eql?(2)}
   end
 
 =begin

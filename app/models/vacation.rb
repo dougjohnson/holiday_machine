@@ -25,8 +25,6 @@ class Vacation < ActiveRecord::Base
   validate :working_days_greater_than_zero#, :unless => self.errors.size > 1
   validate :no_overlapping_holidays, :on => :create#, :unless => self.errors.size > 1
 
-  #TODO validate against the holiday year - a holiday must only belong to
-
   def date_from= val
     self[:date_from] = convert_uk_date_to_iso val
   end
