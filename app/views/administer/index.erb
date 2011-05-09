@@ -4,9 +4,9 @@
   <table class="ui-grid-content ui-widget-content" width="100%">
   <% @users.each do |user| %>
       <% if user.vacations.size > 0 %>
-          <thead>
+          <tr style="display:block">
             <th style="float:left;" colspan="7"><%= user.full_name %></th>
-          </thead>
+          </tr>
           <tr>
             <th class="ui-state-default">Date From</th>
             <th class="ui-state-default">Date To</th>
