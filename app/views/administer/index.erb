@@ -1,33 +1,36 @@
 <!--<table id="admininsterHols">-->
-<table id="holidaysTable" class="standard_table">
+<div id="holidaysTable" class="ui-grid ui-widget ui-widget-content ui-corner-all">
+  <div style="float:left;" class="ui-grid-header ui-widget-header ui-corner-top">Edit Holidays</div>
+  <table class="ui-grid-content ui-widget-content" width="100%">
   <% @users.each do |user| %>
       <% if user.vacations.size > 0 %>
           <thead>
-            <th style="float:left;" colspan="6"><%= user.full_name %></th>
+            <th style="float:left;" colspan="7"><%= user.full_name %></th>
           </thead>
-          <tr class="subHead">
-            <th>Date From</th>
-            <th>Date To</th>
-            <th>Description</th>
-            <th>Days Used</th>
-            <th>Status</th>
-            <th>Notes</th>
-            <th></th>
+          <tr>
+            <th class="ui-state-default">Date From</th>
+            <th class="ui-state-default">Date To</th>
+            <th class="ui-state-default">Description</th>
+            <th class="ui-state-default">Days Used</th>
+            <th class="ui-state-default">Status</th>
+            <th class="ui-state-default">Notes</th>
+            <th class="ui-state-default"></th>
           </tr>
       <% end %>
       <% user.vacations.each do |holiday| %>
           <tr class='<%=holiday.id%>'>
-            <td><%= holiday.date_from.strftime("%d/%m/%Y") %></td>
-            <td><%= holiday.date_to.strftime("%d/%m/%Y") %></td>
-            <td><%= holiday.description %></td>
-            <td><%= holiday.working_days_used.to_s %></td>
+            <td class="ui-widget-content"><%= holiday.date_from.strftime("%d/%m/%Y") %></td>
+            <td class="ui-widget-content"><%= holiday.date_to.strftime("%d/%m/%Y") %></td>
+            <td class="ui-widget-content"><%= holiday.description %></td>
+            <td class="ui-widget-content"><%= holiday.working_days_used.to_s %></td>
              <%= form_for (holiday, :remote => true) do |hol| -%>
-                <td><%= hol.collection_select :holiday_status_id, @statuses, :id, :status %></td>
-                <td><%= hol.text_field :notes %></td>
-                <td><%= hol.submit 'Update Holiday' %></td>
+                <td class="ui-widget-content"><%= hol.collection_select :holiday_status_id, @statuses, :id, :status %></td>
+                <td class="ui-widget-content"><%= hol.text_field :notes %></td>
+                <td class="ui-widget-content"><%= hol.submit 'Update Holiday' %></td>
             <% end -%>
           </tr>
       <% end %>
   <% end %>
 </table>
+</div>
 

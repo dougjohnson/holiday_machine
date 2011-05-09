@@ -7,6 +7,7 @@
     $(".clearAfter").each(function() {
         $(this).val("");
     });
-    $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days > 0 ? @user_day.no_days : '' %></td><td><%= @user_day.no_days < 0 ? @user_day.no_days.abs : '' %></td></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
+    $('<tr class="userDayReadOnly"><td><%= @user_day.reason %></td><td><%= @user_day.no_days > 0 ? @user_day.no_days : '' %></td><td><%= @user_day.no_days < 0 ? @user_day.no_days.abs : '' %></td> <td><%= button_to "Delete", { :action => "destroy", :id => @user_day.id },
+          :confirm => "Are you sure?", :method => :delete %></td></tr></tr>').insertBefore('.formNo<%=@user_day.user.id%>');
     $(".totalLeave<%=@user_day.user.id%>").text(<%=@user_day.user.get_holiday_allowance.days_remaining %>);
 <% end -%>

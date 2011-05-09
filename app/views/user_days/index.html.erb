@@ -30,8 +30,8 @@
       <tr class="userDayForm formNo<%=user.id%>">
         <%= simple_form_for @user_day, :remote=>true do |f| %>
             <%= f.input :user_id, :as=>:hidden, :input_html => {:value=>user.id} %>
-            <td><%= f.input :reason, :input_html => {:class=>"hideInitially"}, :maxlength => 40, :size=> 10} %></td>
-            <td><%= f.input :no_days, :input_html => {:class=>"hideInitially"},:maxlength => 3, :size=> 3} %></td>
+            <td><%= f.input :reason, :input_html => {:class=>"hideInitially", :maxlength => 40, :size=> 10} %></td>
+            <td><%= f.input :no_days, :input_html => {:class=>"hideInitially",:maxlength => 3, :size=> 3} %></td>
             <td><%= f.submit 'Alter days', :input_html => {:class=>"hideInitially"} %></td>
         <% end %>
       </tr>

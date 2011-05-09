@@ -1,6 +1,6 @@
 <div id="holidaysTable" class="ui-grid ui-widget ui-widget-content ui-corner-all">
   <div class="ui-grid-header ui-widget-header ui-corner-top">&nbsp;Holidays</div>
-  <table class="ui-grid-header ui-widget-header ui-corner-top" width="600px">
+  <table class="ui-grid-content ui-widget-content" width="100%">
     <thead>
     <th class="ui-state-default">Description</th>
     <th class="ui-state-default">Date from</th>
@@ -19,7 +19,9 @@
           <td class="ui-widget-content"><%= vacation.holiday_status.status %></td>
           <td class="ui-widget-content">
             <!--<a class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Delete" href="#">-->
-            <span id='vacation<%= vacation.id %>' class="ui-icon ui-icon-trash deleteButton"> </span>
+            <div class="ui-state-default ui-corner-all ui-state-hover" style="width:20px;height:20px;">
+              <span id='vacation<%= vacation.id %>' class="ui-icon ui-icon-trash deleteButton"> </span>
+            </div>
             <!--</a>-->
             <!--<input value='Delete' type="button" class='deleteButton' id='vacation<%#= vacation.id %>'/>-->
           </td>
@@ -30,7 +32,7 @@
 </div>
 <div class="ui-grid-footer ui-widget-header ui-corner-bottom ui-helper-clearfix">
   <!--<div class="ui-grid-paging ui-helper-clearfix">-->
-    <!--<a class="ui-grid-paging-prev ui-state-default ui-corner-left" href="?results=1"><span title="previous set of results" class="ui-icon ui-icon-triangle-1-w"></span></a>-->
+  <!--<a class="ui-grid-paging-prev ui-state-default ui-corner-left" href="?results=1"><span title="previous set of results" class="ui-icon ui-icon-triangle-1-w"></span></a>-->
   <!--</div>-->
 </div>
 
