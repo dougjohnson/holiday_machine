@@ -18,12 +18,7 @@
           <td class="ui-widget-content"><%= vacation.working_days_used %></td>
           <td class="ui-widget-content"><%= vacation.holiday_status.status %></td>
           <td class="ui-widget-content">
-            <!--<a class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Delete" href="#">-->
-            <div class="ui-state-default ui-corner-all ui-state-hover" style="width:20px;height:20px;">
-              <span id='vacation<%= vacation.id %>' class="ui-icon ui-icon-trash deleteButton"> </span>
-            </div>
-            <!--</a>-->
-            <!--<input value='Delete' type="button" class='deleteButton' id='vacation<%#= vacation.id %>'/>-->
+            <button class="deleteButton" id='vacation<%= vacation.id %>'></button>
           </td>
         </tr>
     <% end %>

@@ -8,6 +8,20 @@
 
 $(document).ready(function() {
 
+    $('.deleteButton').button({
+        icons: {
+            primary: "ui-icon-trash"
+        },
+        text: false
+    });
+
+    $('.saveButton').button({
+        icons: {
+            primary: "ui-icon-circle-plus"
+        }
+    });
+
+
     $("#vacation_holiday_status_id").live('change', function() {
         var selected_status = $("#vacation_holiday_status_id option:selected").val();
 
