@@ -2,6 +2,13 @@
 
 Create and manage holidays
 
+When installing ensure that the line:
+{{{
+ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+}}}
+
+In in the environment files uses the correct host name
+
 
 == License
 
