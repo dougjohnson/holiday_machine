@@ -96,6 +96,10 @@ body {
     margin: 2px 10px;
 }
 
+.simple_form .vacation label{
+    width:110px;
+}
+
 .simple_form div.input {
     margin-bottom: 10px;
 }
@@ -123,7 +127,7 @@ body {
     color: white;
     float: left;
     width: 100%;
-    font-family: arial, helvetica, sans-serif;
+    font-family: tahoma, arial, helvetica, sans-serif;
 }
 
 #top_navigation ul li {
@@ -150,10 +154,10 @@ body {
 }
 
 #error_panel {
-    position:absolute;
+    position: absolute;
     top: 10px;
     right: 0px;
-    display:none;
+    display: none;
     -moz-border-radius: 5px;
     border-radius: 5px;
     background-image: url('/images/BlueToWhiteGradient.jpg');
@@ -166,8 +170,8 @@ body {
     padding: 10px;
 }
 
-#closeButton{
-    position:absolute;
+#closeButton {
+    position: absolute;
     top: -5px;
     left: -5px;
     height: 25px;
@@ -175,18 +179,19 @@ body {
     background-image: url('/images/close.png');
 }
 
-#closeButton:hover{
-    cursor:pointer;
+#closeButton:hover {
+    cursor: pointer;
 }
 
-#messages{
-    position:absolute;
+#messages {
+    position: absolute;
     top: 30px;
 }
+
 /*#error_panel .close {*/
-    /*position: relative;*/
-    /*top: 0px;*/
-    /*right: 0px;*/
+/*position: relative;*/
+/*top: 0px;*/
+/*right: 0px;*/
 /*}*/
 
 #vacations_form {
@@ -248,18 +253,18 @@ fieldset.update {
 }
 
 /*.standard_table {*/
-    /*position: relative;*/
-    /*top: 5px;*/
-    /*width: 600px;*/
-    /*border-collapse: collapse;*/
+/*position: relative;*/
+/*top: 5px;*/
+/*width: 600px;*/
+/*border-collapse: collapse;*/
 /*}*/
 
 /*.standard_table thead {*/
-    /*background-color: green;*/
+/*background-color: green;*/
 /*}*/
 
 /*.numeric td {*/
-    /*text-align: right;*/
+/*text-align: right;*/
 /*}*/
 
 #jqgrid2 {
@@ -314,55 +319,55 @@ fieldset.update {
 }
 
 /*table#manageDays {*/
-    /*-moz-border-radius: 5px;*/
-    /*border-radius: 5px;*/
-    /*border-collapse: collapse;*/
-    /*margin: 0 0 30px -5px;*/
+/*-moz-border-radius: 5px;*/
+/*border-radius: 5px;*/
+/*border-collapse: collapse;*/
+/*margin: 0 0 30px -5px;*/
 
 /*}*/
 
 /*table#holidaysTable {*/
-    /*font-size: 14px;*/
-    /*width: 642px;*/
-    /*margin: 0 0 30px -5px;*/
-    /*border-collapse: collapse;*/
+/*font-size: 14px;*/
+/*width: 642px;*/
+/*margin: 0 0 30px -5px;*/
+/*border-collapse: collapse;*/
 /*}*/
 
 /*table#holidaysTable tbody th {*/
-    /*color: white;*/
-    /*text-align: left;*/
-    /*width: 200px;*/
+/*color: white;*/
+/*text-align: left;*/
+/*width: 200px;*/
 /*}*/
 
 /*table#holidaysTable tbody tr {*/
-    /*color: black;*/
-    /*border-bottom: 1px solid #3399CC;*/
+/*color: black;*/
+/*border-bottom: 1px solid #3399CC;*/
 /*}*/
 
 /*table#holidaysTable  tr input.deleteButton:hover {*/
-    /*cursor: pointer;*/
+/*cursor: pointer;*/
 /*}*/
 
 /*table #holidaysTable  tr.top th {*/
-    /*padding-top: 16px;*/
+/*padding-top: 16px;*/
 /*}*/
 
 /*table #holidaysTable, tr #holidaysTable, th #holidaysTable, td #holidaysTable {*/
-    /*border: 0;*/
+/*border: 0;*/
 /*}*/
 
-.deleteButton:hover{
-    cursor:pointer;
+.deleteButton:hover {
+    cursor: pointer;
 }
 
-.subHead{
-    padding-right:10px;
+.subHead {
+    padding-right: 10px;
     color: black;
     background-color: #097e09;
 }
 
-.subRow{
-    padding-right:10px;
+.subRow {
+    padding-right: 10px;
     color: black;
 }
 
@@ -433,29 +438,39 @@ legend.login {
 }
 
 #days_remaining label {
-   width: 50px;
+    width: 50px;
 }
 
 #year_filter {
-    height:20px;
+    height: 20px;
 }
 
-#show_days{
+#show_days {
     position: relative;
     left: 0px;
     top: 10px;
-    font-weight:bold
+    font-weight: bold
 }
 
-#showMessages{
-    display:none;
+#showMessages {
+    display: none;
 }
 
-input.button:hover{
-   cursor:pointer;
+input.button:hover {
+    cursor: pointer;
 }
 
 /*TODO change login class name - used on many forms*/
+
+.field_with_errors {
+    display: inline;
+}
+
+.field_with_errors .message {
+    color: #D00;
+    padding-left: 5px;
+    font-size: 12px;
+}
 
 
 
