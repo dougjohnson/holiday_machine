@@ -23,7 +23,7 @@
             <td class="ui-widget-content"><%= holiday.date_to.strftime("%d/%m/%Y") %></td>
             <td class="ui-widget-content"><%= holiday.description %></td>
             <td class="ui-widget-content"><%= holiday.working_days_used.to_s %></td>
-             <%= form_for (holiday, :remote => true) do |hol| -%>
+             <%= form_for(holiday, :remote => true) do |hol| -%>
                 <td class="ui-widget-content"><%= hol.collection_select :holiday_status_id, @statuses, :id, :status %></td>
                 <td class="ui-widget-content"><%= hol.text_field :notes %></td>
                 <td class="ui-widget-content"><%= hol.submit 'Update Holiday' %></td>
